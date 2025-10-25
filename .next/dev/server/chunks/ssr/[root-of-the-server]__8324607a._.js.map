@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///home/ashok/websites/adoods/pages/index.js"],"sourcesContent":["// pages/index.js\nexport default function Home() {\n    return (\n      <main style={{fontFamily:'Arial, sans-serif', padding:'40px'}}>\n        <h1>Adoods 👋</h1>\n        <p>This is a static Next.js Hello World exported as plain HTML.</p>\n      </main>\n    )\n  }\n"],"names":[],"mappings":"AAAA,iBAAiB;;;;;;;AACF,SAAS;IACpB,qBACE,qKAAC;QAAK,OAAO;YAAC,YAAW;YAAqB,SAAQ;QAAM;;0BAC1D,qKAAC;0BAAG;;;;;;0BACJ,qKAAC;0BAAE;;;;;;;;;;;;AAGT","debugId":null}}]
+}
