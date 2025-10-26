@@ -38,7 +38,10 @@ function Navbar() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("nav", {
         style: {
             background: "#111",
-            color: "#fff"
+            color: "#fff",
+            position: 'sticky',
+            top: 0,
+            zIndex: 1000
         },
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
             style: {
@@ -47,61 +50,104 @@ function Navbar() {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                padding: "10px 20px"
+                padding: "15px 20px"
             },
             children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h2", {
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
+                    href: "/",
                     style: {
-                        fontSize: "1.5rem",
-                        margin: 0
+                        textDecoration: 'none'
                     },
-                    children: "Adoods"
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h1", {
+                        style: {
+                            fontSize: "1.8rem",
+                            margin: 0,
+                            fontWeight: 700,
+                            color: "#fff",
+                            cursor: 'pointer',
+                            transition: 'opacity 0.3s ease'
+                        },
+                        onMouseOver: (e)=>e.currentTarget.style.opacity = '0.8',
+                        onMouseOut: (e)=>e.currentTarget.style.opacity = '1',
+                        children: "Adoods"
+                    }, void 0, false, {
+                        fileName: "[project]/websites/adoods/components/Navbar.js",
+                        lineNumber: 21,
+                        columnNumber: 11
+                    }, this)
                 }, void 0, false, {
                     fileName: "[project]/websites/adoods/components/Navbar.js",
-                    lineNumber: 16,
+                    lineNumber: 20,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                     style: {
                         display: "flex",
-                        gap: "20px",
+                        gap: "25px",
                         fontSize: "1rem"
                     },
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
                             href: "/",
+                            style: {
+                                color: "#fff",
+                                textDecoration: 'none',
+                                padding: '5px 0',
+                                borderBottom: '2px solid transparent',
+                                transition: 'all 0.3s ease'
+                            },
+                            onMouseOver: (e)=>e.currentTarget.style.borderBottomColor = '#fff',
+                            onMouseOut: (e)=>e.currentTarget.style.borderBottomColor = 'transparent',
                             children: "Home"
                         }, void 0, false, {
                             fileName: "[project]/websites/adoods/components/Navbar.js",
-                            lineNumber: 18,
+                            lineNumber: 34,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
                             href: "/shop",
+                            style: {
+                                color: "#fff",
+                                textDecoration: 'none',
+                                padding: '5px 0',
+                                borderBottom: '2px solid transparent',
+                                transition: 'all 0.3s ease'
+                            },
+                            onMouseOver: (e)=>e.currentTarget.style.borderBottomColor = '#fff',
+                            onMouseOut: (e)=>e.currentTarget.style.borderBottomColor = 'transparent',
                             children: "Shop"
                         }, void 0, false, {
                             fileName: "[project]/websites/adoods/components/Navbar.js",
-                            lineNumber: 19,
+                            lineNumber: 44,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
                             href: "/contact",
+                            style: {
+                                color: "#fff",
+                                textDecoration: 'none',
+                                padding: '5px 0',
+                                borderBottom: '2px solid transparent',
+                                transition: 'all 0.3s ease'
+                            },
+                            onMouseOver: (e)=>e.currentTarget.style.borderBottomColor = '#fff',
+                            onMouseOut: (e)=>e.currentTarget.style.borderBottomColor = 'transparent',
                             children: "Contact"
                         }, void 0, false, {
                             fileName: "[project]/websites/adoods/components/Navbar.js",
-                            lineNumber: 20,
+                            lineNumber: 54,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/websites/adoods/components/Navbar.js",
-                    lineNumber: 17,
+                    lineNumber: 33,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/websites/adoods/components/Navbar.js",
-            lineNumber: 6,
+            lineNumber: 12,
             columnNumber: 7
         }, this)
     }, void 0, false, {
@@ -133,7 +179,7 @@ function Footer() {
             children: [
                 "© ",
                 new Date().getFullYear(),
-                " Garentz. All rights reserved."
+                " Adoods. All rights reserved."
             ]
         }, void 0, true, {
             fileName: "[project]/websites/adoods/components/Footer.js",
@@ -147,49 +193,11 @@ function Footer() {
     }, this);
 }
 }),
-"[project]/websites/adoods/pages/_app.js [ssr] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
+"[project]/websites/adoods/pages/_app.js [ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
 
-__turbopack_context__.s([
-    "default",
-    ()=>App
-]);
-var __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react/jsx-dev-runtime [external] (react/jsx-dev-runtime, cjs)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$websites$2f$adoods$2f$components$2f$Navbar$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/websites/adoods/components/Navbar.js [ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$websites$2f$adoods$2f$components$2f$Footer$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/websites/adoods/components/Footer.js [ssr] (ecmascript)");
-;
-;
-;
-;
-function App({ Component, pageProps }) {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["Fragment"], {
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$websites$2f$adoods$2f$components$2f$Navbar$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                fileName: "[project]/websites/adoods/pages/_app.js",
-                lineNumber: 8,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("main", {
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(Component, {
-                    ...pageProps
-                }, void 0, false, {
-                    fileName: "[project]/websites/adoods/pages/_app.js",
-                    lineNumber: 10,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/websites/adoods/pages/_app.js",
-                lineNumber: 9,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$websites$2f$adoods$2f$components$2f$Footer$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                fileName: "[project]/websites/adoods/pages/_app.js",
-                lineNumber: 12,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true);
-}
+const e = new Error("Could not parse module '[project]/websites/adoods/pages/_app.js'\n\nExpected unicode escape");
+e.code = 'MODULE_UNPARSABLE';
+throw e;
 }),
 ];
 

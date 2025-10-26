@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import BannerSlider from "../components/BannerSlider";
 
 export default function Home() {
@@ -7,22 +8,6 @@ export default function Home() {
       {/* Hero Banner */}
       <BannerSlider />
 
-      {/* About Section */}
-      <section
-        style={{
-          padding: "60px 20px",
-          maxWidth: "1000px",
-          margin: "auto",
-          textAlign: "center",
-        }}
-      >
-        <h1>Welcome to Garentz</h1>
-        <p style={{ marginTop: "10px", fontSize: "1.1rem", color: "#555" }}>
-          We design and sell premium quality t-shirts for men that combine
-          comfort, style, and durability. Each shirt is crafted with love and
-          made to make you stand out.
-        </p>
-      </section>
 
       {/* Featured Products */}
       <section
@@ -42,30 +27,52 @@ export default function Home() {
             margin: "40px auto",
           }}
         >
-          {["tshirt1.jpg", "tshirt2.jpg", "tshirt3.jpg"].map((img, i) => (
-            <div
-              key={i}
+          {["img/Design_7.jpeg", "img/Design_10.jpeg", "img/Design_11.jpeg"].map((img, i) => (
+            <Link 
+              key={i} 
+              href="/shop"
               style={{
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                background: "#fff",
-                padding: "15px",
+                textDecoration: 'none',
+                color: 'inherit',
+                display: 'block',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                borderRadius: '8px',
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-5px)';
+                e.currentTarget.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              <img
-                src={`/${img}`}
-                alt="tshirt"
+              <div
                 style={{
-                  width: "100%",
-                  height: "300px",
-                  objectFit: "cover",
+                  border: "1px solid #eee",
                   borderRadius: "8px",
+                  background: "#fff",
+                  padding: "15px",
+                  height: "100%",
+                  display: 'flex',
+                  flexDirection: 'column',
                 }}
-              />
-              <h3 style={{ marginTop: "15px" }}>
-                {["Classic Tee", "Streetwear Tee", "Printed Tee"][i]}
-              </h3>
-            </div>
+              >
+                <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
+                  <img
+                    src={`/${img}`}
+                    alt="Featured T-Shirt"
+                    style={{
+                      width: "100%",
+                      height: "280px",
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                    }}
+                  />
+                </div>
+                <h3 style={{ margin: "15px 0 10px", color: '#333' }}>Premium T-Shirt {i + 1}</h3>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -73,102 +80,357 @@ export default function Home() {
       {/* Why Choose Us */}
       <section
         style={{
-          padding: "60px 20px",
+          padding: "80px 20px",
           textAlign: "center",
-          maxWidth: "1000px",
-          margin: "auto",
+          background: "linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)",
+          position: "relative",
+          overflow: "hidden"
         }}
       >
-        <h2>Why Choose Garentz?</h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "30px",
-            marginTop: "30px",
-          }}
-        >
-          <div>
-            <h4>💎 Premium Fabric</h4>
-            <p>Only high-quality cotton used for lasting comfort.</p>
-          </div>
-          <div>
-            <h4>🧵 Perfect Fit</h4>
-            <p>Designed for real people — fitted, but never tight.</p>
-          </div>
-          <div>
-            <h4>🚚 Fast Shipping</h4>
-            <p>Quick delivery right to your doorstep, no delays.</p>
+        <div style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 1
+        }}>
+          <h2 style={{
+            fontSize: "2.5rem",
+            marginBottom: "60px",
+            color: "#2d3748",
+            position: "relative",
+            display: "inline-block"
+          }}>
+            Why Choose Adoods?
+            <span style={{
+              position: "absolute",
+              bottom: "-10px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "80px",
+              height: "3px",
+              background: "linear-gradient(90deg, #4a148c 0%, #e91e63 100%)",
+              borderRadius: "3px"
+            }}></span>
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gap: "30px",
+              marginTop: "40px"
+            }}
+          >
+            {[
+              {
+                icon: "✨",
+                title: "Premium Quality",
+                description: "Only the finest fabrics and materials for ultimate comfort and durability."
+              },
+              {
+                icon: "👕",
+                title: "Perfect Fit",
+                description: "Designed to flatter every body type with attention to detail and comfort."
+              },
+              {
+                icon: "⚡",
+                title: "Fast Shipping",
+                description: "Quick and reliable delivery to your doorstep, with real-time tracking."
+              }
+            ].map((item, index) => (
+              <div 
+                key={index}
+                style={{
+                  background: "white",
+                  padding: "40px 25px",
+                  borderRadius: "12px",
+                  boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
+                  transition: "all 0.3s ease",
+                  border: "1px solid rgba(0,0,0,0.05)",
+                  cursor: "default"
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = "translateY(-5px)";
+                  e.currentTarget.style.boxShadow = "0 15px 30px rgba(0,0,0,0.1)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 5px 15px rgba(0,0,0,0.05)";
+                }}
+              >
+                <div style={{
+                  fontSize: "2.5rem",
+                  marginBottom: "20px"
+                }}>
+                  {item.icon}
+                </div>
+                <h3 style={{
+                  fontSize: "1.5rem",
+                  marginBottom: "15px",
+                  color: "#2d3748"
+                }}>
+                  {item.title}
+                </h3>
+                <p style={{
+                  color: "#4a5568",
+                  lineHeight: "1.6",
+                  margin: 0
+                }}>
+                  {item.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
+        <div style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          width: "300px",
+          height: "300px",
+          background: "radial-gradient(circle, rgba(233,30,99,0.1) 0%, rgba(255,255,255,0) 70%)",
+          zIndex: 0
+        }}></div>
       </section>
 
-      {/* About Garentz */}
+      {/* About Adoods */}
       <section
         style={{
-          background: "#fff",
-          padding: "60px 20px",
-          maxWidth: "1000px",
-          margin: "auto",
-          textAlign: "center",
+          padding: "100px 20px",
+          background: "#ffffff",
+          position: "relative",
+          overflow: "hidden"
         }}
       >
-        <h2>About Garentz</h2>
-        <p style={{ marginTop: "15px", fontSize: "1.1rem", color: "#555" }}>
-          Garentz was founded with one mission — to redefine comfort and fashion
-          for men’s wear in India. Our team focuses on premium fabrics,
-          sustainable production, and minimalist design to help you look and
-          feel your best every day.
-        </p>
-      </section>
-
-      {/* Customer Reviews */}
-      <section
-        style={{
-          background: "#f9f9f9",
-          padding: "60px 20px",
-          textAlign: "center",
-        }}
-      >
-        <h2>What Our Customers Say</h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "25px",
-            maxWidth: "1000px",
-            margin: "40px auto",
-          }}
-        >
-          {[
-            {
-              text: "Amazing quality! The shirt feels great and the fit is perfect.",
-              name: "Rahul, Chennai",
-            },
-            {
-              text: "Loved the design and packaging. Definitely buying more soon!",
-              name: "Priya, Bangalore",
-            },
-            {
-              text: "Comfortable fabric, stylish look — worth every rupee!",
-              name: "Arjun, Hyderabad",
-            },
-          ].map((review, i) => (
-            <div
-              key={i}
+        <div style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "60px",
+          alignItems: "center"
+        }}>
+          <div>
+            <h2 style={{
+              fontSize: "2.5rem",
+              color: "#2d3748",
+              marginBottom: "25px",
+              lineHeight: "1.3"
+            }}>
+              About <span style={{color: "#e91e63"}}>Adoods</span>
+            </h2>
+            <div style={{
+              height: "4px",
+              width: "80px",
+              background: "linear-gradient(90deg, #4a148c 0%, #e91e63 100%)",
+              marginBottom: "30px",
+              borderRadius: "2px"
+            }}></div>
+            <p style={{
+              color: "#4a5568",
+              lineHeight: "1.8",
+              marginBottom: "25px",
+              fontSize: "1.05rem"
+            }}>
+              At Adoods, we believe that great style starts with great basics. Founded in 2017, we've been dedicated to creating premium quality t-shirts that combine comfort, style, and sustainability.
+            </p>
+            <p style={{
+              color: "#4a5568",
+              lineHeight: "1.8",
+              marginBottom: "30px",
+              fontSize: "1.05rem"
+            }}>
+              Our mission is simple: to provide you with wardrobe essentials that look good, feel amazing, and last longer. Every stitch tells a story of quality and attention to detail.
+            </p>
+            <button
+              onClick={() => window.location.href = '/shop'}
               style={{
-                background: "#fff",
-                padding: "25px",
-                borderRadius: "8px",
-                boxShadow: "0 0 8px rgba(0,0,0,0.1)",
+                background: 'linear-gradient(90deg, #4a148c 0%, #7b1fa2 100%)',
+                color: 'white',
+                border: 'none',
+                padding: '12px 30px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                borderRadius: '50px',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 15px rgba(74, 20, 140, 0.3)'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 7px 20px rgba(74, 20, 140, 0.4)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(74, 20, 140, 0.3)';
               }}
             >
-              <p>“{review.text}”</p>
-              <strong>– {review.name}</strong>
-            </div>
-          ))}
+              Explore Our Collection
+            </button>
+          </div>
+          <div style={{
+            position: "relative",
+            height: "500px",
+            borderRadius: "15px",
+            overflow: "hidden",
+            boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
+          }}>
+            <img
+              src="/img/Design_1.jpeg"
+              alt="About Adoods"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                transition: "transform 0.5s ease"
+              }}
+              onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.03)"}
+              onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
+            />
+          </div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <section
+        style={{
+          padding: "100px 20px",
+          background: "linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)",
+          textAlign: "center"
+        }}
+      >
+        <div style={{
+          maxWidth: "1200px",
+          margin: "0 auto"
+        }}>
+          <h2 style={{
+            fontSize: "2.5rem",
+            marginBottom: "15px",
+            color: "#2d3748"
+          }}>
+            What Our Customers Say
+          </h2>
+          <p style={{
+            color: "#718096",
+            fontSize: "1.1rem",
+            maxWidth: "700px",
+            margin: "0 auto 60px",
+            lineHeight: "1.6"
+          }}>
+            Don't just take our word for it. Here's what our customers have to say about their Adoods experience.
+          </p>
+          
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "30px",
+            marginTop: "40px"
+          }}>
+            {[
+              {
+                name: "Rahul Sharma",
+                role: "Frequent Shopper",
+                avatar: "👨‍💼",
+                review: "The quality of Adoods t-shirts is unmatched. They're my go-to for both casual and semi-formal looks.",
+                rating: "★★★★★"
+              },
+              {
+                name: "Priya Patel",
+                role: "Fashion Blogger",
+                avatar: "👩‍💻",
+                review: "I've tried many brands, but Adoos stands out for their perfect fit and durability. Highly recommend!",
+                rating: "★★★★★"
+              },
+              {
+                name: "Amit Kumar",
+                role: "First-time Buyer",
+                avatar: "👨‍🎓",
+                review: "Impressed with the fabric quality and stitching. Will definitely be buying more colors!",
+                rating: "★★★★☆"
+              }
+            ].map((testimonial, index) => (
+              <div 
+                key={index}
+                style={{
+                  background: "white",
+                  padding: "35px 30px",
+                  borderRadius: "12px",
+                  boxShadow: "0 5px 25px rgba(0,0,0,0.05)",
+                  transition: "all 0.3s ease",
+                  textAlign: "left",
+                  position: "relative",
+                  border: "1px solid rgba(0,0,0,0.03)"
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = "translateY(-5px)";
+                  e.currentTarget.style.boxShadow = "0 15px 30px rgba(0,0,0,0.08)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 5px 25px rgba(0,0,0,0.05)";
+                }}
+              >
+                <div style={{
+                  fontSize: "2.5rem",
+                  position: "absolute",
+                  top: "-20px",
+                  left: "30px",
+                  background: "linear-gradient(135deg, #4a148c 0%, #e91e63 100%)",
+                  width: "50px",
+                  height: "50px",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "white",
+                  boxShadow: "0 5px 15px rgba(0,0,0,0.1)"
+                }}>
+                  {testimonial.avatar}
+                </div>
+                <p style={{
+                  color: "#4a5568",
+                  lineHeight: "1.8",
+                  fontStyle: "italic",
+                  marginBottom: "25px",
+                  position: "relative",
+                  paddingTop: "10px"
+                }}>
+                  "{testimonial.review}"
+                </p>
+                <div style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between"
+                }}>
+                  <div>
+                    <h4 style={{
+                      margin: "0 0 5px 0",
+                      color: "#2d3748",
+                      fontSize: "1.1rem"
+                    }}>
+                      {testimonial.name}
+                    </h4>
+                    <p style={{
+                      margin: 0,
+                      color: "#718096",
+                      fontSize: "0.9rem"
+                    }}>
+                      {testimonial.role}
+                    </p>
+                  </div>
+                  <div style={{
+                    color: "#f6b01e",
+                    fontSize: "1.2rem"
+                  }}>
+                    {testimonial.rating}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
 
       {/* Newsletter */}
       <section
@@ -176,31 +438,45 @@ export default function Home() {
           background: "#111",
           color: "#fff",
           textAlign: "center",
-          padding: "60px 20px",
+          padding: "80px 20px",
         }}
       >
-        <h2>Join Our Community</h2>
-        <p style={{ marginTop: "10px", color: "#ccc" }}>
-          Subscribe to get updates on new collections and exclusive offers!
-        </p>
-        <form
-          style={{
-            marginTop: "20px",
-            display: "flex",
-            justifyContent: "center",
-            gap: "10px",
-            flexWrap: "wrap",
-          }}
-        >
+        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+          <h2 style={{ 
+            fontSize: "2.5rem",
+            marginBottom: "15px"
+          }}>Join Our Community</h2>
+          <p style={{ 
+            margin: "0 auto 30px", 
+            color: "#ccc",
+            maxWidth: "600px",
+            lineHeight: "1.6"
+          }}>
+            Subscribe to get updates on new collections and exclusive offers!
+          </p>
+          <form
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "10px",
+              flexWrap: "wrap",
+              maxWidth: "500px",
+              margin: "0 auto"
+            }}
+          >
           <input
             type="email"
             placeholder="Enter your email"
             required
             style={{
-              padding: "12px 15px",
+              padding: "0 15px",
               borderRadius: "6px",
               border: "none",
-              width: "250px",
+              minWidth: "250px",
+              flex: "1",
+              height: "42px",
+              boxSizing: "border-box",
+              fontSize: "1rem"
             }}
           />
           <button
@@ -208,16 +484,27 @@ export default function Home() {
             style={{
               background: "#fff",
               color: "#111",
-              padding: "12px 25px",
+              padding: "0 25px",
               borderRadius: "6px",
               border: "none",
               cursor: "pointer",
               fontWeight: "bold",
+              transition: "all 0.3s ease",
+              height: "42px",
+              boxSizing: "border-box",
+              fontSize: "0.95rem"
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.opacity = "0.9";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.opacity = "1";
             }}
           >
             Subscribe
           </button>
         </form>
+        </div>
       </section>
     </div>
   );

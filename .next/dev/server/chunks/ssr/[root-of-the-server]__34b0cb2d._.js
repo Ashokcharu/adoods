@@ -13,9 +13,8 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$
 ;
 function BannerSlider() {
     const banners = [
-        '/banner1.jpg',
-        '/banner2.jpg',
-        '/banner3.jpg'
+        "/img/banner1.png",
+        "/img/banner2.png"
     ];
     const [index, setIndex] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(0);
     (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
@@ -23,24 +22,17 @@ function BannerSlider() {
         return ()=>clearInterval(timer);
     }, []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-        style: {
-            width: '100%',
-            height: '400px',
-            overflow: 'hidden',
-            position: 'relative'
-        },
+        className: "banner",
         children: banners.map((src, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
                 src: src,
                 alt: `Banner ${i}`,
+                className: "banner-img",
                 style: {
-                    width: '100%',
-                    height: '400px',
-                    objectFit: 'cover',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
                     opacity: i === index ? 1 : 0,
-                    transition: 'opacity 1s ease-in-out'
+                    transition: "opacity 1s ease-in-out",
+                    position: "absolute",
+                    top: 0,
+                    left: 0
                 }
             }, i, false, {
                 fileName: "[project]/websites/adoods/components/BannerSlider.js",
@@ -130,9 +122,9 @@ function Home() {
                             margin: "40px auto"
                         },
                         children: [
-                            "tshirt1.jpg",
-                            "tshirt2.jpg",
-                            "tshirt3.jpg"
+                            "img/Design_7.jpeg",
+                            "img/Design_10.jpeg",
+                            "img/Design_11.jpeg"
                         ].map((img, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                 style: {
                                     border: "1px solid #ddd",
@@ -160,9 +152,9 @@ function Home() {
                                             marginTop: "15px"
                                         },
                                         children: [
-                                            "Classic Tee",
-                                            "Streetwear Tee",
-                                            "Printed Tee"
+                                            "Runner's Comfort Tee",
+                                            "Athletic Performance Tee",
+                                            "Pro Sports Tee"
                                         ][i]
                                     }, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/index.js",
@@ -195,7 +187,7 @@ function Home() {
                 },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h2", {
-                        children: "Why Choose Garentz?"
+                        children: "Why Choose Adoods?"
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/index.js",
                         lineNumber: 82,
@@ -297,7 +289,7 @@ function Home() {
                 },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h2", {
-                        children: "About Garentz"
+                        children: "About Adoods"
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/index.js",
                         lineNumber: 116,
