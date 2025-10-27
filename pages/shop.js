@@ -194,7 +194,7 @@ export default function Shop() {
                     e.currentTarget.style.background = '#111';
                   }}
                 >
-                  Quick View
+                  Order Now
                 </button>
               </div>
             </div>

@@ -331,7 +331,7 @@ function Shop() {
                                         onMouseOut: (e)=>{
                                             e.currentTarget.style.background = '#111';
                                         },
-                                        children: "Quick View"
+                                        children: "Order Now"
                                     }, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/shop.js",
                                         lineNumber: 171,
