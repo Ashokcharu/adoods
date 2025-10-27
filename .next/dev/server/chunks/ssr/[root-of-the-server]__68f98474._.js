@@ -819,6 +819,17 @@ function Shop() {
                                                         src: item.img,
                                                         alt: item.name,
                                                         style: productImageStyle,
+                                                        onClick: (e)=>{
+                                                            e.preventDefault();
+                                                            setSelectedProduct(item);
+                                                            setOrderDetails((prev)=>({
+                                                                    ...prev,
+                                                                    productName: item.name,
+                                                                    productId: item.id,
+                                                                    quantity: 1
+                                                                }));
+                                                            setShowOrderForm(true);
+                                                        },
                                                         className: `jsx-${mobileStyles.__hash}`
                                                     }, void 0, false, {
                                                         fileName: "[project]/websites/adoods/pages/shop.js",
@@ -840,7 +851,7 @@ function Shop() {
                                                             children: item.name
                                                         }, void 0, false, {
                                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                                            lineNumber: 550,
+                                                            lineNumber: 561,
                                                             columnNumber: 17
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -849,7 +860,18 @@ function Shop() {
                                                             },
                                                             className: `jsx-${mobileStyles.__hash}`,
                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
-                                                                onClick: (e)=>handleOrderNow(e, item),
+                                                                onClick: (e)=>{
+                                                                    e.preventDefault();
+                                                                    e.stopPropagation();
+                                                                    setSelectedProduct(item);
+                                                                    setOrderDetails((prev)=>({
+                                                                            ...prev,
+                                                                            productName: item.name,
+                                                                            productId: item.id,
+                                                                            quantity: 1
+                                                                        }));
+                                                                    setShowOrderForm(true);
+                                                                },
                                                                 style: {
                                                                     ...orderButtonStyle,
                                                                     width: '100%',
@@ -860,18 +882,18 @@ function Shop() {
                                                                 children: "Order Now"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/websites/adoods/pages/shop.js",
-                                                                lineNumber: 552,
+                                                                lineNumber: 565,
                                                                 columnNumber: 19
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                                            lineNumber: 551,
+                                                            lineNumber: 564,
                                                             columnNumber: 17
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                                    lineNumber: 549,
+                                                    lineNumber: 560,
                                                     columnNumber: 15
                                                 }, this)
                                             ]
@@ -898,7 +920,7 @@ function Shop() {
                                                 children: "No products found"
                                             }, void 0, false, {
                                                 fileName: "[project]/websites/adoods/pages/shop.js",
-                                                lineNumber: 575,
+                                                lineNumber: 599,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -906,7 +928,7 @@ function Shop() {
                                                 children: "Try adjusting your search or filter criteria"
                                             }, void 0, false, {
                                                 fileName: "[project]/websites/adoods/pages/shop.js",
-                                                lineNumber: 576,
+                                                lineNumber: 600,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -927,13 +949,13 @@ function Shop() {
                                                 children: "Clear Filters"
                                             }, void 0, false, {
                                                 fileName: "[project]/websites/adoods/pages/shop.js",
-                                                lineNumber: 577,
+                                                lineNumber: 601,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/websites/adoods/pages/shop.js",
-                                        lineNumber: 569,
+                                        lineNumber: 593,
                                         columnNumber: 13
                                     }, this)
                                 ]
@@ -1017,7 +1039,7 @@ function Shop() {
                             children: "×"
                         }, void 0, false, {
                             fileName: "[project]/websites/adoods/pages/shop.js",
-                            lineNumber: 628,
+                            lineNumber: 652,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -1034,12 +1056,12 @@ function Shop() {
                                         className: `jsx-${mobileStyles.__hash}`
                                     }, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/shop.js",
-                                        lineNumber: 659,
+                                        lineNumber: 683,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                    lineNumber: 658,
+                                    lineNumber: 682,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -1052,7 +1074,7 @@ function Shop() {
                                             children: selected.name
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 667,
+                                            lineNumber: 691,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -1061,7 +1083,7 @@ function Shop() {
                                             children: selected.price
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 668,
+                                            lineNumber: 692,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -1074,7 +1096,7 @@ function Shop() {
                                             children: "Add to Cart"
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 669,
+                                            lineNumber: 693,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -1092,7 +1114,7 @@ function Shop() {
                                                     children: "Description"
                                                 }, void 0, false, {
                                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                                    lineNumber: 680,
+                                                    lineNumber: 704,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -1108,13 +1130,13 @@ function Shop() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                                    lineNumber: 681,
+                                                    lineNumber: 705,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 679,
+                                            lineNumber: 703,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -1130,7 +1152,7 @@ function Shop() {
                                                     children: "Free shipping on all orders"
                                                 }, void 0, false, {
                                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                                    lineNumber: 688,
+                                                    lineNumber: 712,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -1138,7 +1160,7 @@ function Shop() {
                                                     children: "30-day return policy"
                                                 }, void 0, false, {
                                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                                    lineNumber: 689,
+                                                    lineNumber: 713,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -1146,36 +1168,36 @@ function Shop() {
                                                     children: "Secure checkout"
                                                 }, void 0, false, {
                                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                                    lineNumber: 690,
+                                                    lineNumber: 714,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 687,
+                                            lineNumber: 711,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                    lineNumber: 666,
+                                    lineNumber: 690,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/websites/adoods/pages/shop.js",
-                            lineNumber: 657,
+                            lineNumber: 681,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/websites/adoods/pages/shop.js",
-                    lineNumber: 615,
+                    lineNumber: 639,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/websites/adoods/pages/shop.js",
-                lineNumber: 601,
+                lineNumber: 625,
                 columnNumber: 9
             }, this),
             showOrderForm && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -1224,7 +1246,7 @@ function Shop() {
                             children: "×"
                         }, void 0, false, {
                             fileName: "[project]/websites/adoods/pages/shop.js",
-                            lineNumber: 723,
+                            lineNumber: 747,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h2", {
@@ -1236,7 +1258,7 @@ function Shop() {
                             children: "Order Details"
                         }, void 0, false, {
                             fileName: "[project]/websites/adoods/pages/shop.js",
-                            lineNumber: 741,
+                            lineNumber: 765,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -1252,7 +1274,7 @@ function Shop() {
                                     children: "Product:"
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                    lineNumber: 743,
+                                    lineNumber: 767,
                                     columnNumber: 15
                                 }, this),
                                 " ",
@@ -1260,13 +1282,10 @@ function Shop() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/websites/adoods/pages/shop.js",
-                            lineNumber: 742,
+                            lineNumber: 766,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("form", {
-                            action: "mailto:adoodshosur@gmail.com",
-                            method: "POST",
-                            encType: "text/plain",
                             onSubmit: handleOrderSubmit,
                             className: `jsx-${mobileStyles.__hash}`,
                             children: [
@@ -1286,7 +1305,7 @@ function Shop() {
                                             children: "Your Name *"
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 753,
+                                            lineNumber: 772,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
@@ -1306,13 +1325,13 @@ function Shop() {
                                             className: `jsx-${mobileStyles.__hash}`
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 760,
+                                            lineNumber: 779,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                    lineNumber: 752,
+                                    lineNumber: 771,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -1331,7 +1350,7 @@ function Shop() {
                                             children: "Phone Number *"
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 778,
+                                            lineNumber: 797,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
@@ -1351,13 +1370,13 @@ function Shop() {
                                             className: `jsx-${mobileStyles.__hash}`
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 785,
+                                            lineNumber: 804,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                    lineNumber: 777,
+                                    lineNumber: 796,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -1376,7 +1395,7 @@ function Shop() {
                                             children: "Quantity"
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 803,
+                                            lineNumber: 822,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
@@ -1396,13 +1415,13 @@ function Shop() {
                                             className: `jsx-${mobileStyles.__hash}`
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 810,
+                                            lineNumber: 829,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                    lineNumber: 802,
+                                    lineNumber: 821,
                                     columnNumber: 15
                                 }, this),
                                 submitStatus.message && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -1419,7 +1438,7 @@ function Shop() {
                                     children: submitStatus.message
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                    lineNumber: 828,
+                                    lineNumber: 847,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -1443,24 +1462,24 @@ function Shop() {
                                     children: isSubmitting ? 'Sending...' : 'Place Order'
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                    lineNumber: 840,
+                                    lineNumber: 859,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/websites/adoods/pages/shop.js",
-                            lineNumber: 746,
+                            lineNumber: 770,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/websites/adoods/pages/shop.js",
-                    lineNumber: 713,
+                    lineNumber: 737,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/websites/adoods/pages/shop.js",
-                lineNumber: 700,
+                lineNumber: 724,
                 columnNumber: 9
             }, this)
         ]

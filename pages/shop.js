@@ -544,13 +544,37 @@ export default function Shop() {
                   src={item.img} 
                   alt={item.name}
                   style={productImageStyle}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setSelectedProduct(item);
+                    setOrderDetails(prev => ({
+                      ...prev,
+                      productName: item.name,
+                      productId: item.id,
+                      quantity: 1
+                    }));
+                    setShowOrderForm(true);
+                  }}
                 />
               </div>
               <div style={productInfoStyle}>
-                <h3 style={productNameStyle}>{item.name}</h3>
+                <h3 style={productNameStyle}>
+                  {item.name}
+                </h3>
                 <div style={{ marginTop: '15px' }}>
                   <button 
-                    onClick={(e) => handleOrderNow(e, item)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setSelectedProduct(item);
+                      setOrderDetails(prev => ({
+                        ...prev,
+                        productName: item.name,
+                        productId: item.id,
+                        quantity: 1
+                      }));
+                      setShowOrderForm(true);
+                    }}
                     style={{
                       ...orderButtonStyle,
                       width: '100%',
@@ -743,12 +767,7 @@ export default function Shop() {
               <strong>Product:</strong> {orderDetails.productName}
             </p>
             
-            <form 
-              action="mailto:adoodshosur@gmail.com"
-              method="POST"
-              encType="text/plain"
-              onSubmit={handleOrderSubmit}
-            >
+            <form onSubmit={handleOrderSubmit}>
               <div style={{ marginBottom: '20px' }}>
                 <label style={{
                   display: 'block',

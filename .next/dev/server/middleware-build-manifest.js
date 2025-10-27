@@ -1,17 +1,5 @@
 globalThis.__BUILD_MANIFEST = {
   "pages": {
-    "/": [
-      "static/chunks/node_modules_next_dist_compiled_c629999b._.js",
-      "static/chunks/node_modules_next_dist_shared_lib_4677c81f._.js",
-      "static/chunks/node_modules_next_dist_client_9ad483b7._.js",
-      "static/chunks/node_modules_next_dist_ec0ff3d3._.js",
-      "static/chunks/node_modules_next_eb5b9d22._.js",
-      "static/chunks/node_modules_react-dom_4411d9bd._.js",
-      "static/chunks/node_modules_1f601d8c._.js",
-      "static/chunks/[root-of-the-server]__83126028._.js",
-      "static/chunks/websites_adoods_pages_index_2da965e7._.js",
-      "static/chunks/turbopack-websites_adoods_pages_index_eeb70a87._.js"
-    ],
     "/_app": [
       "static/chunks/node_modules_next_dist_compiled_c629999b._.js",
       "static/chunks/node_modules_next_dist_shared_lib_e58fd182._.js",
@@ -24,30 +12,6 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/websites_adoods_assets_styles_065f6653.css",
       "static/chunks/websites_adoods_pages__app_2da965e7._.js",
       "static/chunks/turbopack-websites_adoods_pages__app_1a40122d._.js"
-    ],
-    "/_error": [
-      "static/chunks/node_modules_next_dist_compiled_c629999b._.js",
-      "static/chunks/node_modules_next_dist_shared_lib_cf5b50a6._.js",
-      "static/chunks/node_modules_next_dist_client_d0aa886c._.js",
-      "static/chunks/node_modules_next_dist_19fd0646._.js",
-      "static/chunks/node_modules_next_error_1cfbb379.js",
-      "static/chunks/[next]_entry_page-loader_ts_43b523b5._.js",
-      "static/chunks/node_modules_react-dom_4411d9bd._.js",
-      "static/chunks/node_modules_e1b9f01a._.js",
-      "static/chunks/[root-of-the-server]__afd25253._.js",
-      "static/chunks/websites_adoods_pages__error_2da965e7._.js",
-      "static/chunks/turbopack-websites_adoods_pages__error_03114dc8._.js"
-    ],
-    "/contact": [
-      "static/chunks/node_modules_next_dist_compiled_c629999b._.js",
-      "static/chunks/node_modules_next_dist_shared_lib_82dc2e9d._.js",
-      "static/chunks/node_modules_next_dist_client_d0aa886c._.js",
-      "static/chunks/node_modules_next_dist_6024eba3._.js",
-      "static/chunks/node_modules_react-dom_4411d9bd._.js",
-      "static/chunks/node_modules_1f601d8c._.js",
-      "static/chunks/[root-of-the-server]__dc36c12a._.js",
-      "static/chunks/websites_adoods_pages_contact_2da965e7._.js",
-      "static/chunks/turbopack-websites_adoods_pages_contact_39732170._.js"
     ],
     "/shop": [
       "static/chunks/node_modules_next_dist_compiled_3202fd1d._.js",
