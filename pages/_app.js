@@ -12,20 +12,46 @@ const fontHref = 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;
 const defaultSEO = {
   title: 'Adoods - Premium T-Shirts & Apparel',
   description: 'Discover our premium collection of t-shirts. Comfortable, stylish, and made to last.',
-  keywords: 't-shirts, apparel, fashion, clothing, premium t-shirts',
-  siteUrl: 'https://youraddress.com',
-  image: 'https://youraddress.com/img/banner.png',
-  twitter: '@youraddress'
+  keywords: 't-shirts, apparel, fashion, clothing, premium t-shirts'
 };
+
+// Global styles with fixed header support
+const globalStyles = `
+  html, body, #__next {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Ensure the main content starts below the fixed header */
+  body {
+    padding-top: 80px; /* Match this with your header height */
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  /* Reset box-sizing for all elements */
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  button, a {
+    cursor: pointer;
+  }
+`;
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   
-  // Set up page view tracking
+  // Simple route change handler for analytics
   useEffect(() => {
     const handleRouteChange = (url) => {
-      // Here you can add analytics tracking
-      // Example: window.gtag('config', 'GA_MEASUREMENT_ID', { page_path: url });
+      // Optional: Add analytics here
     };
     
     router.events.on('routeChangeComplete', handleRouteChange);
@@ -33,8 +59,8 @@ export default function App({ Component, pageProps }) {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
-
-  // Get page-specific SEO data or use defaults
+  
+  // Merge SEO data
   const seo = {
     ...defaultSEO,
     ...(pageProps.seo || {})
@@ -46,52 +72,14 @@ export default function App({ Component, pageProps }) {
         <title>{seo.title}</title>
         <meta name="description" content={seo.description} />
         <meta name="keywords" content={seo.keywords} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href={fontHref} rel="stylesheet" />
-        <style jsx global>{`
-          html,
-          body {
-            padding: 0;
-            margin: 0;
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-              Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-          }
-          * {
-            box-sizing: border-box;
-          }
-        `}</style>
-        <meta name="author" content="Adoods" />
-        <meta name="robots" content="index, follow" />
-        
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${seo.siteUrl}${router.asPath}`} />
-        <meta property="og:title" content={seo.title} />
-        <meta property="og:description" content={seo.description} />
-        <meta property="og:image" content={seo.image} />
-        <meta property="og:site_name" content="Adoods" />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={`${seo.siteUrl}${router.asPath}`} />
-        <meta name="twitter:title" content={seo.title} />
-        <meta name="twitter:description" content={seo.description} />
-        <meta name="twitter:image" content={seo.image} />
-        {seo.twitter && <meta name="twitter:creator" content={seo.twitter} />}
-        
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        
-        {/* Canonical URL */}
-        <link rel="canonical" href={`${seo.siteUrl}${router.asPath}`} />
-        
-        <title>{seo.title}</title>
+        <style>{globalStyles}</style>
       </Head>
       
       <Navbar />
-      <main>
+      <main style={{ minHeight: 'calc(100vh - 200px)' }}>
         <Component {...pageProps} />
       </main>
       <Footer />

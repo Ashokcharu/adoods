@@ -20,7 +20,17 @@ export default function BannerSlider() {
     <div 
       className="banner" 
       onClick={handleBannerClick}
-      style={{ cursor: 'pointer' }}
+      style={{ 
+        position: 'absolute',
+        top: '60px',
+        left: 0,
+        right: 0,
+        width: '100%',
+        height: 'calc(100vh - 60px)',
+        padding: 0,
+        margin: 0,
+        lineHeight: 0
+      }}
     >
       {banners.map((src, i) => (
         <img
@@ -31,12 +41,16 @@ export default function BannerSlider() {
           style={{
             opacity: i === index ? 1 : 0,
             transition: "opacity 1s ease-in-out",
-            position: "absolute",
+            position: 'absolute',
             top: 0,
             left: 0,
             width: '100%',
             height: '100%',
-            objectFit: 'cover'
+            margin: 0,
+            objectFit: 'cover',
+            objectPosition: 'center',
+            padding: 0,
+            display: i === index ? 'block' : 'none'
           }}
         />
       ))}

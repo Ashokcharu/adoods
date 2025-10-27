@@ -467,135 +467,127 @@ function triggerUpdate(msg) {
 
 __turbopack_context__.s([
     "default",
-    ()=>Navbar
+    ()=>__TURBOPACK__default__export__
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/link.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+"use client";
 ;
 ;
-function Navbar() {
+const Navbar = ()=>{
+    _s();
+    const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$client$5d$__$28$ecmascript$29$__["usePathname"])();
+    const navLinks = [
+        {
+            href: '/',
+            label: 'Home'
+        },
+        {
+            href: '/shop',
+            label: 'Shop'
+        },
+        {
+            href: '/contact',
+            label: 'Contact'
+        }
+    ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
         style: {
-            background: "#111",
-            color: "#fff",
-            position: 'sticky',
+            backgroundColor: '#1a1a1a',
+            padding: '0 5%',
+            height: '60px',
+            position: 'fixed',
+            width: '100%',
             top: 0,
-            zIndex: 1000
+            left: 0,
+            zIndex: 1000,
+            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)'
         },
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             style: {
-                maxWidth: "1200px",
-                margin: "0 auto",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: "15px 20px"
+                maxWidth: '1200px',
+                height: '100%',
+                margin: '0 auto',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                width: '100%'
             },
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
                     href: "/",
                     style: {
+                        color: '#fff',
+                        fontSize: '1.5rem',
+                        fontWeight: 'bold',
                         textDecoration: 'none'
                     },
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                        style: {
-                            fontSize: "1.8rem",
-                            margin: 0,
-                            fontWeight: 700,
-                            color: "#fff",
-                            cursor: 'pointer',
-                            transition: 'opacity 0.3s ease'
-                        },
-                        onMouseOver: (e)=>e.currentTarget.style.opacity = '0.8',
-                        onMouseOut: (e)=>e.currentTarget.style.opacity = '1',
-                        children: "Adoods"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/components/Navbar.js",
-                        lineNumber: 21,
-                        columnNumber: 11
-                    }, this)
+                    children: "Adoods"
                 }, void 0, false, {
                     fileName: "[project]/websites/adoods/components/Navbar.js",
-                    lineNumber: 20,
+                    lineNumber: 35,
                     columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                }, ("TURBOPACK compile-time value", void 0)),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
                     style: {
-                        display: "flex",
-                        gap: "25px",
-                        fontSize: "1rem"
+                        display: 'flex',
+                        gap: '1.5rem',
+                        listStyle: 'none',
+                        margin: 0,
+                        padding: 0
                     },
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                            href: "/",
-                            style: {
-                                color: "#fff",
-                                textDecoration: 'none',
-                                padding: '5px 0',
-                                borderBottom: '2px solid transparent',
-                                transition: 'all 0.3s ease'
-                            },
-                            onMouseOver: (e)=>e.currentTarget.style.borderBottomColor = '#fff',
-                            onMouseOut: (e)=>e.currentTarget.style.borderBottomColor = 'transparent',
-                            children: "Home"
-                        }, void 0, false, {
+                    children: navLinks.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                                href: link.href,
+                                style: {
+                                    color: pathname === link.href ? '#fff' : '#ccc',
+                                    textDecoration: 'none',
+                                    padding: '0.5rem 1rem',
+                                    borderRadius: '4px',
+                                    transition: 'all 0.3s ease',
+                                    ':hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                                    },
+                                    fontWeight: pathname === link.href ? '600' : '400'
+                                },
+                                children: link.label
+                            }, void 0, false, {
+                                fileName: "[project]/websites/adoods/components/Navbar.js",
+                                lineNumber: 53,
+                                columnNumber: 15
+                            }, ("TURBOPACK compile-time value", void 0))
+                        }, link.href, false, {
                             fileName: "[project]/websites/adoods/components/Navbar.js",
-                            lineNumber: 34,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                            href: "/shop",
-                            style: {
-                                color: "#fff",
-                                textDecoration: 'none',
-                                padding: '5px 0',
-                                borderBottom: '2px solid transparent',
-                                transition: 'all 0.3s ease'
-                            },
-                            onMouseOver: (e)=>e.currentTarget.style.borderBottomColor = '#fff',
-                            onMouseOut: (e)=>e.currentTarget.style.borderBottomColor = 'transparent',
-                            children: "Shop"
-                        }, void 0, false, {
-                            fileName: "[project]/websites/adoods/components/Navbar.js",
-                            lineNumber: 44,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                            href: "/contact",
-                            style: {
-                                color: "#fff",
-                                textDecoration: 'none',
-                                padding: '5px 0',
-                                borderBottom: '2px solid transparent',
-                                transition: 'all 0.3s ease'
-                            },
-                            onMouseOver: (e)=>e.currentTarget.style.borderBottomColor = '#fff',
-                            onMouseOut: (e)=>e.currentTarget.style.borderBottomColor = 'transparent',
-                            children: "Contact"
-                        }, void 0, false, {
-                            fileName: "[project]/websites/adoods/components/Navbar.js",
-                            lineNumber: 54,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
+                            lineNumber: 52,
+                            columnNumber: 13
+                        }, ("TURBOPACK compile-time value", void 0)))
+                }, void 0, false, {
                     fileName: "[project]/websites/adoods/components/Navbar.js",
-                    lineNumber: 33,
+                    lineNumber: 44,
                     columnNumber: 9
-                }, this)
+                }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/websites/adoods/components/Navbar.js",
-            lineNumber: 12,
+            lineNumber: 26,
             columnNumber: 7
-        }, this)
+        }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/websites/adoods/components/Navbar.js",
-        lineNumber: 5,
+        lineNumber: 15,
         columnNumber: 5
-    }, this);
-}
+    }, ("TURBOPACK compile-time value", void 0));
+};
+_s(Navbar, "xbyQPtUVMO7MNj7WjJlpdWqRcTo=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$client$5d$__$28$ecmascript$29$__["usePathname"]
+    ];
+});
 _c = Navbar;
+const __TURBOPACK__default__export__ = Navbar;
 var _c;
 __turbopack_context__.k.register(_c, "Navbar");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
@@ -652,7 +644,6 @@ __turbopack_context__.s([
     ()=>App
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/styled-jsx/style.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$head$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/head.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/router.js [client] (ecmascript)");
@@ -666,28 +657,52 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-;
 // Import Google Fonts
 const fontHref = 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap';
 // Default SEO configuration
 const defaultSEO = {
     title: 'Adoods - Premium T-Shirts & Apparel',
     description: 'Discover our premium collection of t-shirts. Comfortable, stylish, and made to last.',
-    keywords: 't-shirts, apparel, fashion, clothing, premium t-shirts',
-    siteUrl: 'https://youraddress.com',
-    image: 'https://youraddress.com/img/banner.png',
-    twitter: '@youraddress'
+    keywords: 't-shirts, apparel, fashion, clothing, premium t-shirts'
 };
+// Global styles with fixed header support
+const globalStyles = `
+  html, body, #__next {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Ensure the main content starts below the fixed header */
+  body {
+    padding-top: 80px; /* Match this with your header height */
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  /* Reset box-sizing for all elements */
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  button, a {
+    cursor: pointer;
+  }
+`;
 function App({ Component, pageProps }) {
     _s();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])();
-    // Set up page view tracking
+    // Simple route change handler for analytics
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "App.useEffect": ()=>{
             const handleRouteChange = {
                 "App.useEffect.handleRouteChange": (url)=>{
-                // Here you can add analytics tracking
-                // Example: window.gtag('config', 'GA_MEASUREMENT_ID', { page_path: url });
+                // Optional: Add analytics here
                 }
             }["App.useEffect.handleRouteChange"];
             router.events.on('routeChangeComplete', handleRouteChange);
@@ -700,7 +715,7 @@ function App({ Component, pageProps }) {
     }["App.useEffect"], [
         router.events
     ]);
-    // Get page-specific SEO data or use defaults
+    // Merge SEO data
     const seo = {
         ...defaultSEO,
         ...pageProps.seo || {}
@@ -710,252 +725,90 @@ function App({ Component, pageProps }) {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$head$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("title", {
-                        className: "jsx-88da2c2ad5759ed0",
                         children: seo.title
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 46,
+                        lineNumber: 72,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
                         name: "description",
-                        content: seo.description,
-                        className: "jsx-88da2c2ad5759ed0"
+                        content: seo.description
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 47,
+                        lineNumber: 73,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
                         name: "keywords",
-                        content: seo.keywords,
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 48,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("link", {
-                        href: fontHref,
-                        rel: "stylesheet",
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 49,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                        id: "88da2c2ad5759ed0",
-                        children: "html,body{margin:0;padding:0;font-family:Poppins,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif}*{box-sizing:border-box}"
-                    }, void 0, false, void 0, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        name: "author",
-                        content: "Adoods",
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 62,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        name: "robots",
-                        content: "index, follow",
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 63,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        property: "og:type",
-                        content: "website",
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 66,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        property: "og:url",
-                        content: `${seo.siteUrl}${router.asPath}`,
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 67,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        property: "og:title",
-                        content: seo.title,
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 68,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        property: "og:description",
-                        content: seo.description,
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 69,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        property: "og:image",
-                        content: seo.image,
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 70,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        property: "og:site_name",
-                        content: "Adoods",
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 71,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        name: "twitter:card",
-                        content: "summary_large_image",
-                        className: "jsx-88da2c2ad5759ed0"
+                        content: seo.keywords
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/_app.js",
                         lineNumber: 74,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        name: "twitter:url",
-                        content: `${seo.siteUrl}${router.asPath}`,
-                        className: "jsx-88da2c2ad5759ed0"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("link", {
+                        rel: "preconnect",
+                        href: "https://fonts.googleapis.com"
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/_app.js",
                         lineNumber: 75,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        name: "twitter:title",
-                        content: seo.title,
-                        className: "jsx-88da2c2ad5759ed0"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("link", {
+                        rel: "preconnect",
+                        href: "https://fonts.gstatic.com",
+                        crossOrigin: "true"
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/_app.js",
                         lineNumber: 76,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        name: "twitter:description",
-                        content: seo.description,
-                        className: "jsx-88da2c2ad5759ed0"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("link", {
+                        href: fontHref,
+                        rel: "stylesheet"
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/_app.js",
                         lineNumber: 77,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        name: "twitter:image",
-                        content: seo.image,
-                        className: "jsx-88da2c2ad5759ed0"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
+                        children: globalStyles
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/_app.js",
                         lineNumber: 78,
-                        columnNumber: 9
-                    }, this),
-                    seo.twitter && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
-                        name: "twitter:creator",
-                        content: seo.twitter,
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 79,
-                        columnNumber: 25
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("link", {
-                        rel: "icon",
-                        href: "/favicon.ico",
-                        sizes: "any",
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 82,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("link", {
-                        rel: "icon",
-                        href: "/icon.svg",
-                        type: "image/svg+xml",
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 83,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("link", {
-                        rel: "apple-touch-icon",
-                        href: "/apple-touch-icon.png",
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 84,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("link", {
-                        rel: "manifest",
-                        href: "/site.webmanifest",
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 85,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("link", {
-                        rel: "canonical",
-                        href: `${seo.siteUrl}${router.asPath}`,
-                        className: "jsx-88da2c2ad5759ed0"
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 88,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("title", {
-                        className: "jsx-88da2c2ad5759ed0",
-                        children: seo.title
-                    }, void 0, false, {
-                        fileName: "[project]/websites/adoods/pages/_app.js",
-                        lineNumber: 90,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/websites/adoods/pages/_app.js",
-                lineNumber: 45,
+                lineNumber: 71,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$websites$2f$adoods$2f$components$2f$Navbar$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/websites/adoods/pages/_app.js",
-                lineNumber: 93,
+                lineNumber: 81,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
+                style: {
+                    minHeight: 'calc(100vh - 200px)'
+                },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Component, {
                     ...pageProps
                 }, void 0, false, {
                     fileName: "[project]/websites/adoods/pages/_app.js",
-                    lineNumber: 95,
+                    lineNumber: 83,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/websites/adoods/pages/_app.js",
-                lineNumber: 94,
+                lineNumber: 82,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$websites$2f$adoods$2f$components$2f$Footer$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/websites/adoods/pages/_app.js",
-                lineNumber: 97,
+                lineNumber: 85,
                 columnNumber: 7
             }, this)
         ]

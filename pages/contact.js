@@ -80,8 +80,7 @@ export default function Contact() {
           </div>
           <h3 style={{ color: "#2d3748", marginBottom: "15px" }}>Our Location</h3>
           <p style={{ color: "#4a5568", lineHeight: "1.6", margin: 0 }}>
-            88-1/50M, Ulavar Sandhai Road,<br />
-            near Srinivasa theatre,<br />
+            No 784/1 A1A Near Vakil layout Hosur,<br />
             Hosur, Tamil Nadu 635109
           </p>
         </div>
@@ -107,8 +106,8 @@ export default function Contact() {
           </div>
           <h3 style={{ color: "#2d3748", marginBottom: "15px" }}>Contact Us</h3>
           <p style={{ color: "#4a5568", lineHeight: "1.6", margin: 0 }}>
-            <a href="tel:09514109080" style={{ color: "#4a148c", textDecoration: "none" }}>095141 09080</a><br />
-            <a href="mailto:info@adoods.com" style={{ color: "#4a148c", textDecoration: "none" }}>info@adoods.com</a>
+            <a href="tel:09514109080" style={{ color: "#4a148c", textDecoration: "none" }}>+91 95141 09080</a><br />
+            <a href="mailto:adoodshosur@gmail.com" style={{ color: "#4a148c", textDecoration: "none" }}>adoodshosur@gmail.com</a>
           </p>
         </div>
 
@@ -134,7 +133,6 @@ export default function Contact() {
           <h3 style={{ color: "#2d3748", marginBottom: "15px" }}>Working Hours</h3>
           <p style={{ color: "#4a5568", lineHeight: "1.8", margin: 0 }}>
             Monday - Saturday: 10:00 AM - 9:00 PM<br />
-            Sunday: 11:00 AM - 8:00 PM
           </p>
         </div>
       </div>
@@ -178,6 +176,9 @@ export default function Contact() {
 
         {/* Right: Contact Form */}
         <form
+          action="mailto:adoodshosur@gmail.com"
+          method="POST"
+          encType="text/plain"
           onSubmit={handleSubmit}
           style={{
             flex: "1 1 350px",

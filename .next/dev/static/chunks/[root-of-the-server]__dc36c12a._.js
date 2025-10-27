@@ -635,17 +635,11 @@ function Contact() {
                                     margin: 0
                                 },
                                 children: [
-                                    "88-1/50M, Ulavar Sandhai Road,",
+                                    "No 784/1 A1A Near Vakil layout Hosur,",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/contact.js",
                                         lineNumber: 83,
-                                        columnNumber: 43
-                                    }, this),
-                                    "near Srinivasa theatre,",
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
-                                        fileName: "[project]/websites/adoods/pages/contact.js",
-                                        lineNumber: 84,
-                                        columnNumber: 36
+                                        columnNumber: 50
                                     }, this),
                                     "Hosur, Tamil Nadu 635109"
                                 ]
@@ -687,12 +681,12 @@ function Contact() {
                                     children: "📞"
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/contact.js",
-                                    lineNumber: 106,
+                                    lineNumber: 105,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 96,
+                                lineNumber: 95,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -703,7 +697,7 @@ function Contact() {
                                 children: "Contact Us"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 108,
+                                lineNumber: 107,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -719,39 +713,39 @@ function Contact() {
                                             color: "#4a148c",
                                             textDecoration: "none"
                                         },
-                                        children: "095141 09080"
+                                        children: "+91 95141 09080"
                                     }, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/contact.js",
-                                        lineNumber: 110,
+                                        lineNumber: 109,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/contact.js",
-                                        lineNumber: 110,
-                                        columnNumber: 108
+                                        lineNumber: 109,
+                                        columnNumber: 111
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                        href: "mailto:info@adoods.com",
+                                        href: "mailto:adoodshosur@gmail.com",
                                         style: {
                                             color: "#4a148c",
                                             textDecoration: "none"
                                         },
-                                        children: "info@adoods.com"
+                                        children: "adoodshosur@gmail.com"
                                     }, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/contact.js",
-                                        lineNumber: 111,
+                                        lineNumber: 110,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 109,
+                                lineNumber: 108,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/websites/adoods/pages/contact.js",
-                        lineNumber: 89,
+                        lineNumber: 88,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -781,12 +775,12 @@ function Contact() {
                                     children: "⏰"
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/contact.js",
-                                    lineNumber: 132,
+                                    lineNumber: 131,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 122,
+                                lineNumber: 121,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -797,7 +791,7 @@ function Contact() {
                                 children: "Working Hours"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 134,
+                                lineNumber: 133,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -810,20 +804,19 @@ function Contact() {
                                     "Monday - Saturday: 10:00 AM - 9:00 PM",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/contact.js",
-                                        lineNumber: 136,
+                                        lineNumber: 135,
                                         columnNumber: 50
-                                    }, this),
-                                    "Sunday: 11:00 AM - 8:00 PM"
+                                    }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 135,
+                                lineNumber: 134,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/websites/adoods/pages/contact.js",
-                        lineNumber: 115,
+                        lineNumber: 114,
                         columnNumber: 9
                     }, this)
                 ]
@@ -861,7 +854,7 @@ function Contact() {
                                 children: "Location"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 166,
+                                lineNumber: 164,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("iframe", {
@@ -878,16 +871,19 @@ function Contact() {
                                 loading: "lazy"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 168,
+                                lineNumber: 166,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/websites/adoods/pages/contact.js",
-                        lineNumber: 156,
+                        lineNumber: 154,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                        action: "mailto:adoodshosur@gmail.com",
+                        method: "POST",
+                        encType: "text/plain",
                         onSubmit: handleSubmit,
                         style: {
                             flex: "1 1 350px",
@@ -908,7 +904,7 @@ function Contact() {
                                 children: "Send Us a Message"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 194,
+                                lineNumber: 195,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -918,7 +914,7 @@ function Contact() {
                                 required: true
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 195,
+                                lineNumber: 196,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -928,7 +924,7 @@ function Contact() {
                                 required: true
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 196,
+                                lineNumber: 197,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -937,7 +933,7 @@ function Contact() {
                                 placeholder: "Phone Number (optional)"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 197,
+                                lineNumber: 198,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -947,7 +943,7 @@ function Contact() {
                                 required: true
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 198,
+                                lineNumber: 199,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -963,19 +959,19 @@ function Contact() {
                                 children: "Send Message"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 199,
+                                lineNumber: 200,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/websites/adoods/pages/contact.js",
-                        lineNumber: 180,
+                        lineNumber: 178,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/websites/adoods/pages/contact.js",
-                lineNumber: 143,
+                lineNumber: 141,
                 columnNumber: 7
             }, this)
         ]
