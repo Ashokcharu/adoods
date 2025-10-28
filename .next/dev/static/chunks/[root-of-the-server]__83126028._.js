@@ -504,7 +504,15 @@ function BannerSlider() {
         className: "banner",
         onClick: handleBannerClick,
         style: {
-            cursor: 'pointer'
+            position: 'absolute',
+            top: '60px',
+            left: 0,
+            right: 0,
+            width: '100%',
+            height: 'calc(100vh - 60px)',
+            padding: 0,
+            margin: 0,
+            lineHeight: 0
         },
         children: banners.map((src, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                 src: src,
@@ -513,16 +521,20 @@ function BannerSlider() {
                 style: {
                     opacity: i === index ? 1 : 0,
                     transition: "opacity 1s ease-in-out",
-                    position: "absolute",
+                    position: 'absolute',
                     top: 0,
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover'
+                    margin: 0,
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    padding: 0,
+                    display: i === index ? 'block' : 'none'
                 }
             }, i, false, {
                 fileName: "[project]/websites/adoods/components/BannerSlider.js",
-                lineNumber: 26,
+                lineNumber: 36,
                 columnNumber: 9
             }, this))
     }, void 0, false, {
@@ -557,12 +569,99 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$websites$2f$adoods$2f$compon
 ;
 ;
 ;
+const sectionHeaderStyle = {
+    fontSize: '2.5rem',
+    color: '#1a1a1a',
+    margin: '0 0 20px 0',
+    fontWeight: '700',
+    lineHeight: '1.3',
+    position: 'relative',
+    display: 'inline-block',
+    paddingBottom: '15px'
+};
+const sectionHeaderLine = {
+    position: 'absolute',
+    bottom: 0,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    width: '80px',
+    height: '4px',
+    background: '#4a148c',
+    borderRadius: '2px'
+};
 function Home() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$websites$2f$adoods$2f$components$2f$BannerSlider$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/websites/adoods/pages/index.js",
-                lineNumber: 9,
+                lineNumber: 31,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    height: 'calc(100vh - 60px)'
+                }
+            }, void 0, false, {
+                fileName: "[project]/websites/adoods/pages/index.js",
+                lineNumber: 34,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    maxWidth: '1200px',
+                    margin: '0 auto',
+                    padding: '50px 20px',
+                    textAlign: 'center',
+                    backgroundColor: '#ffffff',
+                    position: 'relative'
+                },
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        maxWidth: '900px',
+                        margin: '0 auto',
+                        padding: '0 20px'
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                            style: sectionHeaderStyle,
+                            children: [
+                                "Welcome to Adoods - Your Style Destination",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: sectionHeaderLine
+                                }, void 0, false, {
+                                    fileName: "[project]/websites/adoods/pages/index.js",
+                                    lineNumber: 52,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/websites/adoods/pages/index.js",
+                            lineNumber: 50,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            style: {
+                                fontSize: '1.25rem',
+                                color: '#4a4a4a',
+                                lineHeight: '1.8',
+                                margin: '0 auto',
+                                maxWidth: '800px'
+                            },
+                            children: "Discover our exclusive collection of premium school uniforms and trendy fashion wear, designed for comfort, durability, and style that lasts all day long."
+                        }, void 0, false, {
+                            fileName: "[project]/websites/adoods/pages/index.js",
+                            lineNumber: 54,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/websites/adoods/pages/index.js",
+                    lineNumber: 45,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/websites/adoods/pages/index.js",
+                lineNumber: 37,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -573,10 +672,20 @@ function Home() {
                 },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                        children: "Featured Collection"
-                    }, void 0, false, {
+                        style: sectionHeaderStyle,
+                        children: [
+                            "Featured Collection",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: sectionHeaderLine
+                            }, void 0, false, {
+                                fileName: "[project]/websites/adoods/pages/index.js",
+                                lineNumber: 77,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/websites/adoods/pages/index.js",
-                        lineNumber: 20,
+                        lineNumber: 75,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -636,12 +745,12 @@ function Home() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/websites/adoods/pages/index.js",
-                                                lineNumber: 62,
+                                                lineNumber: 120,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/index.js",
-                                            lineNumber: 61,
+                                            lineNumber: 119,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -655,29 +764,29 @@ function Home() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/websites/adoods/pages/index.js",
-                                            lineNumber: 73,
+                                            lineNumber: 131,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/websites/adoods/pages/index.js",
-                                    lineNumber: 50,
+                                    lineNumber: 108,
                                     columnNumber: 15
                                 }, this)
                             }, i, false, {
                                 fileName: "[project]/websites/adoods/pages/index.js",
-                                lineNumber: 31,
+                                lineNumber: 89,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/index.js",
-                        lineNumber: 21,
+                        lineNumber: 79,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/websites/adoods/pages/index.js",
-                lineNumber: 13,
+                lineNumber: 68,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -698,35 +807,20 @@ function Home() {
                         },
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                style: {
-                                    fontSize: "2.5rem",
-                                    marginBottom: "60px",
-                                    color: "#2d3748",
-                                    position: "relative",
-                                    display: "inline-block"
-                                },
+                                style: sectionHeaderStyle,
                                 children: [
                                     "Why Choose Adoods?",
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        style: {
-                                            position: "absolute",
-                                            bottom: "-10px",
-                                            left: "50%",
-                                            transform: "translateX(-50%)",
-                                            width: "80px",
-                                            height: "3px",
-                                            background: "linear-gradient(90deg, #4a148c 0%, #e91e63 100%)",
-                                            borderRadius: "3px"
-                                        }
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: sectionHeaderLine
                                     }, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/index.js",
-                                        lineNumber: 104,
+                                        lineNumber: 156,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/websites/adoods/pages/index.js",
-                                lineNumber: 96,
+                                lineNumber: 154,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -779,7 +873,7 @@ function Home() {
                                                 children: item.icon
                                             }, void 0, false, {
                                                 fileName: "[project]/websites/adoods/pages/index.js",
-                                                lineNumber: 160,
+                                                lineNumber: 203,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -791,7 +885,7 @@ function Home() {
                                                 children: item.title
                                             }, void 0, false, {
                                                 fileName: "[project]/websites/adoods/pages/index.js",
-                                                lineNumber: 166,
+                                                lineNumber: 209,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -803,24 +897,24 @@ function Home() {
                                                 children: item.description
                                             }, void 0, false, {
                                                 fileName: "[project]/websites/adoods/pages/index.js",
-                                                lineNumber: 173,
+                                                lineNumber: 216,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, index, true, {
                                         fileName: "[project]/websites/adoods/pages/index.js",
-                                        lineNumber: 140,
+                                        lineNumber: 183,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/index.js",
-                                lineNumber: 115,
+                                lineNumber: 158,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/websites/adoods/pages/index.js",
-                        lineNumber: 90,
+                        lineNumber: 148,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -835,13 +929,13 @@ function Home() {
                         }
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/index.js",
-                        lineNumber: 184,
+                        lineNumber: 227,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/websites/adoods/pages/index.js",
-                lineNumber: 81,
+                lineNumber: 139,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -864,12 +958,7 @@ function Home() {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                    style: {
-                                        fontSize: "2.5rem",
-                                        color: "#2d3748",
-                                        marginBottom: "25px",
-                                        lineHeight: "1.3"
-                                    },
+                                    style: sectionHeaderStyle,
                                     children: [
                                         "About ",
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -879,13 +968,13 @@ function Home() {
                                             children: "Adoods"
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/index.js",
-                                            lineNumber: 219,
+                                            lineNumber: 257,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/websites/adoods/pages/index.js",
-                                    lineNumber: 213,
+                                    lineNumber: 256,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -898,7 +987,7 @@ function Home() {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/index.js",
-                                    lineNumber: 221,
+                                    lineNumber: 259,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -911,7 +1000,7 @@ function Home() {
                                     children: "At Adoods, we believe that great style starts with great basics. Founded in 2017, we've been dedicated to creating premium quality t-shirts that combine comfort, style, and sustainability."
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/index.js",
-                                    lineNumber: 228,
+                                    lineNumber: 266,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -924,7 +1013,7 @@ function Home() {
                                     children: "Our mission is simple: to provide you with wardrobe essentials that look good, feel amazing, and last longer. Every stitch tells a story of quality and attention to detail."
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/index.js",
-                                    lineNumber: 236,
+                                    lineNumber: 274,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -952,13 +1041,13 @@ function Home() {
                                     children: "Explore Our Collection"
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/index.js",
-                                    lineNumber: 244,
+                                    lineNumber: 282,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/websites/adoods/pages/index.js",
-                            lineNumber: 212,
+                            lineNumber: 255,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -970,7 +1059,7 @@ function Home() {
                                 boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
                             },
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: "/img/Design_1.jpeg",
+                                src: "/img/aboutus.jpeg",
                                 alt: "About Adoods",
                                 style: {
                                     width: "100%",
@@ -982,23 +1071,205 @@ function Home() {
                                 onMouseOut: (e)=>e.currentTarget.style.transform = "scale(1)"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/index.js",
-                                lineNumber: 277,
+                                lineNumber: 315,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/websites/adoods/pages/index.js",
-                            lineNumber: 270,
+                            lineNumber: 308,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/websites/adoods/pages/index.js",
-                    lineNumber: 204,
+                    lineNumber: 247,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/websites/adoods/pages/index.js",
-                lineNumber: 196,
+                lineNumber: 239,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+                style: {
+                    padding: "80px 5%",
+                    backgroundColor: "#ffffff"
+                },
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        maxWidth: "1200px",
+                        margin: "0 auto",
+                        display: "flex",
+                        flexDirection: "row-reverse",
+                        alignItems: "center",
+                        gap: "40px"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                flex: 1,
+                                textAlign: "left"
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                    style: sectionHeaderStyle,
+                                    children: [
+                                        "Premium School Uniforms",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: sectionHeaderLine
+                                        }, void 0, false, {
+                                            fileName: "[project]/websites/adoods/pages/index.js",
+                                            lineNumber: 352,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/websites/adoods/pages/index.js",
+                                    lineNumber: 350,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    style: {
+                                        fontSize: "1.1rem",
+                                        color: "#4a148c",
+                                        fontWeight: "500",
+                                        marginBottom: "20px"
+                                    },
+                                    children: "Excellence in Uniforms, Excellence in Education"
+                                }, void 0, false, {
+                                    fileName: "[project]/websites/adoods/pages/index.js",
+                                    lineNumber: 354,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    style: {
+                                        fontSize: "1.1rem",
+                                        color: "#4a4a4a",
+                                        lineHeight: "1.8",
+                                        marginBottom: "25px"
+                                    },
+                                    children: "At Adoods, we understand the importance of quality school uniforms that combine comfort, durability, and style. Our uniforms are designed to withstand the rigors of daily school life while keeping students comfortable throughout the day."
+                                }, void 0, false, {
+                                    fileName: "[project]/websites/adoods/pages/index.js",
+                                    lineNumber: 362,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                    style: {
+                                        listStyle: "none",
+                                        padding: 0,
+                                        marginBottom: "30px"
+                                    },
+                                    children: [
+                                        "Premium quality fabrics for all-day comfort",
+                                        "Durable stitching for long-lasting wear",
+                                        "Wrinkle-resistant and easy to maintain",
+                                        "Available in various sizes and custom fittings",
+                                        "Compliant with school dress codes"
+                                    ].map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                            style: {
+                                                padding: "8px 0",
+                                                color: "#4a4a4a",
+                                                position: "relative",
+                                                paddingLeft: "30px"
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    style: {
+                                                        position: "absolute",
+                                                        left: 0,
+                                                        color: "#4a148c"
+                                                    },
+                                                    children: "✓"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/websites/adoods/pages/index.js",
+                                                    lineNumber: 388,
+                                                    columnNumber: 19
+                                                }, this),
+                                                item
+                                            ]
+                                        }, index, true, {
+                                            fileName: "[project]/websites/adoods/pages/index.js",
+                                            lineNumber: 382,
+                                            columnNumber: 17
+                                        }, this))
+                                }, void 0, false, {
+                                    fileName: "[project]/websites/adoods/pages/index.js",
+                                    lineNumber: 372,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    style: {
+                                        backgroundColor: "#4a148c",
+                                        color: "white",
+                                        border: "none",
+                                        padding: "12px 30px",
+                                        borderRadius: "30px",
+                                        fontSize: "1rem",
+                                        fontWeight: "600",
+                                        cursor: "pointer",
+                                        transition: "all 0.3s ease",
+                                        boxShadow: "0 4px 15px rgba(74, 20, 140, 0.3)"
+                                    },
+                                    onMouseOver: (e)=>{
+                                        e.currentTarget.style.transform = 'translateY(-2px)';
+                                        e.currentTarget.style.boxShadow = '0 7px 20px rgba(74, 20, 140, 0.4)';
+                                    },
+                                    onMouseOut: (e)=>{
+                                        e.currentTarget.style.transform = 'translateY(0)';
+                                        e.currentTarget.style.boxShadow = '0 4px 15px rgba(74, 20, 140, 0.3)';
+                                    },
+                                    children: "View Uniform Collection"
+                                }, void 0, false, {
+                                    fileName: "[project]/websites/adoods/pages/index.js",
+                                    lineNumber: 397,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/websites/adoods/pages/index.js",
+                            lineNumber: 346,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                flex: 1,
+                                position: "relative",
+                                borderRadius: "15px",
+                                overflow: "hidden",
+                                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                                height: "500px"
+                            },
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                src: "/img/schooluniform.jpg",
+                                alt: "Premium School Uniforms",
+                                style: {
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "cover",
+                                    transition: "transform 0.5s ease"
+                                },
+                                onMouseOver: (e)=>e.currentTarget.style.transform = "scale(1.03)",
+                                onMouseOut: (e)=>e.currentTarget.style.transform = "scale(1)"
+                            }, void 0, false, {
+                                fileName: "[project]/websites/adoods/pages/index.js",
+                                lineNumber: 430,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/websites/adoods/pages/index.js",
+                            lineNumber: 422,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/websites/adoods/pages/index.js",
+                    lineNumber: 338,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/websites/adoods/pages/index.js",
+                lineNumber: 332,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1022,7 +1293,7 @@ function Home() {
                             children: "What Our Customers Say"
                         }, void 0, false, {
                             fileName: "[project]/websites/adoods/pages/index.js",
-                            lineNumber: 305,
+                            lineNumber: 458,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1036,7 +1307,7 @@ function Home() {
                             children: "Don't just take our word for it. Here's what our customers have to say about their Adoods experience."
                         }, void 0, false, {
                             fileName: "[project]/websites/adoods/pages/index.js",
-                            lineNumber: 312,
+                            lineNumber: 465,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1107,7 +1378,7 @@ function Home() {
                                             children: testimonial.avatar
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/index.js",
-                                            lineNumber: 372,
+                                            lineNumber: 525,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1126,7 +1397,7 @@ function Home() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/websites/adoods/pages/index.js",
-                                            lineNumber: 389,
+                                            lineNumber: 542,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1147,7 +1418,7 @@ function Home() {
                                                             children: testimonial.name
                                                         }, void 0, false, {
                                                             fileName: "[project]/websites/adoods/pages/index.js",
-                                                            lineNumber: 405,
+                                                            lineNumber: 558,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1159,13 +1430,13 @@ function Home() {
                                                             children: testimonial.role
                                                         }, void 0, false, {
                                                             fileName: "[project]/websites/adoods/pages/index.js",
-                                                            lineNumber: 412,
+                                                            lineNumber: 565,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/websites/adoods/pages/index.js",
-                                                    lineNumber: 404,
+                                                    lineNumber: 557,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1176,35 +1447,35 @@ function Home() {
                                                     children: testimonial.rating
                                                 }, void 0, false, {
                                                     fileName: "[project]/websites/adoods/pages/index.js",
-                                                    lineNumber: 420,
+                                                    lineNumber: 573,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/websites/adoods/pages/index.js",
-                                            lineNumber: 399,
+                                            lineNumber: 552,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, index, true, {
                                     fileName: "[project]/websites/adoods/pages/index.js",
-                                    lineNumber: 351,
+                                    lineNumber: 504,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/websites/adoods/pages/index.js",
-                            lineNumber: 322,
+                            lineNumber: 475,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/websites/adoods/pages/index.js",
-                    lineNumber: 301,
+                    lineNumber: 454,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/websites/adoods/pages/index.js",
-                lineNumber: 294,
+                lineNumber: 447,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1228,7 +1499,7 @@ function Home() {
                             children: "Join Our Community"
                         }, void 0, false, {
                             fileName: "[project]/websites/adoods/pages/index.js",
-                            lineNumber: 445,
+                            lineNumber: 598,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1241,10 +1512,13 @@ function Home() {
                             children: "Subscribe to get updates on new collections and exclusive offers!"
                         }, void 0, false, {
                             fileName: "[project]/websites/adoods/pages/index.js",
-                            lineNumber: 449,
+                            lineNumber: 602,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                            action: "mailto:adoodshosur@gmail.com",
+                            method: "POST",
+                            encType: "text/plain",
                             style: {
                                 display: "flex",
                                 justifyContent: "center",
@@ -1270,7 +1544,7 @@ function Home() {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/index.js",
-                                    lineNumber: 467,
+                                    lineNumber: 623,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1297,30 +1571,30 @@ function Home() {
                                     children: "Subscribe"
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/index.js",
-                                    lineNumber: 482,
+                                    lineNumber: 638,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/websites/adoods/pages/index.js",
-                            lineNumber: 457,
+                            lineNumber: 610,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/websites/adoods/pages/index.js",
-                    lineNumber: 444,
+                    lineNumber: 597,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/websites/adoods/pages/index.js",
-                lineNumber: 436,
+                lineNumber: 589,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/websites/adoods/pages/index.js",
-        lineNumber: 7,
+        lineNumber: 29,
         columnNumber: 5
     }, this);
 }

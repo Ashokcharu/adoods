@@ -13,31 +13,40 @@ const socialLinkStyle = {
 };
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const form = e.target;
     const data = new FormData(form);
 
-    await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-      method: "POST",
-      body: data,
-      headers: { Accept: "application/json" },
-    });
+    try {
+      await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
 
-    setSubmitted(true);
-    form.reset();
+      // Show success message
+      setShowSuccess(true);
+      form.reset();
+      
+      // Hide success message after 30 seconds
+      const timer = setTimeout(() => {
+        setShowSuccess(false);
+      }, 30000);
+      
+      // Clean up timer
+      return () => clearTimeout(timer);
+      
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-
-  if (submitted) {
-    return (
-      <div className="container" style={{ padding: "80px 20px", textAlign: "center" }}>
-        <h2>Thank you!</h2>
-        <p>Your message has been sent successfully. We’ll get back to you soon.</p>
-      </div>
-    );
-  }
 
   return (
     <div className="container" style={{ padding: "60px 20px" }}>
@@ -80,8 +89,7 @@ export default function Contact() {
           </div>
           <h3 style={{ color: "#2d3748", marginBottom: "15px" }}>Our Location</h3>
           <p style={{ color: "#4a5568", lineHeight: "1.6", margin: 0 }}>
-            88-1/50M, Ulavar Sandhai Road,<br />
-            near Srinivasa theatre,<br />
+            No 784/1 A1A Near Vakil layout Hosur,<br />
             Hosur, Tamil Nadu 635109
           </p>
         </div>
@@ -107,8 +115,8 @@ export default function Contact() {
           </div>
           <h3 style={{ color: "#2d3748", marginBottom: "15px" }}>Contact Us</h3>
           <p style={{ color: "#4a5568", lineHeight: "1.6", margin: 0 }}>
-            <a href="tel:09514109080" style={{ color: "#4a148c", textDecoration: "none" }}>095141 09080</a><br />
-            <a href="mailto:info@adoods.com" style={{ color: "#4a148c", textDecoration: "none" }}>info@adoods.com</a>
+            <a href="tel:09514109080" style={{ color: "#4a148c", textDecoration: "none" }}>+91 95141 09080</a><br />
+            <a href="mailto:adoodshosur@gmail.com" style={{ color: "#4a148c", textDecoration: "none" }}>adoodshosur@gmail.com</a>
           </p>
         </div>
 
@@ -134,7 +142,6 @@ export default function Contact() {
           <h3 style={{ color: "#2d3748", marginBottom: "15px" }}>Working Hours</h3>
           <p style={{ color: "#4a5568", lineHeight: "1.8", margin: 0 }}>
             Monday - Saturday: 10:00 AM - 9:00 PM<br />
-            Sunday: 11:00 AM - 8:00 PM
           </p>
         </div>
       </div>
@@ -178,6 +185,9 @@ export default function Contact() {
 
         {/* Right: Contact Form */}
         <form
+          action="mailto:adoodshosur@gmail.com"
+          method="POST"
+          encType="text/plain"
           onSubmit={handleSubmit}
           style={{
             flex: "1 1 350px",
@@ -191,26 +201,68 @@ export default function Contact() {
             boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
           }}
         >
-          <h2 style={{ marginBottom: "10px" }}>Send Us a Message</h2>
+          <h2 style={{ marginBottom: "10px" }}>Send Us a Message333333333</h2>
           <input name="name" type="text" placeholder="Your Name" required />
           <input name="email" type="email" placeholder="Your Email" required />
           <input name="phone" type="text" placeholder="Phone Number (optional)" />
           <textarea name="message" placeholder="Your Message" rows="5" required />
           <button
             type="submit"
+            disabled={isSubmitting}
             style={{
-              background: "#111",
+              background: isSubmitting ? "#888" : "#111",
               color: "#fff",
               padding: "12px",
               fontSize: "1rem",
               borderRadius: "6px",
-              cursor: "pointer",
+              cursor: isSubmitting ? "not-allowed" : "pointer",
+              opacity: isSubmitting ? 0.8 : 1,
+              transition: "all 0.3s ease"
             }}
           >
-            Send Message
+            {isSubmitting ? 'Sending...' : 'Send Message'}
           </button>
         </form>
       </div>
+
+      {/* Success Message Popup */}
+      {showSuccess && (
+        <div style={{
+          position: 'fixed',
+          top: '20px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          backgroundColor: '#4caf50',
+          color: 'white',
+          padding: '15px 30px',
+          borderRadius: '4px',
+          boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+          zIndex: 1000,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          animation: 'slideIn 0.3s ease-out',
+          maxWidth: '90%',
+          textAlign: 'center',
+          fontSize: '0.95rem'
+        }}>
+          <span style={{ fontSize: '1.2rem' }}>✓</span>
+          <span>Your message has been sent successfully! We'll get back to you soon.</span>
+        </div>
+      )}
+
+      <style jsx global>{`
+        @keyframes slideIn {
+          from {
+            transform: translate(-50%, -20px);
+            opacity: 0;
+          }
+          to {
+            transform: translate(-50%, 0);
+            opacity: 1;
+          }
+        }
+      `}</style>
     </div>
   );
 }

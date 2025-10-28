@@ -2,12 +2,67 @@
 import Link from "next/link";
 import BannerSlider from "../components/BannerSlider";
 
+const sectionHeaderStyle = {
+  fontSize: '2.5rem',
+  color: '#1a1a1a',
+  margin: '0 0 20px 0',
+  fontWeight: '700',
+  lineHeight: '1.3',
+  position: 'relative',
+  display: 'inline-block',
+  paddingBottom: '15px'
+};
+
+const sectionHeaderLine = {
+  position: 'absolute',
+  bottom: 0,
+  left: '50%',
+  transform: 'translateX(-50%)',
+  width: '80px',
+  height: '4px',
+  background: '#4a148c',
+  borderRadius: '2px'
+};
+
 export default function Home() {
   return (
     <div>
       {/* Hero Banner */}
       <BannerSlider />
+      
+      {/* Spacer to push content below fixed banner */}
+      <div style={{ height: 'calc(100vh - 60px)' }}></div>
 
+      {/* Banner Content */}
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '50px 20px',
+        textAlign: 'center',
+        backgroundColor: '#ffffff',
+        position: 'relative'
+      }}>
+        <div style={{
+          maxWidth: '900px',
+          margin: '0 auto',
+          padding: '0 20px'
+        }}>
+          <h2 style={sectionHeaderStyle}>
+            Welcome to Adoods - Your Style Destination
+            <div style={sectionHeaderLine} />
+          </h2>
+          <p style={{
+            fontSize: '1.25rem',
+            color: '#4a4a4a',
+            lineHeight: '1.8',
+            margin: '0 auto',
+            maxWidth: '800px'
+          }}>
+            Discover our exclusive collection of premium school uniforms and trendy fashion wear, 
+            designed for comfort, durability, and style that lasts all day long.
+          </p>
+        </div>
+      </div>
 
       {/* Featured Products */}
       <section
@@ -17,7 +72,10 @@ export default function Home() {
           textAlign: "center",
         }}
       >
-        <h2>Featured Collection</h2>
+        <h2 style={sectionHeaderStyle}>
+          Featured Collection
+          <div style={sectionHeaderLine} />
+        </h2>
         <div
           style={{
             display: "grid",
@@ -93,24 +151,9 @@ export default function Home() {
           position: "relative",
           zIndex: 1
         }}>
-          <h2 style={{
-            fontSize: "2.5rem",
-            marginBottom: "60px",
-            color: "#2d3748",
-            position: "relative",
-            display: "inline-block"
-          }}>
+          <h2 style={sectionHeaderStyle}>
             Why Choose Adoods?
-            <span style={{
-              position: "absolute",
-              bottom: "-10px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "80px",
-              height: "3px",
-              background: "linear-gradient(90deg, #4a148c 0%, #e91e63 100%)",
-              borderRadius: "3px"
-            }}></span>
+            <div style={sectionHeaderLine} />
           </h2>
           <div
             style={{
@@ -210,12 +253,7 @@ export default function Home() {
           alignItems: "center"
         }}>
           <div>
-            <h2 style={{
-              fontSize: "2.5rem",
-              color: "#2d3748",
-              marginBottom: "25px",
-              lineHeight: "1.3"
-            }}>
+            <h2 style={sectionHeaderStyle}>
               About <span style={{color: "#e91e63"}}>Adoods</span>
             </h2>
             <div style={{
@@ -275,8 +313,123 @@ export default function Home() {
             boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
           }}>
             <img
-              src="/img/Design_1.jpeg"
+              src="/img/aboutus.jpeg"
               alt="About Adoods"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                transition: "transform 0.5s ease"
+              }}
+              onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.03)"}
+              onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* School Uniforms */}
+      <section
+        style={{
+          padding: "80px 5%",
+          backgroundColor: "#ffffff"
+        }}
+      >
+        <div style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          display: "flex",
+          flexDirection: "row-reverse",
+          alignItems: "center",
+          gap: "40px"
+        }}>
+          <div style={{
+            flex: 1,
+            textAlign: "left"
+          }}>
+            <h2 style={sectionHeaderStyle}>
+              Premium School Uniforms
+              <div style={sectionHeaderLine} />
+            </h2>
+            <p style={{
+              fontSize: "1.1rem",
+              color: "#4a148c",
+              fontWeight: "500",
+              marginBottom: "20px"
+            }}>
+              Excellence in Uniforms, Excellence in Education
+            </p>
+            <p style={{
+              fontSize: "1.1rem",
+              color: "#4a4a4a",
+              lineHeight: "1.8",
+              marginBottom: "25px"
+            }}>
+              At Adoods, we understand the importance of quality school uniforms that combine comfort, durability, and style. 
+              Our uniforms are designed to withstand the rigors of daily school life while keeping students comfortable 
+              throughout the day.
+            </p>
+            <ul style={{
+              listStyle: "none",
+              padding: 0,
+              marginBottom: "30px"
+            }}>
+              {["Premium quality fabrics for all-day comfort",
+                "Durable stitching for long-lasting wear",
+                "Wrinkle-resistant and easy to maintain",
+                "Available in various sizes and custom fittings",
+                "Compliant with school dress codes"].map((item, index) => (
+                <li key={index} style={{
+                  padding: "8px 0",
+                  color: "#4a4a4a",
+                  position: "relative",
+                  paddingLeft: "30px"
+                }}>
+                  <span style={{
+                    position: "absolute",
+                    left: 0,
+                    color: "#4a148c"
+                  }}>✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <button
+              style={{
+                backgroundColor: "#4a148c",
+                color: "white",
+                border: "none",
+                padding: "12px 30px",
+                borderRadius: "30px",
+                fontSize: "1rem",
+                fontWeight: "600",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                boxShadow: "0 4px 15px rgba(74, 20, 140, 0.3)"
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 7px 20px rgba(74, 20, 140, 0.4)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(74, 20, 140, 0.3)';
+              }}
+            >
+              View Uniform Collection
+            </button>
+          </div>
+          <div style={{
+            flex: 1,
+            position: "relative",
+            borderRadius: "15px",
+            overflow: "hidden",
+            boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+            height: "500px"
+          }}>
+            <img
+              src="/img/schooluniform.jpg"
+              alt="Premium School Uniforms"
               style={{
                 width: "100%",
                 height: "100%",
@@ -455,6 +608,9 @@ export default function Home() {
             Subscribe to get updates on new collections and exclusive offers!
           </p>
           <form
+            action="mailto:adoodshosur@gmail.com"
+            method="POST"
+            encType="text/plain"
             style={{
               display: "flex",
               justifyContent: "center",

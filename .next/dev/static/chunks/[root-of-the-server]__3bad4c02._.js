@@ -470,701 +470,1535 @@ __turbopack_context__.s([
     ()=>Shop
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/styled-jsx/style.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
 ;
+;
+const items = [
+    // T-Shirtsdddddd
+    {
+        id: 1,
+        name: 'A26',
+        img: '/img/Design_1.jpeg',
+        price: '₹499',
+        category: 't-shirts'
+    },
+    {
+        id: 2,
+        name: 'A27',
+        img: '/img/Design_2.jpeg',
+        price: '₹549',
+        category: 't-shirts'
+    },
+    {
+        id: 3,
+        name: 'A31',
+        img: '/img/Design_3.jpeg',
+        price: '₹499',
+        category: 't-shirts'
+    },
+    {
+        id: 4,
+        name: 'A34',
+        img: '/img/Design_4.jpeg',
+        price: '₹599',
+        category: 't-shirts'
+    },
+    {
+        id: 5,
+        name: 'A47',
+        img: '/img/Design_5.jpeg',
+        price: '₹549',
+        category: 't-shirts'
+    },
+    {
+        id: 6,
+        name: 'A49',
+        img: '/img/Design_6.jpeg',
+        price: '₹499',
+        category: 't-shirts'
+    },
+    {
+        id: 7,
+        name: 'A50',
+        img: '/img/Design_7.jpeg',
+        price: '₹599',
+        category: 't-shirts'
+    },
+    {
+        id: 8,
+        name: 'A51',
+        img: '/img/Design_8.jpeg',
+        price: '₹549',
+        category: 't-shirts'
+    },
+    {
+        id: 9,
+        name: 'A101',
+        img: '/img/Design_9.jpeg',
+        price: '₹499',
+        category: 't-shirts'
+    },
+    {
+        id: 10,
+        name: 'A53',
+        img: '/img/Design_10.jpeg',
+        price: '₹599',
+        category: 't-shirts'
+    },
+    {
+        id: 11,
+        name: 'A64',
+        img: '/img/Design_11.jpeg',
+        price: '₹549',
+        category: 't-shirts'
+    },
+    {
+        id: 12,
+        name: 'A69',
+        img: '/img/Design_12.jpeg',
+        price: '₹499',
+        category: 't-shirts'
+    },
+    {
+        id: 13,
+        name: 'A82',
+        img: '/img/Design_13.jpeg',
+        price: '₹599',
+        category: 't-shirts'
+    },
+    // Other categories
+    {
+        id: 14,
+        name: 'Tank Top 1',
+        img: '/img/Design_1.jpeg',
+        price: '₹449',
+        category: 'tank-tops'
+    },
+    {
+        id: 15,
+        name: 'Hoodie 1',
+        img: '/img/Design_2.jpeg',
+        price: '₹899',
+        category: 'hoodies'
+    },
+    {
+        id: 16,
+        name: 'Sweatshirt 1',
+        img: '/img/Design_3.jpeg',
+        price: '₹799',
+        category: 'sweatshirts'
+    },
+    {
+        id: 17,
+        name: 'Jersey 1',
+        img: '/img/Design_4.jpeg',
+        price: '₹699',
+        category: 'jerseys'
+    },
+    {
+        id: 18,
+        name: 'Shorts 1',
+        img: '/img/Design_5.jpeg',
+        price: '₹599',
+        category: 'shorts'
+    },
+    {
+        id: 19,
+        name: 'Track Pants 1',
+        img: '/img/Design_6.jpeg',
+        price: '₹799',
+        category: 'track-pants'
+    },
+    {
+        id: 20,
+        name: 'Training Pants 1',
+        img: '/img/Design_7.jpeg',
+        price: '₹749',
+        category: 'training-pants'
+    }
+];
 function Shop() {
     _s();
-    const items = [
-        {
-            id: 1,
-            name: 'A26',
-            img: '/img/Design_1.jpeg',
-            price: '₹499',
-            category: 't-shirt'
-        },
-        {
-            id: 2,
-            name: 'A27',
-            img: '/img/Design_2.jpeg',
-            price: '₹549',
-            category: 't-shirt'
-        },
-        {
-            id: 3,
-            name: 'A31',
-            img: '/img/Design_3.jpeg',
-            price: '₹499',
-            category: 't-shirt'
-        },
-        {
-            id: 4,
-            name: 'A34',
-            img: '/img/Design_4.jpeg',
-            price: '₹599',
-            category: 't-shirt'
-        },
-        {
-            id: 5,
-            name: 'A47',
-            img: '/img/Design_5.jpeg',
-            price: '₹549',
-            category: 't-shirt'
-        },
-        {
-            id: 6,
-            name: 'A49',
-            img: '/img/Design_6.jpeg',
-            price: '₹499',
-            category: 't-shirt'
-        },
-        {
-            id: 7,
-            name: 'A50',
-            img: '/img/Design_7.jpeg',
-            price: '₹599',
-            category: 't-shirt'
-        },
-        {
-            id: 8,
-            name: 'A51',
-            img: '/img/Design_8.jpeg',
-            price: '₹549',
-            category: 't-shirt'
-        },
-        {
-            id: 9,
-            name: 'A101',
-            img: '/img/Design_9.jpeg',
-            price: '₹499',
-            category: 't-shirt'
-        },
-        {
-            id: 10,
-            name: 'A53',
-            img: '/img/Design_10.jpeg',
-            price: '₹599',
-            category: 't-shirt'
-        },
-        {
-            id: 11,
-            name: 'A64',
-            img: '/img/Design_11.jpeg',
-            price: '₹549',
-            category: 't-shirt'
-        },
-        {
-            id: 12,
-            name: 'A69',
-            img: '/img/Design_12.jpeg',
-            price: '₹499',
-            category: 't-shirt'
-        },
-        {
-            id: 13,
-            name: 'A82',
-            img: '/img/Design_13.jpeg',
-            price: '₹599',
-            category: 't-shirt'
-        }
-    ];
-    const [selected, setSelected] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    // State for search and filtering
     const [searchTerm, setSearchTerm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('');
-    const [filteredItems, setFilteredItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(items);
     const [selectedCategory, setSelectedCategory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('all');
-    // Filter items based on search and category
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "Shop.useEffect": ()=>{
-            let result = items;
-            if (searchTerm) {
-                result = result.filter({
-                    "Shop.useEffect": (item)=>item.name.toLowerCase().includes(searchTerm.toLowerCase())
-                }["Shop.useEffect"]);
+    const [selected, setSelected] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    // State for order form
+    const [showOrderForm, setShowOrderForm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isSubmitting, setIsSubmitting] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [submitStatus, setSubmitStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])({
+        success: false,
+        message: ''
+    });
+    const [selectedProduct, setSelectedProduct] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [orderDetails, setOrderDetails] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])({
+        name: '',
+        phone: '',
+        quantity: 1,
+        productName: '',
+        productId: ''
+    });
+    // Handle order details change
+    const handleOrderDetailsChange = (e)=>{
+        const { name, value } = e.target;
+        setOrderDetails((prev)=>({
+                ...prev,
+                [name]: name === 'quantity' ? parseInt(value) || 1 : value
+            }));
+    };
+    // Handle close form function is defined later in the file
+    // Handle order submission
+    const handleOrderSubmit = async (e)=>{
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus({
+            success: false,
+            message: ''
+        });
+        try {
+            // Format the email body
+            const subject = `New Order: ${orderDetails.productName}`;
+            const body = `New Order Details:%0D%0A%0D%0A` + `Product: ${orderDetails.productName}%0D%0A` + `Name: ${orderDetails.name}%0D%0A` + `Phone: ${orderDetails.phone}%0D%0A` + `Quantity: ${orderDetails.quantity}%0D%0A%0D%0A` + `Order Time: ${new Date().toLocaleString()}`;
+            // Create secure mailto link
+            const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=adoodshosur@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body.replace(/%0D%0A/g, '\n'))}`;
+            // Only run on client-side
+            if ("TURBOPACK compile-time truthy", 1) {
+                // Open email client in a new tab
+                window.open(mailtoLink, '_blank', 'noopener,noreferrer');
+                // Show success message
+                setSubmitStatus({
+                    success: true,
+                    message: 'Order placed successfully! Please check your email client to send the message. We will contact you shortly.'
+                });
+                // Close the form
+                handleCloseForm();
+                // Clear the success message after 20 seconds
+                const timer = setTimeout(()=>{
+                    setSubmitStatus({
+                        success: false,
+                        message: ''
+                    });
+                }, 20000);
+                // Clean up the timer when component unmounts or when form is reopened
+                return ()=>clearTimeout(timer);
             }
+        } catch (error) {
+            console.error('Error submitting order:', error);
+            setSubmitStatus({
+                success: false,
+                message: 'Failed to submit order. Please try again or contact us directly.'
+            });
+        } finally{
+            setIsSubmitting(false);
+        }
+    };
+    // Handle order now button click
+    const handleOrderNow = (e, product)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        setSelectedProduct(product);
+        setOrderDetails((prev)=>({
+                ...prev,
+                productName: product.name,
+                productId: product.id,
+                quantity: 1
+            }));
+        setShowOrderForm(true);
+    };
+    // Handle close form
+    const handleCloseForm = (e)=>{
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        setShowOrderForm(false);
+        setSelectedProduct(null);
+        setSubmitStatus({
+            success: false,
+            message: ''
+        });
+        setOrderDetails({
+            name: '',
+            phone: '',
+            quantity: 1,
+            productName: '',
+            productId: ''
+        });
+    };
+    // Filter items based on search and category using useMemo to prevent unnecessary recalculations
+    const filteredItems = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "Shop.useMemo[filteredItems]": ()=>{
+            let result = [
+                ...items
+            ];
+            // Filter by category first if not 'all'
             if (selectedCategory !== 'all') {
                 result = result.filter({
-                    "Shop.useEffect": (item)=>item.category === selectedCategory
-                }["Shop.useEffect"]);
+                    "Shop.useMemo[filteredItems]": (item)=>item.category === selectedCategory
+                }["Shop.useMemo[filteredItems]"]);
             }
-            setFilteredItems(result);
+            // Then filter by search term if any
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase().trim();
+                result = result.filter({
+                    "Shop.useMemo[filteredItems]": (item)=>item.name.toLowerCase().includes(term) || item.category.toLowerCase().includes(term)
+                }["Shop.useMemo[filteredItems]"]);
+            }
+            return result;
         }
-    }["Shop.useEffect"], [
+    }["Shop.useMemo[filteredItems]"], [
         searchTerm,
         selectedCategory
     ]);
-    const categories = [
-        'all',
-        ...new Set(items.map((item)=>item.category))
-    ];
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "shop-container",
-        style: {
-            maxWidth: '1400px',
-            margin: '0 auto',
-            padding: '20px',
-            minHeight: '100vh'
+    const categoryGroups = {
+        '👕 Upper Wear': [
+            {
+                id: 't-shirts',
+                name: '👕 T-Shirts'
+            },
+            {
+                id: 'tank-tops',
+                name: '💪 Tank Tops'
+            },
+            {
+                id: 'hoodies',
+                name: '🧥 Hoodies'
+            },
+            {
+                id: 'sweatshirts',
+                name: '👕 Sweatshirts'
+            },
+            {
+                id: 'jerseys',
+                name: '🏆 Jerseys'
+            }
+        ],
+        '👖 Lower Wear': [
+            {
+                id: 'shorts',
+                name: '🩳 Shorts'
+            },
+            {
+                id: 'track-pants',
+                name: '👖 Track Pants'
+            },
+            {
+                id: 'training-pants',
+                name: '🏋️ Training Pants'
+            }
+        ]
+    };
+    // Flatten categories for easier access
+    const allCategories = [
+        {
+            id: 'all',
+            name: 'All Products'
         },
+        ...Object.values(categoryGroups).flat()
+    ];
+    // Styles
+    const containerStyle = {
+        maxWidth: '1400px',
+        margin: '0 auto',
+        padding: '20px',
+        minHeight: '100vh',
+        boxSizing: 'border-box' // Ensure padding is included in the element's total width and height
+    };
+    const headerStyle = {
+        textAlign: 'center',
+        marginBottom: '20px',
+        padding: '20px 0',
+        borderBottom: '1px solid #eee'
+    };
+    const titleStyle = {
+        fontSize: '2.5rem',
+        color: '#333',
+        marginBottom: '30px',
+        fontWeight: '700',
+        letterSpacing: '1px'
+    };
+    const mainContentStyle = {
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '30px',
+        alignItems: 'flex-start'
+    };
+    // Media query for mobile
+    const mobileStyles = `
+    @media (max-width: 1023px) {
+      .main-content {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100% !important;
+        position: static !important;
+      }
+      .products-grid {
+        padding-left: 0 !important;
+        padding-top: 20px !important;
+      }
+    }
+  `;
+    const sidebarStyle = {
+        width: '300px',
+        padding: '20px',
+        backgroundColor: '#f9f9f9',
+        borderRadius: '8px',
+        position: 'sticky',
+        top: '20px',
+        flexShrink: 0
+    };
+    const productsGridStyle = {
+        flex: 1,
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+        gap: '20px',
+        padding: '0 0 0 20px'
+    };
+    const categoryGroupsStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px'
+    };
+    const categoryGroupStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px'
+    };
+    const groupTitleStyle = {
+        fontSize: '1rem',
+        fontWeight: '600',
+        color: '#333',
+        whiteSpace: 'nowrap'
+    };
+    const categoriesContainerStyle = {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '8px',
+        marginBottom: '15px'
+    };
+    const productCardStyle = {
+        background: '#fff',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+        cursor: 'pointer',
+        position: 'relative',
+        '&:hover': {
+            transform: 'translateY(-5px)',
+            boxShadow: '0 8px 25px rgba(0,0,0,0.1)'
+        }
+    };
+    const productImageContainerStyle = {
+        position: 'relative',
+        paddingTop: '100%',
+        overflow: 'hidden'
+    };
+    const productImageStyle = {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        transition: 'transform 0.3s ease'
+    };
+    const productInfoStyle = {
+        padding: '15px',
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px'
+    };
+    const productNameStyle = {
+        fontSize: '1rem',
+        fontWeight: '600',
+        margin: 0,
+        color: '#333',
+        minHeight: '40px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    };
+    const orderButtonStyle = {
+        backgroundColor: '#111',
+        color: 'white',
+        border: 'none',
+        padding: '8px 16px',
+        borderRadius: '20px',
+        cursor: 'pointer',
+        fontSize: '0.9rem',
+        fontWeight: '500',
+        transition: 'background-color 0.2s',
+        '&:hover': {
+            backgroundColor: '#333'
+        }
+    };
+    const modalOverlayStyle = {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 1000,
+        padding: '20px',
+        boxSizing: 'border-box'
+    };
+    const modalContentStyle = {
+        backgroundColor: '#fff',
+        borderRadius: '12px',
+        maxWidth: '800px',
+        width: '100%',
+        maxHeight: '90vh',
+        overflowY: 'auto',
+        position: 'relative',
+        boxShadow: '0 10px 40px rgba(0,0,0,0.2)'
+    };
+    const closeButtonStyle = {
+        position: 'absolute',
+        top: '15px',
+        right: '20px',
+        background: 'none',
+        border: 'none',
+        fontSize: '24px',
+        cursor: 'pointer',
+        color: '#666',
+        zIndex: 10
+    };
+    const modalContentInnerStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '30px',
+        padding: '30px'
+    };
+    const modalImageContainerStyle = {
+        width: '100%',
+        borderRadius: '8px',
+        overflow: 'hidden',
+        background: '#f9f9f9',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '20px'
+    };
+    const modalImageStyle = {
+        maxWidth: '100%',
+        maxHeight: '400px',
+        objectFit: 'contain'
+    };
+    const modalInfoStyle = {
+        flex: '1'
+    };
+    const modalTitleStyle = {
+        fontSize: '1.8rem',
+        margin: '0 0 10px 0',
+        color: '#333',
+        fontWeight: '700'
+    };
+    const modalPriceStyle = {
+        fontSize: '1.5rem',
+        color: '#111',
+        margin: '0 0 20px 0',
+        fontWeight: '600'
+    };
+    const addToCartButtonStyle = {
+        backgroundColor: '#111',
+        color: '#fff',
+        border: 'none',
+        padding: '12px 24px',
+        borderRadius: '25px',
+        fontSize: '1rem',
+        fontWeight: '600',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s ease',
+        '&:hover': {
+            backgroundColor: '#333'
+        }
+    };
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        style: containerStyle,
+        className: `jsx-${mobileStyles.__hash}` + " " + "shop-container",
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                id: mobileStyles.__hash,
+                children: mobileStyles
+            }, void 0, false, void 0, this),
+            submitStatus.success && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 style: {
-                    textAlign: 'center',
-                    marginBottom: '40px',
-                    padding: '20px 0',
-                    borderBottom: '1px solid #eee'
+                    position: 'fixed',
+                    top: '20px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    backgroundColor: '#4caf50',
+                    color: 'white',
+                    padding: '15px 30px',
+                    borderRadius: '4px',
+                    boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+                    zIndex: 1000,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    animation: 'slideIn 0.3s ease-out',
+                    maxWidth: '90%',
+                    textAlign: 'center'
                 },
+                className: `jsx-${mobileStyles.__hash}`,
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                        style: {
-                            fontSize: '2.5rem',
-                            color: '#333',
-                            marginBottom: '20px',
-                            fontWeight: '700',
-                            letterSpacing: '1px'
-                        },
-                        children: "Shop Our Collection"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        className: `jsx-${mobileStyles.__hash}`,
+                        children: "✓"
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/shop.js",
-                        lineNumber: 58,
-                        columnNumber: 9
+                        lineNumber: 464,
+                        columnNumber: 11
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            display: 'flex',
-                            justifyContent: 'center',
-                            gap: '10px',
-                            marginBottom: '20px',
-                            flexWrap: 'wrap'
-                        },
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                            value: selectedCategory,
-                            onChange: (e)=>setSelectedCategory(e.target.value),
-                            style: {
-                                padding: '8px 15px',
-                                borderRadius: '20px',
-                                border: '1px solid #ddd',
-                                fontSize: '0.9rem',
-                                cursor: 'pointer',
-                                outline: 'none',
-                                backgroundColor: 'white',
-                                height: '40px',
-                                minWidth: '150px'
-                            },
-                            children: categories.map((category)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                    value: category,
-                                    children: category.charAt(0).toUpperCase() + category.slice(1)
-                                }, category, false, {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        className: `jsx-${mobileStyles.__hash}`,
+                        children: submitStatus.message
+                    }, void 0, false, {
+                        fileName: "[project]/websites/adoods/pages/shop.js",
+                        lineNumber: 465,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/websites/adoods/pages/shop.js",
+                lineNumber: 446,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: headerStyle,
+                className: `jsx-${mobileStyles.__hash}`,
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                    style: titleStyle,
+                    className: `jsx-${mobileStyles.__hash}`,
+                    children: "Shop Our Collection"
+                }, void 0, false, {
+                    fileName: "[project]/websites/adoods/pages/shop.js",
+                    lineNumber: 470,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/websites/adoods/pages/shop.js",
+                lineNumber: 469,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: mainContentStyle,
+                className: `jsx-${mobileStyles.__hash}` + " " + "main-content",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("aside", {
+                        style: sidebarStyle,
+                        className: `jsx-${mobileStyles.__hash}` + " " + "sidebar",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: categoryGroupsStyle,
+                            className: `jsx-${mobileStyles.__hash}`,
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginBottom: '15px'
+                                    },
+                                    className: `jsx-${mobileStyles.__hash}`,
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                            style: {
+                                                margin: '0 0 15px',
+                                                fontSize: '1.2rem'
+                                            },
+                                            className: `jsx-${mobileStyles.__hash}`,
+                                            children: "Categories"
+                                        }, void 0, false, {
+                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                            lineNumber: 477,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: ()=>setSelectedCategory('all'),
+                                            style: {
+                                                padding: '8px 15px',
+                                                borderRadius: '20px',
+                                                border: selectedCategory === 'all' ? '2px solid #111' : '1px solid #ddd',
+                                                backgroundColor: selectedCategory === 'all' ? '#f0f0f0' : 'white',
+                                                cursor: 'pointer',
+                                                fontSize: '0.9rem',
+                                                marginBottom: '10px',
+                                                width: '100%',
+                                                textAlign: 'left'
+                                            },
+                                            className: `jsx-${mobileStyles.__hash}`,
+                                            children: "All Products"
+                                        }, void 0, false, {
+                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                            lineNumber: 478,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                    lineNumber: 89,
-                                    columnNumber: 15
-                                }, this))
-                        }, void 0, false, {
+                                    lineNumber: 476,
+                                    columnNumber: 13
+                                }, this),
+                                Object.entries(categoryGroups).map(([groupName, categories])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: categoryGroupStyle,
+                                        className: `jsx-${mobileStyles.__hash}`,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                style: groupTitleStyle,
+                                                className: `jsx-${mobileStyles.__hash}`,
+                                                children: groupName
+                                            }, void 0, false, {
+                                                fileName: "[project]/websites/adoods/pages/shop.js",
+                                                lineNumber: 498,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: categoriesContainerStyle,
+                                                className: `jsx-${mobileStyles.__hash}`,
+                                                children: categories.map((category)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                        onClick: ()=>setSelectedCategory(category.id),
+                                                        style: {
+                                                            padding: '6px 12px',
+                                                            borderRadius: '15px',
+                                                            border: selectedCategory === category.id ? '1px solid #111' : '1px solid #ddd',
+                                                            backgroundColor: selectedCategory === category.id ? '#f0f0f0' : 'white',
+                                                            cursor: 'pointer',
+                                                            fontSize: '0.85rem',
+                                                            whiteSpace: 'nowrap',
+                                                            transition: 'all 0.2s ease'
+                                                        },
+                                                        className: `jsx-${mobileStyles.__hash}`,
+                                                        children: category.name
+                                                    }, category.id, false, {
+                                                        fileName: "[project]/websites/adoods/pages/shop.js",
+                                                        lineNumber: 501,
+                                                        columnNumber: 21
+                                                    }, this))
+                                            }, void 0, false, {
+                                                fileName: "[project]/websites/adoods/pages/shop.js",
+                                                lineNumber: 499,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, groupName, true, {
+                                        fileName: "[project]/websites/adoods/pages/shop.js",
+                                        lineNumber: 497,
+                                        columnNumber: 15
+                                    }, this))
+                            ]
+                        }, void 0, true, {
                             fileName: "[project]/websites/adoods/pages/shop.js",
-                            lineNumber: 73,
+                            lineNumber: 475,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/shop.js",
-                        lineNumber: 66,
+                        lineNumber: 474,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            flex: 1
+                        },
+                        className: `jsx-${mobileStyles.__hash}`,
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    marginBottom: '20px',
+                                    padding: '15px',
+                                    backgroundColor: '#fff',
+                                    borderRadius: '8px',
+                                    boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                                },
+                                className: `jsx-${mobileStyles.__hash}`,
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        maxWidth: '600px',
+                                        margin: '0 auto',
+                                        position: 'relative'
+                                    },
+                                    className: `jsx-${mobileStyles.__hash}`,
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                            type: "text",
+                                            placeholder: "Search products...",
+                                            value: searchTerm,
+                                            onChange: (e)=>setSearchTerm(e.target.value),
+                                            style: {
+                                                width: '100%',
+                                                padding: '12px 20px 12px 45px',
+                                                borderRadius: '25px',
+                                                border: '1px solid #ddd',
+                                                fontSize: '1rem',
+                                                outline: 'none',
+                                                transition: 'all 0.3s ease'
+                                            },
+                                            onFocus: (e)=>e.target.style.borderColor = '#999',
+                                            onBlur: (e)=>e.target.style.borderColor = '#ddd',
+                                            className: `jsx-${mobileStyles.__hash}`
+                                        }, void 0, false, {
+                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                            lineNumber: 539,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            style: {
+                                                position: 'absolute',
+                                                left: '15px',
+                                                top: '50%',
+                                                transform: 'translateY(-50%)',
+                                                color: '#999',
+                                                fontSize: '1.2rem'
+                                            },
+                                            className: `jsx-${mobileStyles.__hash}`,
+                                            children: "🔍"
+                                        }, void 0, false, {
+                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                            lineNumber: 556,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/websites/adoods/pages/shop.js",
+                                    lineNumber: 534,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/websites/adoods/pages/shop.js",
+                                lineNumber: 527,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    marginBottom: '20px',
+                                    padding: '0 10px',
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center'
+                                },
+                                className: `jsx-${mobileStyles.__hash}`,
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                        style: {
+                                            margin: 0,
+                                            fontSize: '1.5rem'
+                                        },
+                                        className: `jsx-${mobileStyles.__hash}`,
+                                        children: selectedCategory === 'all' ? 'All Products' : categoryGroups['👕 Upper Wear'].concat(categoryGroups['👖 Lower Wear']).find((cat)=>cat.id === selectedCategory)?.name || 'Products'
+                                    }, void 0, false, {
+                                        fileName: "[project]/websites/adoods/pages/shop.js",
+                                        lineNumber: 575,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            display: 'flex',
+                                            gap: '10px',
+                                            alignItems: 'center'
+                                        },
+                                        className: `jsx-${mobileStyles.__hash}`,
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            style: {
+                                                fontSize: '0.9rem',
+                                                color: '#666'
+                                            },
+                                            className: `jsx-${mobileStyles.__hash}`,
+                                            children: [
+                                                filteredItems.length,
+                                                " ",
+                                                filteredItems.length === 1 ? 'item' : 'items'
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                            lineNumber: 581,
+                                            columnNumber: 15
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/websites/adoods/pages/shop.js",
+                                        lineNumber: 580,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/websites/adoods/pages/shop.js",
+                                lineNumber: 568,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: productsGridStyle,
+                                className: `jsx-${mobileStyles.__hash}` + " " + "products-grid",
+                                children: [
+                                    filteredItems.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: productCardStyle,
+                                            className: `jsx-${mobileStyles.__hash}`,
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: productImageContainerStyle,
+                                                    className: `jsx-${mobileStyles.__hash}`,
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                        src: item.img,
+                                                        alt: item.name,
+                                                        style: productImageStyle,
+                                                        className: `jsx-${mobileStyles.__hash}`
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/websites/adoods/pages/shop.js",
+                                                        lineNumber: 590,
+                                                        columnNumber: 17
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/websites/adoods/pages/shop.js",
+                                                    lineNumber: 589,
+                                                    columnNumber: 15
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: productInfoStyle,
+                                                    className: `jsx-${mobileStyles.__hash}`,
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                            style: productNameStyle,
+                                                            className: `jsx-${mobileStyles.__hash}`,
+                                                            children: item.name
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                                            lineNumber: 597,
+                                                            columnNumber: 17
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            style: {
+                                                                marginTop: '15px'
+                                                            },
+                                                            className: `jsx-${mobileStyles.__hash}`,
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                onClick: (e)=>handleOrderNow(e, item),
+                                                                style: {
+                                                                    ...orderButtonStyle,
+                                                                    width: '100%',
+                                                                    padding: '10px',
+                                                                    fontSize: '1rem'
+                                                                },
+                                                                className: `jsx-${mobileStyles.__hash}`,
+                                                                children: "Order Now"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/websites/adoods/pages/shop.js",
+                                                                lineNumber: 599,
+                                                                columnNumber: 19
+                                                            }, this)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                                            lineNumber: 598,
+                                                            columnNumber: 17
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/websites/adoods/pages/shop.js",
+                                                    lineNumber: 596,
+                                                    columnNumber: 15
+                                                }, this)
+                                            ]
+                                        }, item.id, true, {
+                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                            lineNumber: 588,
+                                            columnNumber: 13
+                                        }, this)),
+                                    filteredItems.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            gridColumn: '1 / -1',
+                                            textAlign: 'center',
+                                            padding: '40px 20px',
+                                            color: '#666'
+                                        },
+                                        className: `jsx-${mobileStyles.__hash}`,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                style: {
+                                                    fontSize: '1.1rem',
+                                                    marginBottom: '10px'
+                                                },
+                                                className: `jsx-${mobileStyles.__hash}`,
+                                                children: "No products found"
+                                            }, void 0, false, {
+                                                fileName: "[project]/websites/adoods/pages/shop.js",
+                                                lineNumber: 622,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: `jsx-${mobileStyles.__hash}`,
+                                                children: "Try adjusting your search or filter criteria"
+                                            }, void 0, false, {
+                                                fileName: "[project]/websites/adoods/pages/shop.js",
+                                                lineNumber: 623,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                onClick: ()=>{
+                                                    setSearchTerm('');
+                                                    setSelectedCategory('all');
+                                                },
+                                                style: {
+                                                    marginTop: '15px',
+                                                    padding: '8px 20px',
+                                                    backgroundColor: '#f0f0f0',
+                                                    border: '1px solid #ddd',
+                                                    borderRadius: '20px',
+                                                    cursor: 'pointer',
+                                                    fontSize: '0.9rem'
+                                                },
+                                                className: `jsx-${mobileStyles.__hash}`,
+                                                children: "Clear Filters"
+                                            }, void 0, false, {
+                                                fileName: "[project]/websites/adoods/pages/shop.js",
+                                                lineNumber: 624,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/websites/adoods/pages/shop.js",
+                                        lineNumber: 616,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/websites/adoods/pages/shop.js",
+                                lineNumber: 586,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/websites/adoods/pages/shop.js",
+                        lineNumber: 525,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/websites/adoods/pages/shop.js",
-                lineNumber: 52,
+                lineNumber: 473,
                 columnNumber: 7
-            }, this),
-            filteredItems.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                style: {
-                    textAlign: 'center',
-                    padding: '50px 20px',
-                    color: '#666'
-                },
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    style: {
-                        fontSize: '1.2rem'
-                    },
-                    children: "No products found. Try adjusting your search or filters."
-                }, void 0, false, {
-                    fileName: "[project]/websites/adoods/pages/shop.js",
-                    lineNumber: 103,
-                    columnNumber: 11
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/websites/adoods/pages/shop.js",
-                lineNumber: 98,
-                columnNumber: 9
-            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                style: {
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                    gap: '30px',
-                    padding: '0 10px'
-                },
-                children: filteredItems.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "product-card",
-                        style: {
-                            background: '#fff',
-                            borderRadius: '12px',
-                            overflow: 'hidden',
-                            boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
-                            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                            cursor: 'pointer',
-                            position: 'relative'
-                        },
-                        onMouseOver: (e)=>{
-                            e.currentTarget.style.transform = 'translateY(-5px)';
-                            e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
-                        },
-                        onMouseOut: (e)=>{
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.05)';
-                        },
-                        onClick: ()=>setSelected(item),
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    position: 'relative',
-                                    paddingTop: '100%',
-                                    overflow: 'hidden',
-                                    backgroundColor: '#f9f9f9'
-                                },
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                    src: item.img,
-                                    alt: item.name,
-                                    style: {
-                                        position: 'absolute',
-                                        top: 0,
-                                        left: 0,
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                        transition: 'transform 0.5s ease'
-                                    },
-                                    onMouseOver: (e)=>{
-                                        e.target.style.transform = 'scale(1.05)';
-                                    },
-                                    onMouseOut: (e)=>{
-                                        e.target.style.transform = 'scale(1)';
-                                    }
-                                }, void 0, false, {
-                                    fileName: "[project]/websites/adoods/pages/shop.js",
-                                    lineNumber: 141,
-                                    columnNumber: 17
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/websites/adoods/pages/shop.js",
-                                lineNumber: 135,
-                                columnNumber: 15
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    padding: '20px'
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                        style: {
-                                            margin: '0 0 15px 0',
-                                            fontSize: '1.2rem',
-                                            color: '#333',
-                                            fontWeight: '600',
-                                            textAlign: 'center'
-                                        },
-                                        children: item.name
-                                    }, void 0, false, {
-                                        fileName: "[project]/websites/adoods/pages/shop.js",
-                                        lineNumber: 162,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: (e)=>{
-                                            e.stopPropagation();
-                                            setSelected(item);
-                                        },
-                                        style: {
-                                            width: '100%',
-                                            padding: '12px',
-                                            background: '#111',
-                                            color: 'white',
-                                            border: 'none',
-                                            borderRadius: '6px',
-                                            cursor: 'pointer',
-                                            fontWeight: '600',
-                                            transition: 'all 0.3s ease',
-                                            textTransform: 'uppercase',
-                                            letterSpacing: '0.5px',
-                                            fontSize: '0.85rem'
-                                        },
-                                        onMouseOver: (e)=>{
-                                            e.currentTarget.style.background = '#333';
-                                        },
-                                        onMouseOut: (e)=>{
-                                            e.currentTarget.style.background = '#111';
-                                        },
-                                        children: "Order Now"
-                                    }, void 0, false, {
-                                        fileName: "[project]/websites/adoods/pages/shop.js",
-                                        lineNumber: 171,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/websites/adoods/pages/shop.js",
-                                lineNumber: 161,
-                                columnNumber: 15
-                            }, this)
-                        ]
-                    }, item.id, true, {
-                        fileName: "[project]/websites/adoods/pages/shop.js",
-                        lineNumber: 113,
-                        columnNumber: 13
-                    }, this))
-            }, void 0, false, {
-                fileName: "[project]/websites/adoods/pages/shop.js",
-                lineNumber: 106,
-                columnNumber: 9
             }, this),
             selected && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 style: {
                     position: 'fixed',
                     top: 0,
                     left: 0,
-                    width: '100%',
-                    height: '100%',
-                    background: 'rgba(0,0,0,0.7)',
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     zIndex: 1000,
                     padding: '20px',
-                    boxSizing: 'border-box',
-                    backdropFilter: 'blur(5px)'
+                    overflow: 'auto'
                 },
+                onClick: ()=>setSelected(null),
+                className: `jsx-${mobileStyles.__hash}`,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     style: {
-                        background: '#fff',
-                        borderRadius: '12px',
+                        backgroundColor: '#fff',
+                        borderRadius: '8px',
+                        padding: '30px',
                         maxWidth: '800px',
                         width: '100%',
                         maxHeight: '90vh',
                         overflowY: 'auto',
-                        position: 'relative',
-                        boxShadow: '0 10px 40px rgba(0,0,0,0.2)'
+                        position: 'relative'
                     },
+                    onClick: (e)=>{
+                        e.stopPropagation();
+                        e.nativeEvent.stopImmediatePropagation();
+                    },
+                    className: `jsx-${mobileStyles.__hash}`,
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            onClick: ()=>setSelected(null),
+                            onClick: (e)=>{
+                                e.stopPropagation();
+                                e.nativeEvent.stopImmediatePropagation();
+                                setSelected(null);
+                            },
                             style: {
                                 position: 'absolute',
                                 top: '15px',
-                                right: '20px',
+                                right: '15px',
                                 background: 'none',
                                 border: 'none',
                                 fontSize: '24px',
                                 cursor: 'pointer',
-                                color: '#666',
-                                zIndex: 10
+                                padding: '5px 10px',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                width: '40px',
+                                height: '40px',
+                                '&:hover': {
+                                    backgroundColor: '#f5f5f5'
+                                }
                             },
+                            className: `jsx-${mobileStyles.__hash}`,
                             children: "×"
                         }, void 0, false, {
                             fileName: "[project]/websites/adoods/pages/shop.js",
-                            lineNumber: 231,
+                            lineNumber: 675,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            style: {
-                                display: 'flex',
-                                flexDirection: {
-                                    xs: 'column',
-                                    md: 'row'
-                                },
-                                gap: '30px',
-                                padding: '30px'
-                            },
+                            style: modalContentInnerStyle,
+                            className: `jsx-${mobileStyles.__hash}`,
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: {
-                                        flex: '1',
-                                        minWidth: '300px',
-                                        borderRadius: '8px',
-                                        overflow: 'hidden',
-                                        background: '#f9f9f9',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        padding: '20px'
-                                    },
+                                    style: modalImageContainerStyle,
+                                    className: `jsx-${mobileStyles.__hash}`,
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                         src: selected.img,
                                         alt: selected.name,
-                                        style: {
-                                            maxWidth: '100%',
-                                            maxHeight: '400px',
-                                            objectFit: 'contain'
-                                        }
+                                        style: modalImageStyle,
+                                        className: `jsx-${mobileStyles.__hash}`
                                     }, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/shop.js",
-                                        lineNumber: 265,
+                                        lineNumber: 706,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                    lineNumber: 254,
+                                    lineNumber: 705,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: {
-                                        flex: '1'
-                                    },
+                                    style: modalInfoStyle,
+                                    className: `jsx-${mobileStyles.__hash}`,
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                            style: {
-                                                fontSize: '1.8rem',
-                                                margin: '0 0 10px 0',
-                                                color: '#333',
-                                                fontWeight: '700'
-                                            },
+                                            style: modalTitleStyle,
+                                            className: `jsx-${mobileStyles.__hash}`,
                                             children: selected.name
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 277,
+                                            lineNumber: 714,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            style: {
-                                                fontSize: '1.5rem',
-                                                color: '#111',
-                                                fontWeight: '700',
-                                                margin: '0 0 20px 0'
-                                            },
+                                            style: modalPriceStyle,
+                                            className: `jsx-${mobileStyles.__hash}`,
                                             children: selected.price
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 286,
+                                            lineNumber: 715,
                                             columnNumber: 17
                                         }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            style: {
-                                                color: '#666',
-                                                lineHeight: '1.6',
-                                                marginBottom: '30px'
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            style: addToCartButtonStyle,
+                                            onClick: ()=>{
+                                                // Add to cart functionality here
+                                                alert(`${selected.name} added to cart!`);
                                             },
-                                            children: "High-quality t-shirt with unique design. Made from 100% cotton for maximum comfort."
+                                            className: `jsx-${mobileStyles.__hash}`,
+                                            children: "Add to Cart"
                                         }, void 0, false, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 295,
+                                            lineNumber: 716,
                                             columnNumber: 17
                                         }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                                            action: "https://formspree.io/f/YOUR_FORM_ID",
-                                            method: "POST",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             style: {
-                                                display: 'flex',
-                                                flexDirection: 'column',
-                                                gap: '15px'
+                                                marginTop: '30px'
                                             },
+                                            className: `jsx-${mobileStyles.__hash}`,
                                             children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                    type: "hidden",
-                                                    name: "product_id",
-                                                    value: selected.id
-                                                }, void 0, false, {
-                                                    fileName: "[project]/websites/adoods/pages/shop.js",
-                                                    lineNumber: 312,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                    type: "hidden",
-                                                    name: "product_name",
-                                                    value: selected.name
-                                                }, void 0, false, {
-                                                    fileName: "[project]/websites/adoods/pages/shop.js",
-                                                    lineNumber: 313,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                            style: {
-                                                                display: 'block',
-                                                                marginBottom: '8px',
-                                                                fontWeight: '600',
-                                                                color: '#444'
-                                                            },
-                                                            children: "Your Name"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/websites/adoods/pages/shop.js",
-                                                            lineNumber: 316,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                            name: "name",
-                                                            type: "text",
-                                                            placeholder: "Enter your name",
-                                                            required: true,
-                                                            style: {
-                                                                width: '100%',
-                                                                padding: '12px 15px',
-                                                                borderRadius: '6px',
-                                                                border: '1px solid #ddd',
-                                                                fontSize: '1rem',
-                                                                boxSizing: 'border-box'
-                                                            }
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/websites/adoods/pages/shop.js",
-                                                            lineNumber: 324,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/websites/adoods/pages/shop.js",
-                                                    lineNumber: 315,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                            style: {
-                                                                display: 'block',
-                                                                marginBottom: '8px',
-                                                                fontWeight: '600',
-                                                                color: '#444'
-                                                            },
-                                                            children: "Phone Number"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/websites/adoods/pages/shop.js",
-                                                            lineNumber: 341,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                            name: "phone",
-                                                            type: "tel",
-                                                            placeholder: "Enter your phone number",
-                                                            required: true,
-                                                            style: {
-                                                                width: '100%',
-                                                                padding: '12px 15px',
-                                                                borderRadius: '6px',
-                                                                border: '1px solid #ddd',
-                                                                fontSize: '1rem',
-                                                                boxSizing: 'border-box'
-                                                            }
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/websites/adoods/pages/shop.js",
-                                                            lineNumber: 349,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/websites/adoods/pages/shop.js",
-                                                    lineNumber: 340,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                            style: {
-                                                                display: 'block',
-                                                                marginBottom: '8px',
-                                                                fontWeight: '600',
-                                                                color: '#444'
-                                                            },
-                                                            children: "Quantity"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/websites/adoods/pages/shop.js",
-                                                            lineNumber: 366,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                            name: "order_count",
-                                                            type: "number",
-                                                            min: "1",
-                                                            defaultValue: "1",
-                                                            required: true,
-                                                            style: {
-                                                                width: '100px',
-                                                                padding: '12px 15px',
-                                                                borderRadius: '6px',
-                                                                border: '1px solid #ddd',
-                                                                fontSize: '1rem'
-                                                            }
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/websites/adoods/pages/shop.js",
-                                                            lineNumber: 374,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/websites/adoods/pages/shop.js",
-                                                    lineNumber: 365,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                    type: "submit",
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                                     style: {
-                                                        background: '#111',
-                                                        color: 'white',
-                                                        padding: '15px 25px',
-                                                        border: 'none',
-                                                        borderRadius: '6px',
-                                                        cursor: 'pointer',
-                                                        fontWeight: '600',
-                                                        fontSize: '1rem',
-                                                        marginTop: '10px',
-                                                        transition: 'background 0.3s ease',
-                                                        textTransform: 'uppercase',
-                                                        letterSpacing: '0.5px'
+                                                        margin: '0 0 10px',
+                                                        fontSize: '1.1rem'
                                                     },
-                                                    onMouseOver: (e)=>{
-                                                        e.currentTarget.style.background = '#333';
-                                                    },
-                                                    onMouseOut: (e)=>{
-                                                        e.currentTarget.style.background = '#111';
-                                                    },
-                                                    children: "Place Order"
+                                                    className: `jsx-${mobileStyles.__hash}`,
+                                                    children: "Description"
                                                 }, void 0, false, {
                                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                                    lineNumber: 390,
+                                                    lineNumber: 727,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    style: {
+                                                        color: '#666',
+                                                        lineHeight: '1.6'
+                                                    },
+                                                    className: `jsx-${mobileStyles.__hash}`,
+                                                    children: [
+                                                        "This is a high-quality ",
+                                                        selected.name,
+                                                        " made from premium materials. It's designed for comfort and style, perfect for any occasion."
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/websites/adoods/pages/shop.js",
+                                                    lineNumber: 728,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/websites/adoods/pages/shop.js",
-                                            lineNumber: 303,
+                                            lineNumber: 726,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                marginTop: '20px',
+                                                fontSize: '0.9rem',
+                                                color: '#666'
+                                            },
+                                            className: `jsx-${mobileStyles.__hash}`,
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: `jsx-${mobileStyles.__hash}`,
+                                                    children: "Free shipping on all orders"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/websites/adoods/pages/shop.js",
+                                                    lineNumber: 735,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: `jsx-${mobileStyles.__hash}`,
+                                                    children: "30-day return policy"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/websites/adoods/pages/shop.js",
+                                                    lineNumber: 736,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: `jsx-${mobileStyles.__hash}`,
+                                                    children: "Secure checkout"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/websites/adoods/pages/shop.js",
+                                                    lineNumber: 737,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                            lineNumber: 734,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/websites/adoods/pages/shop.js",
-                                    lineNumber: 276,
+                                    lineNumber: 713,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/websites/adoods/pages/shop.js",
-                            lineNumber: 248,
+                            lineNumber: 704,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/websites/adoods/pages/shop.js",
-                    lineNumber: 221,
+                    lineNumber: 662,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/websites/adoods/pages/shop.js",
-                lineNumber: 206,
+                lineNumber: 648,
+                columnNumber: 9
+            }, this),
+            showOrderForm && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: 'rgba(0,0,0,0.5)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    zIndex: 1000,
+                    padding: '20px'
+                },
+                className: `jsx-${mobileStyles.__hash}`,
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        backgroundColor: 'white',
+                        borderRadius: '8px',
+                        padding: '30px',
+                        maxWidth: '500px',
+                        width: '100%',
+                        maxHeight: '90vh',
+                        overflowY: 'auto',
+                        position: 'relative'
+                    },
+                    className: `jsx-${mobileStyles.__hash}`,
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            onClick: handleCloseForm,
+                            style: {
+                                position: 'absolute',
+                                top: '15px',
+                                right: '15px',
+                                background: 'none',
+                                border: 'none',
+                                fontSize: '24px',
+                                cursor: 'pointer',
+                                color: '#666',
+                                zIndex: 1
+                            },
+                            disabled: isSubmitting,
+                            className: `jsx-${mobileStyles.__hash}`,
+                            children: "×"
+                        }, void 0, false, {
+                            fileName: "[project]/websites/adoods/pages/shop.js",
+                            lineNumber: 770,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                            style: {
+                                marginTop: 0,
+                                marginBottom: '20px'
+                            },
+                            className: `jsx-${mobileStyles.__hash}`,
+                            children: "Order Details"
+                        }, void 0, false, {
+                            fileName: "[project]/websites/adoods/pages/shop.js",
+                            lineNumber: 788,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            style: {
+                                marginTop: 0,
+                                marginBottom: '25px',
+                                fontSize: '1.1rem'
+                            },
+                            className: `jsx-${mobileStyles.__hash}`,
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                    className: `jsx-${mobileStyles.__hash}`,
+                                    children: "Product:"
+                                }, void 0, false, {
+                                    fileName: "[project]/websites/adoods/pages/shop.js",
+                                    lineNumber: 790,
+                                    columnNumber: 15
+                                }, this),
+                                " ",
+                                orderDetails.productName
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/websites/adoods/pages/shop.js",
+                            lineNumber: 789,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                            action: "mailto:adoodshosur@gmail.com",
+                            method: "POST",
+                            encType: "text/plain",
+                            onSubmit: handleOrderSubmit,
+                            className: `jsx-${mobileStyles.__hash}`,
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginBottom: '20px'
+                                    },
+                                    className: `jsx-${mobileStyles.__hash}`,
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                            style: {
+                                                display: 'block',
+                                                marginBottom: '8px',
+                                                fontWeight: '500'
+                                            },
+                                            className: `jsx-${mobileStyles.__hash}`,
+                                            children: "Your Name *"
+                                        }, void 0, false, {
+                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                            lineNumber: 800,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                            type: "text",
+                                            name: "name",
+                                            value: orderDetails.name,
+                                            onChange: handleOrderDetailsChange,
+                                            required: true,
+                                            style: {
+                                                width: '100%',
+                                                padding: '10px 15px',
+                                                borderRadius: '4px',
+                                                border: '1px solid #ddd',
+                                                fontSize: '1rem',
+                                                outline: 'none'
+                                            },
+                                            className: `jsx-${mobileStyles.__hash}`
+                                        }, void 0, false, {
+                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                            lineNumber: 807,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/websites/adoods/pages/shop.js",
+                                    lineNumber: 799,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginBottom: '20px'
+                                    },
+                                    className: `jsx-${mobileStyles.__hash}`,
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                            style: {
+                                                display: 'block',
+                                                marginBottom: '8px',
+                                                fontWeight: '500'
+                                            },
+                                            className: `jsx-${mobileStyles.__hash}`,
+                                            children: "Phone Number *"
+                                        }, void 0, false, {
+                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                            lineNumber: 825,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                            type: "tel",
+                                            name: "phone",
+                                            value: orderDetails.phone,
+                                            onChange: handleOrderDetailsChange,
+                                            required: true,
+                                            style: {
+                                                width: '100%',
+                                                padding: '10px 15px',
+                                                borderRadius: '4px',
+                                                border: '1px solid #ddd',
+                                                fontSize: '1rem',
+                                                outline: 'none'
+                                            },
+                                            className: `jsx-${mobileStyles.__hash}`
+                                        }, void 0, false, {
+                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                            lineNumber: 832,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/websites/adoods/pages/shop.js",
+                                    lineNumber: 824,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        marginBottom: '25px'
+                                    },
+                                    className: `jsx-${mobileStyles.__hash}`,
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                            style: {
+                                                display: 'block',
+                                                marginBottom: '8px',
+                                                fontWeight: '500'
+                                            },
+                                            className: `jsx-${mobileStyles.__hash}`,
+                                            children: "Quantity"
+                                        }, void 0, false, {
+                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                            lineNumber: 850,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                            type: "number",
+                                            name: "quantity",
+                                            min: "1",
+                                            value: orderDetails.quantity,
+                                            onChange: handleOrderDetailsChange,
+                                            style: {
+                                                width: '100px',
+                                                padding: '10px 15px',
+                                                borderRadius: '4px',
+                                                border: '1px solid #ddd',
+                                                fontSize: '1rem',
+                                                outline: 'none'
+                                            },
+                                            className: `jsx-${mobileStyles.__hash}`
+                                        }, void 0, false, {
+                                            fileName: "[project]/websites/adoods/pages/shop.js",
+                                            lineNumber: 857,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/websites/adoods/pages/shop.js",
+                                    lineNumber: 849,
+                                    columnNumber: 15
+                                }, this),
+                                submitStatus.message && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        margin: '15px 0',
+                                        padding: '10px',
+                                        backgroundColor: submitStatus.success ? '#e8f5e9' : '#ffebee',
+                                        color: submitStatus.success ? '#2e7d32' : '#c62828',
+                                        borderRadius: '4px',
+                                        textAlign: 'center',
+                                        fontSize: '0.9rem'
+                                    },
+                                    className: `jsx-${mobileStyles.__hash}`,
+                                    children: submitStatus.message
+                                }, void 0, false, {
+                                    fileName: "[project]/websites/adoods/pages/shop.js",
+                                    lineNumber: 875,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    type: "submit",
+                                    disabled: isSubmitting,
+                                    style: {
+                                        backgroundColor: isSubmitting ? '#888' : '#111',
+                                        color: 'white',
+                                        padding: '12px 30px',
+                                        border: 'none',
+                                        borderRadius: '4px',
+                                        cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                                        fontSize: '1rem',
+                                        fontWeight: '500',
+                                        width: '100%',
+                                        marginTop: '10px',
+                                        opacity: isSubmitting ? 0.7 : 1,
+                                        transition: 'all 0.3s ease'
+                                    },
+                                    className: `jsx-${mobileStyles.__hash}`,
+                                    children: isSubmitting ? 'Sending...' : 'Place Order'
+                                }, void 0, false, {
+                                    fileName: "[project]/websites/adoods/pages/shop.js",
+                                    lineNumber: 887,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/websites/adoods/pages/shop.js",
+                            lineNumber: 793,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/websites/adoods/pages/shop.js",
+                    lineNumber: 760,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/websites/adoods/pages/shop.js",
+                lineNumber: 747,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/websites/adoods/pages/shop.js",
-        lineNumber: 46,
+        lineNumber: 441,
         columnNumber: 5
     }, this);
 }
-_s(Shop, "feag8AlWz+IOBGW9xOD/cUGlXNI=");
+_s(Shop, "+Ig8hinySthQVLJc13O/WD0AB3E=");
 _c = Shop;
 var _c;
 __turbopack_context__.k.register(_c, "Shop");

@@ -470,10 +470,12 @@ __turbopack_context__.s([
     ()=>Contact
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/styled-jsx/style.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 const socialLinkStyle = {
     color: "#4a148c",
@@ -487,71 +489,59 @@ const socialLinkStyle = {
 };
 function Contact() {
     _s();
-    const [submitted, setSubmitted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [showSuccess, setShowSuccess] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isSubmitting, setIsSubmitting] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        setIsSubmitting(true);
         const form = e.target;
         const data = new FormData(form);
-        await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-            method: "POST",
-            body: data,
-            headers: {
-                Accept: "application/json"
-            }
-        });
-        setSubmitted(true);
-        form.reset();
+        try {
+            await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+                method: "POST",
+                body: data,
+                headers: {
+                    Accept: "application/json"
+                }
+            });
+            // Show success message
+            setShowSuccess(true);
+            form.reset();
+            // Hide success message after 30 seconds
+            const timer = setTimeout(()=>{
+                setShowSuccess(false);
+            }, 30000);
+            // Clean up timer
+            return ()=>clearTimeout(timer);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        } finally{
+            setIsSubmitting(false);
+        }
     };
-    if (submitted) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "container",
-            style: {
-                padding: "80px 20px",
-                textAlign: "center"
-            },
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                    children: "Thank you!"
-                }, void 0, false, {
-                    fileName: "[project]/websites/adoods/pages/contact.js",
-                    lineNumber: 36,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    children: "Your message has been sent successfully. We’ll get back to you soon."
-                }, void 0, false, {
-                    fileName: "[project]/websites/adoods/pages/contact.js",
-                    lineNumber: 37,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "[project]/websites/adoods/pages/contact.js",
-            lineNumber: 35,
-            columnNumber: 7
-        }, this);
-    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "container",
         style: {
             padding: "60px 20px"
         },
+        className: "jsx-f3b8438058e81a9" + " " + "container",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 style: {
                     textAlign: "center",
                     marginBottom: "40px"
                 },
+                className: "jsx-f3b8438058e81a9",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                         style: {
                             fontSize: "2.2rem",
                             marginBottom: "10px"
                         },
+                        className: "jsx-f3b8438058e81a9",
                         children: "Get in Touch"
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/contact.js",
-                        lineNumber: 46,
+                        lineNumber: 55,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -560,16 +550,17 @@ function Contact() {
                             maxWidth: "700px",
                             margin: "0 auto"
                         },
+                        className: "jsx-f3b8438058e81a9",
                         children: "Have questions about our products or want to collaborate? We're here to help. Fill out the form or visit us at our store location."
                     }, void 0, false, {
                         fileName: "[project]/websites/adoods/pages/contact.js",
-                        lineNumber: 47,
+                        lineNumber: 56,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/websites/adoods/pages/contact.js",
-                lineNumber: 45,
+                lineNumber: 54,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -581,6 +572,7 @@ function Contact() {
                     gap: "30px",
                     padding: "0 20px"
                 },
+                className: "jsx-f3b8438058e81a9",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         style: {
@@ -590,6 +582,7 @@ function Contact() {
                             boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
                             textAlign: "center"
                         },
+                        className: "jsx-f3b8438058e81a9",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 style: {
@@ -602,19 +595,21 @@ function Contact() {
                                     justifyContent: "center",
                                     margin: "0 auto 20px"
                                 },
+                                className: "jsx-f3b8438058e81a9",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     style: {
                                         fontSize: "1.8rem"
                                     },
+                                    className: "jsx-f3b8438058e81a9",
                                     children: "📍"
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/contact.js",
-                                    lineNumber: 79,
+                                    lineNumber: 88,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 69,
+                                lineNumber: 78,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -622,10 +617,11 @@ function Contact() {
                                     color: "#2d3748",
                                     marginBottom: "15px"
                                 },
+                                className: "jsx-f3b8438058e81a9",
                                 children: "Our Location"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 81,
+                                lineNumber: 90,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -634,30 +630,27 @@ function Contact() {
                                     lineHeight: "1.6",
                                     margin: 0
                                 },
+                                className: "jsx-f3b8438058e81a9",
                                 children: [
-                                    "88-1/50M, Ulavar Sandhai Road,",
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                    "No 784/1 A1A Near Vakil layout Hosur,",
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {
+                                        className: "jsx-f3b8438058e81a9"
+                                    }, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/contact.js",
-                                        lineNumber: 83,
-                                        columnNumber: 43
-                                    }, this),
-                                    "near Srinivasa theatre,",
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
-                                        fileName: "[project]/websites/adoods/pages/contact.js",
-                                        lineNumber: 84,
-                                        columnNumber: 36
+                                        lineNumber: 92,
+                                        columnNumber: 50
                                     }, this),
                                     "Hosur, Tamil Nadu 635109"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 82,
+                                lineNumber: 91,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/websites/adoods/pages/contact.js",
-                        lineNumber: 62,
+                        lineNumber: 71,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -668,6 +661,7 @@ function Contact() {
                             boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
                             textAlign: "center"
                         },
+                        className: "jsx-f3b8438058e81a9",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 style: {
@@ -680,19 +674,21 @@ function Contact() {
                                     justifyContent: "center",
                                     margin: "0 auto 20px"
                                 },
+                                className: "jsx-f3b8438058e81a9",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     style: {
                                         fontSize: "1.8rem"
                                     },
+                                    className: "jsx-f3b8438058e81a9",
                                     children: "📞"
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/contact.js",
-                                    lineNumber: 106,
+                                    lineNumber: 114,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 96,
+                                lineNumber: 104,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -700,10 +696,11 @@ function Contact() {
                                     color: "#2d3748",
                                     marginBottom: "15px"
                                 },
+                                className: "jsx-f3b8438058e81a9",
                                 children: "Contact Us"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 108,
+                                lineNumber: 116,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -712,6 +709,7 @@ function Contact() {
                                     lineHeight: "1.6",
                                     margin: 0
                                 },
+                                className: "jsx-f3b8438058e81a9",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                         href: "tel:09514109080",
@@ -719,39 +717,43 @@ function Contact() {
                                             color: "#4a148c",
                                             textDecoration: "none"
                                         },
-                                        children: "095141 09080"
+                                        className: "jsx-f3b8438058e81a9",
+                                        children: "+91 95141 09080"
                                     }, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/contact.js",
-                                        lineNumber: 110,
+                                        lineNumber: 118,
                                         columnNumber: 13
                                     }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {
+                                        className: "jsx-f3b8438058e81a9"
+                                    }, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/contact.js",
-                                        lineNumber: 110,
-                                        columnNumber: 108
+                                        lineNumber: 118,
+                                        columnNumber: 111
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                        href: "mailto:info@adoods.com",
+                                        href: "mailto:adoodshosur@gmail.com",
                                         style: {
                                             color: "#4a148c",
                                             textDecoration: "none"
                                         },
-                                        children: "info@adoods.com"
+                                        className: "jsx-f3b8438058e81a9",
+                                        children: "adoodshosur@gmail.com"
                                     }, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/contact.js",
-                                        lineNumber: 111,
+                                        lineNumber: 119,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 109,
+                                lineNumber: 117,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/websites/adoods/pages/contact.js",
-                        lineNumber: 89,
+                        lineNumber: 97,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -762,6 +764,7 @@ function Contact() {
                             boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
                             textAlign: "center"
                         },
+                        className: "jsx-f3b8438058e81a9",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 style: {
@@ -774,19 +777,21 @@ function Contact() {
                                     justifyContent: "center",
                                     margin: "0 auto 20px"
                                 },
+                                className: "jsx-f3b8438058e81a9",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     style: {
                                         fontSize: "1.8rem"
                                     },
+                                    className: "jsx-f3b8438058e81a9",
                                     children: "⏰"
                                 }, void 0, false, {
                                     fileName: "[project]/websites/adoods/pages/contact.js",
-                                    lineNumber: 132,
+                                    lineNumber: 140,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 122,
+                                lineNumber: 130,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -794,10 +799,11 @@ function Contact() {
                                     color: "#2d3748",
                                     marginBottom: "15px"
                                 },
+                                className: "jsx-f3b8438058e81a9",
                                 children: "Working Hours"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 134,
+                                lineNumber: 142,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -806,30 +812,32 @@ function Contact() {
                                     lineHeight: "1.8",
                                     margin: 0
                                 },
+                                className: "jsx-f3b8438058e81a9",
                                 children: [
                                     "Monday - Saturday: 10:00 AM - 9:00 PM",
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {
+                                        className: "jsx-f3b8438058e81a9"
+                                    }, void 0, false, {
                                         fileName: "[project]/websites/adoods/pages/contact.js",
-                                        lineNumber: 136,
+                                        lineNumber: 144,
                                         columnNumber: 50
-                                    }, this),
-                                    "Sunday: 11:00 AM - 8:00 PM"
+                                    }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 135,
+                                lineNumber: 143,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/websites/adoods/pages/contact.js",
-                        lineNumber: 115,
+                        lineNumber: 123,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/websites/adoods/pages/contact.js",
-                lineNumber: 54,
+                lineNumber: 63,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -843,6 +851,7 @@ function Contact() {
                     margin: "0 auto",
                     padding: "0 20px"
                 },
+                className: "jsx-f3b8438058e81a9",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         style: {
@@ -853,15 +862,17 @@ function Contact() {
                             borderRadius: "10px",
                             boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
                         },
+                        className: "jsx-f3b8438058e81a9",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 style: {
                                     marginBottom: "25px"
                                 },
+                                className: "jsx-f3b8438058e81a9",
                                 children: "Location"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 166,
+                                lineNumber: 173,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("iframe", {
@@ -875,19 +886,23 @@ function Contact() {
                                     border: "0"
                                 },
                                 allowFullScreen: "",
-                                loading: "lazy"
+                                loading: "lazy",
+                                className: "jsx-f3b8438058e81a9"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 168,
+                                lineNumber: 175,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/websites/adoods/pages/contact.js",
-                        lineNumber: 156,
+                        lineNumber: 163,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                        action: "mailto:adoodshosur@gmail.com",
+                        method: "POST",
+                        encType: "text/plain",
                         onSubmit: handleSubmit,
                         style: {
                             flex: "1 1 350px",
@@ -900,92 +915,153 @@ function Contact() {
                             borderRadius: "10px",
                             boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
                         },
+                        className: "jsx-f3b8438058e81a9",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 style: {
                                     marginBottom: "10px"
                                 },
-                                children: "Send Us a Message"
+                                className: "jsx-f3b8438058e81a9",
+                                children: "Send Us a Message333333333"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 194,
+                                lineNumber: 204,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                 name: "name",
                                 type: "text",
                                 placeholder: "Your Name",
-                                required: true
+                                required: true,
+                                className: "jsx-f3b8438058e81a9"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 195,
+                                lineNumber: 205,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                 name: "email",
                                 type: "email",
                                 placeholder: "Your Email",
-                                required: true
+                                required: true,
+                                className: "jsx-f3b8438058e81a9"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 196,
+                                lineNumber: 206,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                 name: "phone",
                                 type: "text",
-                                placeholder: "Phone Number (optional)"
+                                placeholder: "Phone Number (optional)",
+                                className: "jsx-f3b8438058e81a9"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 197,
+                                lineNumber: 207,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
                                 name: "message",
                                 placeholder: "Your Message",
                                 rows: "5",
-                                required: true
+                                required: true,
+                                className: "jsx-f3b8438058e81a9"
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 198,
+                                lineNumber: 208,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 type: "submit",
+                                disabled: isSubmitting,
                                 style: {
-                                    background: "#111",
+                                    background: isSubmitting ? "#888" : "#111",
                                     color: "#fff",
                                     padding: "12px",
                                     fontSize: "1rem",
                                     borderRadius: "6px",
-                                    cursor: "pointer"
+                                    cursor: isSubmitting ? "not-allowed" : "pointer",
+                                    opacity: isSubmitting ? 0.8 : 1,
+                                    transition: "all 0.3s ease"
                                 },
-                                children: "Send Message"
+                                className: "jsx-f3b8438058e81a9",
+                                children: isSubmitting ? 'Sending...' : 'Send Message'
                             }, void 0, false, {
                                 fileName: "[project]/websites/adoods/pages/contact.js",
-                                lineNumber: 199,
+                                lineNumber: 209,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/websites/adoods/pages/contact.js",
-                        lineNumber: 180,
+                        lineNumber: 187,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/websites/adoods/pages/contact.js",
-                lineNumber: 143,
+                lineNumber: 150,
                 columnNumber: 7
-            }, this)
+            }, this),
+            showSuccess && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    position: 'fixed',
+                    top: '20px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    backgroundColor: '#4caf50',
+                    color: 'white',
+                    padding: '15px 30px',
+                    borderRadius: '4px',
+                    boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+                    zIndex: 1000,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    animation: 'slideIn 0.3s ease-out',
+                    maxWidth: '90%',
+                    textAlign: 'center',
+                    fontSize: '0.95rem'
+                },
+                className: "jsx-f3b8438058e81a9",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        style: {
+                            fontSize: '1.2rem'
+                        },
+                        className: "jsx-f3b8438058e81a9",
+                        children: "✓"
+                    }, void 0, false, {
+                        fileName: "[project]/websites/adoods/pages/contact.js",
+                        lineNumber: 249,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        className: "jsx-f3b8438058e81a9",
+                        children: "Your message has been sent successfully! We'll get back to you soon."
+                    }, void 0, false, {
+                        fileName: "[project]/websites/adoods/pages/contact.js",
+                        lineNumber: 250,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/websites/adoods/pages/contact.js",
+                lineNumber: 230,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                id: "f3b8438058e81a9",
+                children: "@keyframes slideIn{0%{opacity:0;transform:translate(-50%,-20px)}to{opacity:1;transform:translate(-50%)}}"
+            }, void 0, false, void 0, this)
         ]
     }, void 0, true, {
         fileName: "[project]/websites/adoods/pages/contact.js",
-        lineNumber: 43,
+        lineNumber: 52,
         columnNumber: 5
     }, this);
 }
-_s(Contact, "S6ipnhtDax9I0+B/fnlVz3+f6e8=");
+_s(Contact, "lNVFD43JJQKqUpVOD+i9AdEL4AM=");
 _c = Contact;
 var _c;
 __turbopack_context__.k.register(_c, "Contact");
