@@ -3,53 +3,15 @@ import Link from "next/link";
 import BannerSlider from "../components/BannerSlider";
 
 const sectionHeaderStyle = {
-  fontSize: 'clamp(1.75rem, 5vw, 2.5rem)',
+  fontSize: '2.5rem',
   color: '#1a1a1a',
   margin: '0 0 20px 0',
   fontWeight: '700',
   lineHeight: '1.3',
   position: 'relative',
   display: 'inline-block',
-  paddingBottom: '15px',
-  textAlign: 'center',
-  width: '100%'
+  paddingBottom: '15px'
 };
-
-// Responsive styles
-const responsiveStyles = `
-  @media (max-width: 768px) {
-    .section-content {
-      padding: 30px 15px !important;
-    }
-    .featured-grid {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
-      gap: 15px !important;
-      padding: 0 10px !important;
-    }
-    .featured-item {
-      padding: 10px !important;
-    }
-    .featured-item img {
-      height: 200px !important;
-    }
-    .why-choose-grid {
-      grid-template-columns: 1fr !important;
-      padding: 0 15px !important;
-    }
-    .benefit-card {
-      margin-bottom: 20px !important;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .featured-grid {
-      grid-template-columns: 1fr !important;
-    }
-    .featured-item img {
-      height: 250px !important;
-    }
-  }
-`;
 
 const sectionHeaderLine = {
   position: 'absolute',
@@ -65,7 +27,6 @@ const sectionHeaderLine = {
 export default function Home() {
   return (
     <div>
-      <style jsx>{responsiveStyles}</style>
       {/* Hero Banner */}
       <BannerSlider />
       
@@ -74,36 +35,22 @@ export default function Home() {
 
       {/* Banner Content */}
       <div style={{
-        maxWidth: '100%',
+        maxWidth: '1200px',
         margin: '0 auto',
-        padding: '30px 0',
+        padding: '50px 20px',
         textAlign: 'center',
         backgroundColor: '#ffffff',
-        position: 'relative',
-        width: '100%',
-        boxSizing: 'border-box'
+        position: 'relative'
       }}>
-        <div className="section-content" style={{
-          maxWidth: '1200px',
+        <div style={{
+          maxWidth: '900px',
           margin: '0 auto',
-          padding: '40px 20px',
-          width: '100%',
-          boxSizing: 'border-box'
+          padding: '0 20px'
         }}>
           <h2 style={sectionHeaderStyle}>
-            Welcome to Adoods
-            <div style={{...sectionHeaderLine, left: '50%'}} />
+            Welcome to Adoods - Your Style Destination
+            <div style={sectionHeaderLine} />
           </h2>
-          <p style={{
-            fontSize: 'clamp(1rem, 3vw, 1.25rem)',
-            color: '#4a4a4a',
-            lineHeight: '1.6',
-            margin: '0 auto 30px',
-            maxWidth: '800px',
-            padding: '0 15px'
-          }}>
-            Your Style Destination for Premium School Uniforms
-          </p>
           <p style={{
             fontSize: '1.25rem',
             color: '#4a4a4a',
@@ -132,13 +79,10 @@ export default function Home() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: "20px",
-            maxWidth: "1200px",
-            margin: "30px auto",
-            padding: "0 15px",
-            width: "100%",
-            boxSizing: "border-box"
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "25px",
+            maxWidth: "1000px",
+            margin: "40px auto",
           }}
         >
           {["img/Design_7.jpeg", "img/Design_10.jpeg", "img/Design_11.jpeg"].map((img, i) => (
@@ -293,211 +237,353 @@ export default function Home() {
 
       {/* About Adoods */}
       <section
+  style={{
+    padding: "80px 20px",
+    background: "#ffffff",
+    position: "relative",
+    overflow: "hidden",
+  }}
+>
+  <div
+    className="about-grid"
+    style={{
+      maxWidth: "1200px",
+      margin: "0 auto",
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
+      gap: "60px",
+      alignItems: "center",
+    }}
+  >
+    {/* Left Content */}
+    <div>
+      <h2
         style={{
-          padding: "100px 20px",
-          background: "#ffffff",
-          position: "relative",
-          overflow: "hidden"
+          fontSize: "2.2rem",
+          fontWeight: "700",
+          marginBottom: "15px",
+          color: "#1a202c",
         }}
       >
-        <div style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "60px",
-          alignItems: "center"
-        }}>
-          <div>
-            <h2 style={sectionHeaderStyle}>
-              About <span style={{color: "#e91e63"}}>Adoods</span>
-            </h2>
-            <div style={{
-              height: "4px",
-              width: "80px",
-              background: "linear-gradient(90deg, #4a148c 0%, #e91e63 100%)",
-              marginBottom: "30px",
-              borderRadius: "2px"
-            }}></div>
-            <p style={{
-              color: "#4a5568",
-              lineHeight: "1.8",
-              marginBottom: "25px",
-              fontSize: "1.05rem"
-            }}>
-              At Adoods, we believe that great style starts with great basics. Founded in 2017, we've been dedicated to creating premium quality t-shirts that combine comfort, style, and sustainability.
-            </p>
-            <p style={{
-              color: "#4a5568",
-              lineHeight: "1.8",
-              marginBottom: "30px",
-              fontSize: "1.05rem"
-            }}>
-              Our mission is simple: to provide you with wardrobe essentials that look good, feel amazing, and last longer. Every stitch tells a story of quality and attention to detail.
-            </p>
-            <button
-              onClick={() => window.location.href = '/shop'}
-              style={{
-                background: 'linear-gradient(90deg, #4a148c 0%, #7b1fa2 100%)',
-                color: 'white',
-                border: 'none',
-                padding: '12px 30px',
-                fontSize: '1rem',
-                fontWeight: '600',
-                borderRadius: '50px',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                boxShadow: '0 4px 15px rgba(74, 20, 140, 0.3)'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 7px 20px rgba(74, 20, 140, 0.4)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(74, 20, 140, 0.3)';
-              }}
-            >
-              Explore Our Collection
-            </button>
-          </div>
-          <div style={{
-            position: "relative",
-            height: "500px",
-            borderRadius: "15px",
-            overflow: "hidden",
-            boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
-          }}>
-            <img
-              src="/img/aboutus.jpeg"
-              alt="About Adoods"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                transition: "transform 0.5s ease"
-              }}
-              onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.03)"}
-              onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
-            />
-          </div>
-        </div>
-      </section>
+        About <span style={{ color: "#e91e63" }}>Adoods</span>
+      </h2>
 
-      {/* School Uniforms */}
-      <section
+      <div
         style={{
-          padding: "80px 5%",
-          backgroundColor: "#ffffff"
+          height: "4px",
+          width: "80px",
+          background: "linear-gradient(90deg, #4a148c 0%, #e91e63 100%)",
+          marginBottom: "30px",
+          borderRadius: "2px",
+        }}
+      ></div>
+
+      <p
+        style={{
+          color: "#4a5568",
+          lineHeight: "1.8",
+          marginBottom: "25px",
+          fontSize: "1.05rem",
         }}
       >
-        <div style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          display: "flex",
-          flexDirection: "row-reverse",
-          alignItems: "center",
-          gap: "40px"
-        }}>
-          <div style={{
-            flex: 1,
-            textAlign: "left"
-          }}>
-            <h2 style={sectionHeaderStyle}>
-              Premium School Uniforms
-              <div style={sectionHeaderLine} />
-            </h2>
-            <p style={{
-              fontSize: "1.1rem",
-              color: "#4a148c",
-              fontWeight: "500",
-              marginBottom: "20px"
-            }}>
-              Excellence in Uniforms, Excellence in Education
-            </p>
-            <p style={{
-              fontSize: "1.1rem",
+        At Adoods, we believe that great style starts with great basics. Founded in 2017, we've been dedicated to creating premium quality t-shirts that combine comfort, style, and sustainability.
+      </p>
+
+      <p
+        style={{
+          color: "#4a5568",
+          lineHeight: "1.8",
+          marginBottom: "35px",
+          fontSize: "1.05rem",
+        }}
+      >
+        Our mission is simple: to provide you with wardrobe essentials that look good, feel amazing, and last longer. Every stitch tells a story of quality and attention to detail.
+      </p>
+
+      <button
+        onClick={() => (window.location.href = "/shop")}
+        style={{
+          background: "linear-gradient(90deg, #4a148c 0%, #7b1fa2 100%)",
+          color: "white",
+          border: "none",
+          padding: "14px 35px",
+          fontSize: "1rem",
+          fontWeight: "600",
+          borderRadius: "50px",
+          cursor: "pointer",
+          transition: "all 0.3s ease",
+          boxShadow: "0 4px 15px rgba(74, 20, 140, 0.3)",
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.transform = "translateY(-2px)";
+          e.currentTarget.style.boxShadow =
+            "0 7px 20px rgba(74, 20, 140, 0.4)";
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.transform = "translateY(0)";
+          e.currentTarget.style.boxShadow =
+            "0 4px 15px rgba(74, 20, 140, 0.3)";
+        }}
+      >
+        Explore Our Collection
+      </button>
+    </div>
+
+    {/* Right Image */}
+    <div
+      style={{
+        position: "relative",
+        height: "500px",
+        borderRadius: "15px",
+        overflow: "hidden",
+        boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+      }}
+    >
+      <img
+        src="/img/aboutus.jpeg"
+        alt="About Adoods"
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          transition: "transform 0.5s ease",
+        }}
+        onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+        onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+      />
+    </div>
+  </div>
+
+  {/* ✅ Responsive Fix */}
+  <style>
+    {`
+      @media (max-width: 900px) {
+        .about-grid {
+          grid-template-columns: 1fr !important;
+          gap: 40px !important;
+          text-align: center;
+        }
+
+        .about-grid div:first-child {
+          padding: 0 10px;
+        }
+
+        .about-grid img {
+          height: 350px !important;
+        }
+
+        section {
+          padding: 60px 15px !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .about-grid img {
+          height: 280px !important;
+        }
+
+        .about-grid h2 {
+          font-size: 1.8rem !important;
+        }
+      }
+    `}
+  </style>
+</section>
+
+
+
+{/* ✅ School Uniforms Section - Fully Responsive */}
+<section
+  style={{
+    padding: "80px 5%",
+    backgroundColor: "#ffffff",
+  }}
+>
+  <div
+    className="uniform-grid"
+    style={{
+      maxWidth: "1200px",
+      margin: "0 auto",
+      display: "flex",
+      flexDirection: "row-reverse",
+      alignItems: "center",
+      gap: "50px",
+    }}
+  >
+    {/* Left Text Content */}
+    <div style={{ flex: 1, textAlign: "left" }}>
+      <h2
+        style={{
+          fontSize: "2.2rem",
+          fontWeight: "700",
+          marginBottom: "15px",
+          color: "#1a202c",
+        }}
+      >
+        Premium School Sports Uniforms
+        <div
+          style={{
+            height: "4px",
+            width: "80px",
+            background: "linear-gradient(90deg, #4a148c 0%, #e91e63 100%)",
+            marginTop: "10px",
+            borderRadius: "2px",
+          }}
+        />
+      </h2>
+
+      <p
+        style={{
+          fontSize: "1.1rem",
+          color: "#4a148c",
+          fontWeight: "500",
+          marginBottom: "20px",
+        }}
+      >
+        Excellence in Uniforms, Excellence in Education
+      </p>
+
+      <p
+        style={{
+          fontSize: "1.05rem",
+          color: "#4a4a4a",
+          lineHeight: "1.8",
+          marginBottom: "25px",
+        }}
+      >
+        At Adoods, we understand the importance of quality school uniforms that combine comfort,
+        durability, and style. Our uniforms are designed to withstand the rigors of daily school life
+        while keeping students comfortable throughout the day.
+      </p>
+
+      <ul
+        style={{
+          listStyle: "none",
+          padding: 0,
+          marginBottom: "35px",
+        }}
+      >
+        {[
+          "Premium quality fabrics for all-day comfort",
+          "Durable stitching for long-lasting wear",
+          "Wrinkle-resistant and easy to maintain",
+          "Available in various sizes and custom fittings",
+          "Compliant with school dress codes",
+        ].map((item, index) => (
+          <li
+            key={index}
+            style={{
+              padding: "8px 0",
               color: "#4a4a4a",
-              lineHeight: "1.8",
-              marginBottom: "25px"
-            }}>
-              At Adoods, we understand the importance of quality school uniforms that combine comfort, durability, and style. 
-              Our uniforms are designed to withstand the rigors of daily school life while keeping students comfortable 
-              throughout the day.
-            </p>
-            <ul style={{
-              listStyle: "none",
-              padding: 0,
-              marginBottom: "30px"
-            }}>
-              {["Premium quality fabrics for all-day comfort",
-                "Durable stitching for long-lasting wear",
-                "Wrinkle-resistant and easy to maintain",
-                "Available in various sizes and custom fittings",
-                "Compliant with school dress codes"].map((item, index) => (
-                <li key={index} style={{
-                  padding: "8px 0",
-                  color: "#4a4a4a",
-                  position: "relative",
-                  paddingLeft: "30px"
-                }}>
-                  <span style={{
-                    position: "absolute",
-                    left: 0,
-                    color: "#4a148c"
-                  }}>✓</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <button
+              position: "relative",
+              paddingLeft: "30px",
+              fontSize: "1rem",
+              lineHeight: "1.6",
+            }}
+          >
+            <span
               style={{
-                backgroundColor: "#4a148c",
-                color: "white",
-                border: "none",
-                padding: "12px 30px",
-                borderRadius: "30px",
-                fontSize: "1rem",
-                fontWeight: "600",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                boxShadow: "0 4px 15px rgba(74, 20, 140, 0.3)"
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 7px 20px rgba(74, 20, 140, 0.4)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(74, 20, 140, 0.3)';
+                position: "absolute",
+                left: 0,
+                color: "#4a148c",
               }}
             >
-              View Uniform Collection
-            </button>
-          </div>
-          <div style={{
-            flex: 1,
-            position: "relative",
-            borderRadius: "15px",
-            overflow: "hidden",
-            boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-            height: "500px"
-          }}>
-            <img
-              src="/img/schooluniform.jpg"
-              alt="Premium School Uniforms"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                transition: "transform 0.5s ease"
-              }}
-              onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.03)"}
-              onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
-            />
-          </div>
-        </div>
-      </section>
+              ✓
+            </span>
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <button
+        style={{
+          background: "linear-gradient(90deg, #4a148c 0%, #7b1fa2 100%)",
+          color: "white",
+          border: "none",
+          padding: "14px 35px",
+          borderRadius: "50px",
+          fontSize: "1rem",
+          fontWeight: "600",
+          cursor: "pointer",
+          transition: "all 0.3s ease",
+          boxShadow: "0 4px 15px rgba(74, 20, 140, 0.3)",
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.transform = "translateY(-2px)";
+          e.currentTarget.style.boxShadow =
+            "0 7px 20px rgba(74, 20, 140, 0.4)";
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.transform = "translateY(0)";
+          e.currentTarget.style.boxShadow =
+            "0 4px 15px rgba(74, 20, 140, 0.3)";
+        }}
+      >
+        View Uniform Collection
+      </button>
+    </div>
+
+    {/* Right Image */}
+    <div
+      style={{
+        flex: 1,
+        position: "relative",
+        borderRadius: "15px",
+        overflow: "hidden",
+        boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+        height: "500px",
+      }}
+    >
+      <img
+        src="/img/schooluniform.png"
+        alt="Premium School Uniforms"
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          transition: "transform 0.5s ease",
+        }}
+        onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+        onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+      />
+    </div>
+  </div>
+
+  {/* ✅ Responsive Design */}
+  <style>
+    {`
+      @media (max-width: 900px) {
+        .uniform-grid {
+          flex-direction: column !important;
+          text-align: center !important;
+          gap: 40px !important;
+        }
+
+        .uniform-grid div:first-child {
+          padding: 0 10px;
+        }
+
+        .uniform-grid img {
+          height: 350px !important;
+        }
+
+        section {
+          padding: 60px 15px !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .uniform-grid img {
+          height: 280px !important;
+        }
+
+        .uniform-grid h2 {
+          font-size: 1.8rem !important;
+        }
+      }
+    `}
+  </style>
+</section>
 
       {/* Testimonials */}
       <section
