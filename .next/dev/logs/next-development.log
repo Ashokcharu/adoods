@@ -3,3 +3,5 @@
 See more info here: https://nextjs.org/docs/messages/no-stylesheets-in-head-component
 [00:00:05.979] Browser WARN    Do not add stylesheets using next/head (see <link rel="stylesheet"> tag with href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"). Use Document instead. 
 See more info here: https://nextjs.org/docs/messages/no-stylesheets-in-head-component
+[00:31:34.904] Browser WARN    Do not add stylesheets using next/head (see <link rel="stylesheet"> tag with href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"). Use Document instead. 
+See more info here: https://nextjs.org/docs/messages/no-stylesheets-in-head-component
