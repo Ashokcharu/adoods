@@ -201,7 +201,7 @@ export default function Contact() {
             boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
           }}
         >
-          <h2 style={{ marginBottom: "10px" }}>Send Us a Message333333333</h2>
+          <h2 style={{ marginBottom: "10px" }}>Send Us a Message</h2>
           <input name="name" type="text" placeholder="Your Name" required />
           <input name="email" type="email" placeholder="Your Email" required />
           <input name="phone" type="text" placeholder="Phone Number (optional)" />

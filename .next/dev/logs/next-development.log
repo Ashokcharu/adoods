@@ -1,6 +1,5 @@
-[00:00:00.679] Server  LOG      ✓ Ready in 447ms
-[00:17:56.713] Server  WARN    Do not add stylesheets using next/head (see <link rel="stylesheet"> tag with href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"). Use Document instead. 
+[00:00:00.471] Server  LOG      ✓ Ready in 284ms
+[00:00:05.547] Server  WARN    Do not add stylesheets using next/head (see <link rel="stylesheet"> tag with href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"). Use Document instead. 
 See more info here: https://nextjs.org/docs/messages/no-stylesheets-in-head-component
-[00:17:57.717] Browser WARN    Do not add stylesheets using next/head (see <link rel="stylesheet"> tag with href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"). Use Document instead. 
+[00:00:05.979] Browser WARN    Do not add stylesheets using next/head (see <link rel="stylesheet"> tag with href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"). Use Document instead. 
 See more info here: https://nextjs.org/docs/messages/no-stylesheets-in-head-component
-[00:19:10.856] Server  LOG      ✓ Compiled in 19ms

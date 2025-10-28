@@ -3,15 +3,53 @@ import Link from "next/link";
 import BannerSlider from "../components/BannerSlider";
 
 const sectionHeaderStyle = {
-  fontSize: '2.5rem',
+  fontSize: 'clamp(1.75rem, 5vw, 2.5rem)',
   color: '#1a1a1a',
   margin: '0 0 20px 0',
   fontWeight: '700',
   lineHeight: '1.3',
   position: 'relative',
   display: 'inline-block',
-  paddingBottom: '15px'
+  paddingBottom: '15px',
+  textAlign: 'center',
+  width: '100%'
 };
+
+// Responsive styles
+const responsiveStyles = `
+  @media (max-width: 768px) {
+    .section-content {
+      padding: 30px 15px !important;
+    }
+    .featured-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+      gap: 15px !important;
+      padding: 0 10px !important;
+    }
+    .featured-item {
+      padding: 10px !important;
+    }
+    .featured-item img {
+      height: 200px !important;
+    }
+    .why-choose-grid {
+      grid-template-columns: 1fr !important;
+      padding: 0 15px !important;
+    }
+    .benefit-card {
+      margin-bottom: 20px !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .featured-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .featured-item img {
+      height: 250px !important;
+    }
+  }
+`;
 
 const sectionHeaderLine = {
   position: 'absolute',
@@ -27,6 +65,7 @@ const sectionHeaderLine = {
 export default function Home() {
   return (
     <div>
+      <style jsx>{responsiveStyles}</style>
       {/* Hero Banner */}
       <BannerSlider />
       
@@ -35,22 +74,36 @@ export default function Home() {
 
       {/* Banner Content */}
       <div style={{
-        maxWidth: '1200px',
+        maxWidth: '100%',
         margin: '0 auto',
-        padding: '50px 20px',
+        padding: '30px 0',
         textAlign: 'center',
         backgroundColor: '#ffffff',
-        position: 'relative'
+        position: 'relative',
+        width: '100%',
+        boxSizing: 'border-box'
       }}>
-        <div style={{
-          maxWidth: '900px',
+        <div className="section-content" style={{
+          maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 20px'
+          padding: '40px 20px',
+          width: '100%',
+          boxSizing: 'border-box'
         }}>
           <h2 style={sectionHeaderStyle}>
-            Welcome to Adoods - Your Style Destination
-            <div style={sectionHeaderLine} />
+            Welcome to Adoods
+            <div style={{...sectionHeaderLine, left: '50%'}} />
           </h2>
+          <p style={{
+            fontSize: 'clamp(1rem, 3vw, 1.25rem)',
+            color: '#4a4a4a',
+            lineHeight: '1.6',
+            margin: '0 auto 30px',
+            maxWidth: '800px',
+            padding: '0 15px'
+          }}>
+            Your Style Destination for Premium School Uniforms
+          </p>
           <p style={{
             fontSize: '1.25rem',
             color: '#4a4a4a',
@@ -79,10 +132,13 @@ export default function Home() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "25px",
-            maxWidth: "1000px",
-            margin: "40px auto",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "20px",
+            maxWidth: "1200px",
+            margin: "30px auto",
+            padding: "0 15px",
+            width: "100%",
+            boxSizing: "border-box"
           }}
         >
           {["img/Design_7.jpeg", "img/Design_10.jpeg", "img/Design_11.jpeg"].map((img, i) => (

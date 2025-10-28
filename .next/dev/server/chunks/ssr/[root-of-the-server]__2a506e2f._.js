@@ -1,506 +1,39 @@
-(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push([typeof document === "object" ? document.currentScript : undefined,
-"[turbopack]/browser/dev/hmr-client/hmr-client.ts [client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
+module.exports = [
+"[externals]/styled-jsx/style.js [external] (styled-jsx/style.js, cjs)", ((__turbopack_context__, module, exports) => {
 
-/// <reference path="../../../shared/runtime-types.d.ts" />
-/// <reference path="../../runtime/base/dev-globals.d.ts" />
-/// <reference path="../../runtime/base/dev-protocol.d.ts" />
-/// <reference path="../../runtime/base/dev-extensions.ts" />
-__turbopack_context__.s([
-    "connect",
-    ()=>connect,
-    "setHooks",
-    ()=>setHooks,
-    "subscribeToUpdate",
-    ()=>subscribeToUpdate
-]);
-function connect({ addMessageListener, sendMessage, onUpdateError = console.error }) {
-    addMessageListener((msg)=>{
-        switch(msg.type){
-            case 'turbopack-connected':
-                handleSocketConnected(sendMessage);
-                break;
-            default:
-                try {
-                    if (Array.isArray(msg.data)) {
-                        for(let i = 0; i < msg.data.length; i++){
-                            handleSocketMessage(msg.data[i]);
-                        }
-                    } else {
-                        handleSocketMessage(msg.data);
-                    }
-                    applyAggregatedUpdates();
-                } catch (e) {
-                    console.warn('[Fast Refresh] performing full reload\n\n' + "Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.\n" + 'You might have a file which exports a React component but also exports a value that is imported by a non-React component file.\n' + 'Consider migrating the non-React component export to a separate file and importing it into both files.\n\n' + 'It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.\n' + 'Fast Refresh requires at least one parent function component in your React tree.');
-                    onUpdateError(e);
-                    location.reload();
-                }
-                break;
-        }
-    });
-    const queued = globalThis.TURBOPACK_CHUNK_UPDATE_LISTENERS;
-    if (queued != null && !Array.isArray(queued)) {
-        throw new Error('A separate HMR handler was already registered');
-    }
-    globalThis.TURBOPACK_CHUNK_UPDATE_LISTENERS = {
-        push: ([chunkPath, callback])=>{
-            subscribeToChunkUpdate(chunkPath, sendMessage, callback);
-        }
-    };
-    if (Array.isArray(queued)) {
-        for (const [chunkPath, callback] of queued){
-            subscribeToChunkUpdate(chunkPath, sendMessage, callback);
-        }
-    }
-}
-const updateCallbackSets = new Map();
-function sendJSON(sendMessage, message) {
-    sendMessage(JSON.stringify(message));
-}
-function resourceKey(resource) {
-    return JSON.stringify({
-        path: resource.path,
-        headers: resource.headers || null
-    });
-}
-function subscribeToUpdates(sendMessage, resource) {
-    sendJSON(sendMessage, {
-        type: 'turbopack-subscribe',
-        ...resource
-    });
-    return ()=>{
-        sendJSON(sendMessage, {
-            type: 'turbopack-unsubscribe',
-            ...resource
-        });
-    };
-}
-function handleSocketConnected(sendMessage) {
-    for (const key of updateCallbackSets.keys()){
-        subscribeToUpdates(sendMessage, JSON.parse(key));
-    }
-}
-// we aggregate all pending updates until the issues are resolved
-const chunkListsWithPendingUpdates = new Map();
-function aggregateUpdates(msg) {
-    const key = resourceKey(msg.resource);
-    let aggregated = chunkListsWithPendingUpdates.get(key);
-    if (aggregated) {
-        aggregated.instruction = mergeChunkListUpdates(aggregated.instruction, msg.instruction);
-    } else {
-        chunkListsWithPendingUpdates.set(key, msg);
-    }
-}
-function applyAggregatedUpdates() {
-    if (chunkListsWithPendingUpdates.size === 0) return;
-    hooks.beforeRefresh();
-    for (const msg of chunkListsWithPendingUpdates.values()){
-        triggerUpdate(msg);
-    }
-    chunkListsWithPendingUpdates.clear();
-    finalizeUpdate();
-}
-function mergeChunkListUpdates(updateA, updateB) {
-    let chunks;
-    if (updateA.chunks != null) {
-        if (updateB.chunks == null) {
-            chunks = updateA.chunks;
-        } else {
-            chunks = mergeChunkListChunks(updateA.chunks, updateB.chunks);
-        }
-    } else if (updateB.chunks != null) {
-        chunks = updateB.chunks;
-    }
-    let merged;
-    if (updateA.merged != null) {
-        if (updateB.merged == null) {
-            merged = updateA.merged;
-        } else {
-            // Since `merged` is an array of updates, we need to merge them all into
-            // one, consistent update.
-            // Since there can only be `EcmascriptMergeUpdates` in the array, there is
-            // no need to key on the `type` field.
-            let update = updateA.merged[0];
-            for(let i = 1; i < updateA.merged.length; i++){
-                update = mergeChunkListEcmascriptMergedUpdates(update, updateA.merged[i]);
-            }
-            for(let i = 0; i < updateB.merged.length; i++){
-                update = mergeChunkListEcmascriptMergedUpdates(update, updateB.merged[i]);
-            }
-            merged = [
-                update
-            ];
-        }
-    } else if (updateB.merged != null) {
-        merged = updateB.merged;
-    }
-    return {
-        type: 'ChunkListUpdate',
-        chunks,
-        merged
-    };
-}
-function mergeChunkListChunks(chunksA, chunksB) {
-    const chunks = {};
-    for (const [chunkPath, chunkUpdateA] of Object.entries(chunksA)){
-        const chunkUpdateB = chunksB[chunkPath];
-        if (chunkUpdateB != null) {
-            const mergedUpdate = mergeChunkUpdates(chunkUpdateA, chunkUpdateB);
-            if (mergedUpdate != null) {
-                chunks[chunkPath] = mergedUpdate;
-            }
-        } else {
-            chunks[chunkPath] = chunkUpdateA;
-        }
-    }
-    for (const [chunkPath, chunkUpdateB] of Object.entries(chunksB)){
-        if (chunks[chunkPath] == null) {
-            chunks[chunkPath] = chunkUpdateB;
-        }
-    }
-    return chunks;
-}
-function mergeChunkUpdates(updateA, updateB) {
-    if (updateA.type === 'added' && updateB.type === 'deleted' || updateA.type === 'deleted' && updateB.type === 'added') {
-        return undefined;
-    }
-    if (updateA.type === 'partial') {
-        invariant(updateA.instruction, 'Partial updates are unsupported');
-    }
-    if (updateB.type === 'partial') {
-        invariant(updateB.instruction, 'Partial updates are unsupported');
-    }
-    return undefined;
-}
-function mergeChunkListEcmascriptMergedUpdates(mergedA, mergedB) {
-    const entries = mergeEcmascriptChunkEntries(mergedA.entries, mergedB.entries);
-    const chunks = mergeEcmascriptChunksUpdates(mergedA.chunks, mergedB.chunks);
-    return {
-        type: 'EcmascriptMergedUpdate',
-        entries,
-        chunks
-    };
-}
-function mergeEcmascriptChunkEntries(entriesA, entriesB) {
-    return {
-        ...entriesA,
-        ...entriesB
-    };
-}
-function mergeEcmascriptChunksUpdates(chunksA, chunksB) {
-    if (chunksA == null) {
-        return chunksB;
-    }
-    if (chunksB == null) {
-        return chunksA;
-    }
-    const chunks = {};
-    for (const [chunkPath, chunkUpdateA] of Object.entries(chunksA)){
-        const chunkUpdateB = chunksB[chunkPath];
-        if (chunkUpdateB != null) {
-            const mergedUpdate = mergeEcmascriptChunkUpdates(chunkUpdateA, chunkUpdateB);
-            if (mergedUpdate != null) {
-                chunks[chunkPath] = mergedUpdate;
-            }
-        } else {
-            chunks[chunkPath] = chunkUpdateA;
-        }
-    }
-    for (const [chunkPath, chunkUpdateB] of Object.entries(chunksB)){
-        if (chunks[chunkPath] == null) {
-            chunks[chunkPath] = chunkUpdateB;
-        }
-    }
-    if (Object.keys(chunks).length === 0) {
-        return undefined;
-    }
-    return chunks;
-}
-function mergeEcmascriptChunkUpdates(updateA, updateB) {
-    if (updateA.type === 'added' && updateB.type === 'deleted') {
-        // These two completely cancel each other out.
-        return undefined;
-    }
-    if (updateA.type === 'deleted' && updateB.type === 'added') {
-        const added = [];
-        const deleted = [];
-        const deletedModules = new Set(updateA.modules ?? []);
-        const addedModules = new Set(updateB.modules ?? []);
-        for (const moduleId of addedModules){
-            if (!deletedModules.has(moduleId)) {
-                added.push(moduleId);
-            }
-        }
-        for (const moduleId of deletedModules){
-            if (!addedModules.has(moduleId)) {
-                deleted.push(moduleId);
-            }
-        }
-        if (added.length === 0 && deleted.length === 0) {
-            return undefined;
-        }
-        return {
-            type: 'partial',
-            added,
-            deleted
-        };
-    }
-    if (updateA.type === 'partial' && updateB.type === 'partial') {
-        const added = new Set([
-            ...updateA.added ?? [],
-            ...updateB.added ?? []
-        ]);
-        const deleted = new Set([
-            ...updateA.deleted ?? [],
-            ...updateB.deleted ?? []
-        ]);
-        if (updateB.added != null) {
-            for (const moduleId of updateB.added){
-                deleted.delete(moduleId);
-            }
-        }
-        if (updateB.deleted != null) {
-            for (const moduleId of updateB.deleted){
-                added.delete(moduleId);
-            }
-        }
-        return {
-            type: 'partial',
-            added: [
-                ...added
-            ],
-            deleted: [
-                ...deleted
-            ]
-        };
-    }
-    if (updateA.type === 'added' && updateB.type === 'partial') {
-        const modules = new Set([
-            ...updateA.modules ?? [],
-            ...updateB.added ?? []
-        ]);
-        for (const moduleId of updateB.deleted ?? []){
-            modules.delete(moduleId);
-        }
-        return {
-            type: 'added',
-            modules: [
-                ...modules
-            ]
-        };
-    }
-    if (updateA.type === 'partial' && updateB.type === 'deleted') {
-        // We could eagerly return `updateB` here, but this would potentially be
-        // incorrect if `updateA` has added modules.
-        const modules = new Set(updateB.modules ?? []);
-        if (updateA.added != null) {
-            for (const moduleId of updateA.added){
-                modules.delete(moduleId);
-            }
-        }
-        return {
-            type: 'deleted',
-            modules: [
-                ...modules
-            ]
-        };
-    }
-    // Any other update combination is invalid.
-    return undefined;
-}
-function invariant(_, message) {
-    throw new Error(`Invariant: ${message}`);
-}
-const CRITICAL = [
-    'bug',
-    'error',
-    'fatal'
-];
-function compareByList(list, a, b) {
-    const aI = list.indexOf(a) + 1 || list.length;
-    const bI = list.indexOf(b) + 1 || list.length;
-    return aI - bI;
-}
-const chunksWithIssues = new Map();
-function emitIssues() {
-    const issues = [];
-    const deduplicationSet = new Set();
-    for (const [_, chunkIssues] of chunksWithIssues){
-        for (const chunkIssue of chunkIssues){
-            if (deduplicationSet.has(chunkIssue.formatted)) continue;
-            issues.push(chunkIssue);
-            deduplicationSet.add(chunkIssue.formatted);
-        }
-    }
-    sortIssues(issues);
-    hooks.issues(issues);
-}
-function handleIssues(msg) {
-    const key = resourceKey(msg.resource);
-    let hasCriticalIssues = false;
-    for (const issue of msg.issues){
-        if (CRITICAL.includes(issue.severity)) {
-            hasCriticalIssues = true;
-        }
-    }
-    if (msg.issues.length > 0) {
-        chunksWithIssues.set(key, msg.issues);
-    } else if (chunksWithIssues.has(key)) {
-        chunksWithIssues.delete(key);
-    }
-    emitIssues();
-    return hasCriticalIssues;
-}
-const SEVERITY_ORDER = [
-    'bug',
-    'fatal',
-    'error',
-    'warning',
-    'info',
-    'log'
-];
-const CATEGORY_ORDER = [
-    'parse',
-    'resolve',
-    'code generation',
-    'rendering',
-    'typescript',
-    'other'
-];
-function sortIssues(issues) {
-    issues.sort((a, b)=>{
-        const first = compareByList(SEVERITY_ORDER, a.severity, b.severity);
-        if (first !== 0) return first;
-        return compareByList(CATEGORY_ORDER, a.category, b.category);
-    });
-}
-const hooks = {
-    beforeRefresh: ()=>{},
-    refresh: ()=>{},
-    buildOk: ()=>{},
-    issues: (_issues)=>{}
-};
-function setHooks(newHooks) {
-    Object.assign(hooks, newHooks);
-}
-function handleSocketMessage(msg) {
-    sortIssues(msg.issues);
-    handleIssues(msg);
-    switch(msg.type){
-        case 'issues':
-            break;
-        case 'partial':
-            // aggregate updates
-            aggregateUpdates(msg);
-            break;
-        default:
-            // run single update
-            const runHooks = chunkListsWithPendingUpdates.size === 0;
-            if (runHooks) hooks.beforeRefresh();
-            triggerUpdate(msg);
-            if (runHooks) finalizeUpdate();
-            break;
-    }
-}
-function finalizeUpdate() {
-    hooks.refresh();
-    hooks.buildOk();
-    // This is used by the Next.js integration test suite to notify it when HMR
-    // updates have been completed.
-    // TODO: Only run this in test environments (gate by `process.env.__NEXT_TEST_MODE`)
-    if (globalThis.__NEXT_HMR_CB) {
-        globalThis.__NEXT_HMR_CB();
-        globalThis.__NEXT_HMR_CB = null;
-    }
-}
-function subscribeToChunkUpdate(chunkListPath, sendMessage, callback) {
-    return subscribeToUpdate({
-        path: chunkListPath
-    }, sendMessage, callback);
-}
-function subscribeToUpdate(resource, sendMessage, callback) {
-    const key = resourceKey(resource);
-    let callbackSet;
-    const existingCallbackSet = updateCallbackSets.get(key);
-    if (!existingCallbackSet) {
-        callbackSet = {
-            callbacks: new Set([
-                callback
-            ]),
-            unsubscribe: subscribeToUpdates(sendMessage, resource)
-        };
-        updateCallbackSets.set(key, callbackSet);
-    } else {
-        existingCallbackSet.callbacks.add(callback);
-        callbackSet = existingCallbackSet;
-    }
-    return ()=>{
-        callbackSet.callbacks.delete(callback);
-        if (callbackSet.callbacks.size === 0) {
-            callbackSet.unsubscribe();
-            updateCallbackSets.delete(key);
-        }
-    };
-}
-function triggerUpdate(msg) {
-    const key = resourceKey(msg.resource);
-    const callbackSet = updateCallbackSets.get(key);
-    if (!callbackSet) {
-        return;
-    }
-    for (const callback of callbackSet.callbacks){
-        callback(msg);
-    }
-    if (msg.type === 'notFound') {
-        // This indicates that the resource which we subscribed to either does not exist or
-        // has been deleted. In either case, we should clear all update callbacks, so if a
-        // new subscription is created for the same resource, it will send a new "subscribe"
-        // message to the server.
-        // No need to send an "unsubscribe" message to the server, it will have already
-        // dropped the update stream before sending the "notFound" message.
-        updateCallbackSets.delete(key);
-    }
-}
+const mod = __turbopack_context__.x("styled-jsx/style.js", () => require("styled-jsx/style.js"));
+
+module.exports = mod;
 }),
-"[project]/websites/adoods/components/BannerSlider.js [client] (ecmascript)", ((__turbopack_context__) => {
+"[project]/websites/adoods/components/BannerSlider.js [ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
     "default",
     ()=>BannerSlider
 ]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [client] (ecmascript)");
-;
-var _s = __turbopack_context__.k.signature();
+var __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react/jsx-dev-runtime [external] (react/jsx-dev-runtime, cjs)");
+var __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react [external] (react, cjs)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [ssr] (ecmascript)");
 "use client";
 ;
 ;
+;
 function BannerSlider() {
-    _s();
-    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const banners = [
         "/img/banner1.png",
         "/img/banner2.png"
     ];
-    const [index, setIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(0);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "BannerSlider.useEffect": ()=>{
-            const timer = setInterval({
-                "BannerSlider.useEffect.timer": ()=>setIndex({
-                        "BannerSlider.useEffect.timer": (i)=>(i + 1) % banners.length
-                    }["BannerSlider.useEffect.timer"])
-            }["BannerSlider.useEffect.timer"], 3000);
-            return ({
-                "BannerSlider.useEffect": ()=>clearInterval(timer)
-            })["BannerSlider.useEffect"];
-        }
-    }["BannerSlider.useEffect"], []);
+    const [index, setIndex] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(0);
+    (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
+        const timer = setInterval(()=>setIndex((i)=>(i + 1) % banners.length), 3000);
+        return ()=>clearInterval(timer);
+    }, []);
     const handleBannerClick = ()=>{
         router.push('/shop');
     };
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
         className: "banner",
         onClick: handleBannerClick,
         style: {
@@ -514,7 +47,7 @@ function BannerSlider() {
             margin: 0,
             lineHeight: 0
         },
-        children: banners.map((src, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+        children: banners.map((src, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
                 src: src,
                 alt: `Banner ${i}`,
                 className: "banner-img",
@@ -543,29 +76,18 @@ function BannerSlider() {
         columnNumber: 5
     }, this);
 }
-_s(BannerSlider, "J7c7zGLmLE41UCzwLqdphis63vM=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"]
-    ];
-});
-_c = BannerSlider;
-var _c;
-__turbopack_context__.k.register(_c, "BannerSlider");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
-}
 }),
-"[project]/websites/adoods/pages/index.js [client] (ecmascript)", ((__turbopack_context__) => {
+"[project]/websites/adoods/pages/index.js [ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
     "default",
     ()=>Home
 ]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/styled-jsx/style.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/link.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$websites$2f$adoods$2f$components$2f$BannerSlider$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/websites/adoods/components/BannerSlider.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react/jsx-dev-runtime [external] (react/jsx-dev-runtime, cjs)");
+var __TURBOPACK__imported__module__$5b$externals$5d2f$styled$2d$jsx$2f$style$2e$js__$5b$external$5d$__$28$styled$2d$jsx$2f$style$2e$js$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/styled-jsx/style.js [external] (styled-jsx/style.js, cjs)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/link.js [ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$websites$2f$adoods$2f$components$2f$BannerSlider$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/websites/adoods/components/BannerSlider.js [ssr] (ecmascript)");
 "use client";
 ;
 ;
@@ -629,19 +151,19 @@ const sectionHeaderLine = {
     borderRadius: '2px'
 };
 function Home() {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
         className: `jsx-${responsiveStyles.__hash}`,
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$externals$5d2f$styled$2d$jsx$2f$style$2e$js__$5b$external$5d$__$28$styled$2d$jsx$2f$style$2e$js$2c$__cjs$29$__["default"], {
                 id: responsiveStyles.__hash,
                 children: responsiveStyles
             }, void 0, false, void 0, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$websites$2f$adoods$2f$components$2f$BannerSlider$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$websites$2f$adoods$2f$components$2f$BannerSlider$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/websites/adoods/pages/index.js",
                 lineNumber: 70,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                 style: {
                     height: 'calc(100vh - 60px)'
                 },
@@ -651,7 +173,7 @@ function Home() {
                 lineNumber: 73,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                 style: {
                     maxWidth: '100%',
                     margin: '0 auto',
@@ -663,7 +185,7 @@ function Home() {
                     boxSizing: 'border-box'
                 },
                 className: `jsx-${responsiveStyles.__hash}`,
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                     style: {
                         maxWidth: '1200px',
                         margin: '0 auto',
@@ -673,12 +195,12 @@ function Home() {
                     },
                     className: `jsx-${responsiveStyles.__hash}` + " " + "section-content",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h2", {
                             style: sectionHeaderStyle,
                             className: `jsx-${responsiveStyles.__hash}`,
                             children: [
                                 "Welcome to Adoods",
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                     style: {
                                         ...sectionHeaderLine,
                                         left: '50%'
@@ -695,7 +217,7 @@ function Home() {
                             lineNumber: 93,
                             columnNumber: 11
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                             style: {
                                 fontSize: 'clamp(1rem, 3vw, 1.25rem)',
                                 color: '#4a4a4a',
@@ -711,7 +233,7 @@ function Home() {
                             lineNumber: 97,
                             columnNumber: 11
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                             style: {
                                 fontSize: '1.25rem',
                                 color: '#4a4a4a',
@@ -737,7 +259,7 @@ function Home() {
                 lineNumber: 76,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("section", {
                 style: {
                     background: "#f9f9f9",
                     padding: "60px 20px",
@@ -745,12 +267,12 @@ function Home() {
                 },
                 className: `jsx-${responsiveStyles.__hash}`,
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h2", {
                         style: sectionHeaderStyle,
                         className: `jsx-${responsiveStyles.__hash}`,
                         children: [
                             "Featured Collection",
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                 style: sectionHeaderLine,
                                 className: `jsx-${responsiveStyles.__hash}`
                             }, void 0, false, {
@@ -764,7 +286,7 @@ function Home() {
                         lineNumber: 128,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                         style: {
                             display: "grid",
                             gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
@@ -780,7 +302,7 @@ function Home() {
                             "img/Design_7.jpeg",
                             "img/Design_10.jpeg",
                             "img/Design_11.jpeg"
-                        ].map((img, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                        ].map((img, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
                                 href: "/shop",
                                 style: {
                                     textDecoration: 'none',
@@ -797,7 +319,7 @@ function Home() {
                                     e.currentTarget.style.transform = 'translateY(0)';
                                     e.currentTarget.style.boxShadow = 'none';
                                 },
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                     style: {
                                         border: "1px solid #eee",
                                         borderRadius: "8px",
@@ -809,14 +331,14 @@ function Home() {
                                     },
                                     className: `jsx-${responsiveStyles.__hash}`,
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                             style: {
                                                 flex: 1,
                                                 display: 'flex',
                                                 alignItems: 'center'
                                             },
                                             className: `jsx-${responsiveStyles.__hash}`,
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
                                                 src: `/${img}`,
                                                 alt: "Featured T-Shirt",
                                                 style: {
@@ -836,7 +358,7 @@ function Home() {
                                             lineNumber: 175,
                                             columnNumber: 17
                                         }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h3", {
                                             style: {
                                                 margin: "15px 0 10px",
                                                 color: '#333'
@@ -873,7 +395,7 @@ function Home() {
                 lineNumber: 121,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("section", {
                 style: {
                     padding: "80px 20px",
                     textAlign: "center",
@@ -883,7 +405,7 @@ function Home() {
                 },
                 className: `jsx-${responsiveStyles.__hash}`,
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                         style: {
                             maxWidth: "1200px",
                             margin: "0 auto",
@@ -892,12 +414,12 @@ function Home() {
                         },
                         className: `jsx-${responsiveStyles.__hash}`,
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h2", {
                                 style: sectionHeaderStyle,
                                 className: `jsx-${responsiveStyles.__hash}`,
                                 children: [
                                     "Why Choose Adoods?",
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                         style: sectionHeaderLine,
                                         className: `jsx-${responsiveStyles.__hash}`
                                     }, void 0, false, {
@@ -911,7 +433,7 @@ function Home() {
                                 lineNumber: 210,
                                 columnNumber: 11
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                 style: {
                                     display: "grid",
                                     gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
@@ -935,7 +457,7 @@ function Home() {
                                         title: "Fast Shipping",
                                         description: "Quick and reliable delivery to your doorstep, with real-time tracking."
                                     }
-                                ].map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                ].map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                         style: {
                                             background: "white",
                                             padding: "40px 25px",
@@ -955,7 +477,7 @@ function Home() {
                                         },
                                         className: `jsx-${responsiveStyles.__hash}`,
                                         children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                                 style: {
                                                     fontSize: "2.5rem",
                                                     marginBottom: "20px"
@@ -967,7 +489,7 @@ function Home() {
                                                 lineNumber: 259,
                                                 columnNumber: 17
                                             }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h3", {
                                                 style: {
                                                     fontSize: "1.5rem",
                                                     marginBottom: "15px",
@@ -980,7 +502,7 @@ function Home() {
                                                 lineNumber: 265,
                                                 columnNumber: 17
                                             }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                                 style: {
                                                     color: "#4a5568",
                                                     lineHeight: "1.6",
@@ -1010,7 +532,7 @@ function Home() {
                         lineNumber: 204,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                         style: {
                             position: "absolute",
                             top: 0,
@@ -1032,7 +554,7 @@ function Home() {
                 lineNumber: 195,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("section", {
                 style: {
                     padding: "100px 20px",
                     background: "#ffffff",
@@ -1040,7 +562,7 @@ function Home() {
                     overflow: "hidden"
                 },
                 className: `jsx-${responsiveStyles.__hash}`,
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                     style: {
                         maxWidth: "1200px",
                         margin: "0 auto",
@@ -1051,15 +573,15 @@ function Home() {
                     },
                     className: `jsx-${responsiveStyles.__hash}`,
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                             className: `jsx-${responsiveStyles.__hash}`,
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h2", {
                                     style: sectionHeaderStyle,
                                     className: `jsx-${responsiveStyles.__hash}`,
                                     children: [
                                         "About ",
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
                                             style: {
                                                 color: "#e91e63"
                                             },
@@ -1076,7 +598,7 @@ function Home() {
                                     lineNumber: 312,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                     style: {
                                         height: "4px",
                                         width: "80px",
@@ -1090,7 +612,7 @@ function Home() {
                                     lineNumber: 315,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                     style: {
                                         color: "#4a5568",
                                         lineHeight: "1.8",
@@ -1104,7 +626,7 @@ function Home() {
                                     lineNumber: 322,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                     style: {
                                         color: "#4a5568",
                                         lineHeight: "1.8",
@@ -1118,7 +640,7 @@ function Home() {
                                     lineNumber: 330,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
                                     onClick: ()=>window.location.href = '/shop',
                                     style: {
                                         background: 'linear-gradient(90deg, #4a148c 0%, #7b1fa2 100%)',
@@ -1153,7 +675,7 @@ function Home() {
                             lineNumber: 311,
                             columnNumber: 11
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                             style: {
                                 position: "relative",
                                 height: "500px",
@@ -1162,7 +684,7 @@ function Home() {
                                 boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
                             },
                             className: `jsx-${responsiveStyles.__hash}`,
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
                                 src: "/img/aboutus.jpeg",
                                 alt: "About Adoods",
                                 style: {
@@ -1195,13 +717,13 @@ function Home() {
                 lineNumber: 295,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("section", {
                 style: {
                     padding: "80px 5%",
                     backgroundColor: "#ffffff"
                 },
                 className: `jsx-${responsiveStyles.__hash}`,
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                     style: {
                         maxWidth: "1200px",
                         margin: "0 auto",
@@ -1212,19 +734,19 @@ function Home() {
                     },
                     className: `jsx-${responsiveStyles.__hash}`,
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                             style: {
                                 flex: 1,
                                 textAlign: "left"
                             },
                             className: `jsx-${responsiveStyles.__hash}`,
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h2", {
                                     style: sectionHeaderStyle,
                                     className: `jsx-${responsiveStyles.__hash}`,
                                     children: [
                                         "Premium School Uniforms",
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                             style: sectionHeaderLine,
                                             className: `jsx-${responsiveStyles.__hash}`
                                         }, void 0, false, {
@@ -1238,7 +760,7 @@ function Home() {
                                     lineNumber: 406,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                     style: {
                                         fontSize: "1.1rem",
                                         color: "#4a148c",
@@ -1252,7 +774,7 @@ function Home() {
                                     lineNumber: 410,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                     style: {
                                         fontSize: "1.1rem",
                                         color: "#4a4a4a",
@@ -1266,7 +788,7 @@ function Home() {
                                     lineNumber: 418,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("ul", {
                                     style: {
                                         listStyle: "none",
                                         padding: 0,
@@ -1279,7 +801,7 @@ function Home() {
                                         "Wrinkle-resistant and easy to maintain",
                                         "Available in various sizes and custom fittings",
                                         "Compliant with school dress codes"
-                                    ].map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                    ].map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("li", {
                                             style: {
                                                 padding: "8px 0",
                                                 color: "#4a4a4a",
@@ -1288,7 +810,7 @@ function Home() {
                                             },
                                             className: `jsx-${responsiveStyles.__hash}`,
                                             children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
                                                     style: {
                                                         position: "absolute",
                                                         left: 0,
@@ -1313,7 +835,7 @@ function Home() {
                                     lineNumber: 428,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
                                     style: {
                                         backgroundColor: "#4a148c",
                                         color: "white",
@@ -1347,7 +869,7 @@ function Home() {
                             lineNumber: 402,
                             columnNumber: 11
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                             style: {
                                 flex: 1,
                                 position: "relative",
@@ -1357,7 +879,7 @@ function Home() {
                                 height: "500px"
                             },
                             className: `jsx-${responsiveStyles.__hash}`,
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
                                 src: "/img/schooluniform.jpg",
                                 alt: "Premium School Uniforms",
                                 style: {
@@ -1390,21 +912,21 @@ function Home() {
                 lineNumber: 388,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("section", {
                 style: {
                     padding: "100px 20px",
                     background: "linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)",
                     textAlign: "center"
                 },
                 className: `jsx-${responsiveStyles.__hash}`,
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                     style: {
                         maxWidth: "1200px",
                         margin: "0 auto"
                     },
                     className: `jsx-${responsiveStyles.__hash}`,
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h2", {
                             style: {
                                 fontSize: "2.5rem",
                                 marginBottom: "15px",
@@ -1417,7 +939,7 @@ function Home() {
                             lineNumber: 514,
                             columnNumber: 11
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                             style: {
                                 color: "#718096",
                                 fontSize: "1.1rem",
@@ -1432,7 +954,7 @@ function Home() {
                             lineNumber: 521,
                             columnNumber: 11
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                             style: {
                                 display: "grid",
                                 gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
@@ -1462,7 +984,7 @@ function Home() {
                                     review: "Impressed with the fabric quality and stitching. Will definitely be buying more colors!",
                                     rating: "★★★★☆"
                                 }
-                            ].map((testimonial, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            ].map((testimonial, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                     style: {
                                         background: "white",
                                         padding: "35px 30px",
@@ -1483,7 +1005,7 @@ function Home() {
                                     },
                                     className: `jsx-${responsiveStyles.__hash}`,
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                             style: {
                                                 fontSize: "2.5rem",
                                                 position: "absolute",
@@ -1506,7 +1028,7 @@ function Home() {
                                             lineNumber: 581,
                                             columnNumber: 17
                                         }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                             style: {
                                                 color: "#4a5568",
                                                 lineHeight: "1.8",
@@ -1526,7 +1048,7 @@ function Home() {
                                             lineNumber: 598,
                                             columnNumber: 17
                                         }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                             style: {
                                                 display: "flex",
                                                 alignItems: "center",
@@ -1534,10 +1056,10 @@ function Home() {
                                             },
                                             className: `jsx-${responsiveStyles.__hash}`,
                                             children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                                     className: `jsx-${responsiveStyles.__hash}`,
                                                     children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h4", {
                                                             style: {
                                                                 margin: "0 0 5px 0",
                                                                 color: "#2d3748",
@@ -1550,7 +1072,7 @@ function Home() {
                                                             lineNumber: 614,
                                                             columnNumber: 21
                                                         }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                                             style: {
                                                                 margin: 0,
                                                                 color: "#718096",
@@ -1569,7 +1091,7 @@ function Home() {
                                                     lineNumber: 613,
                                                     columnNumber: 19
                                                 }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                                     style: {
                                                         color: "#f6b01e",
                                                         fontSize: "1.2rem"
@@ -1609,7 +1131,7 @@ function Home() {
                 lineNumber: 503,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("section", {
                 style: {
                     background: "#111",
                     color: "#fff",
@@ -1617,14 +1139,14 @@ function Home() {
                     padding: "80px 20px"
                 },
                 className: `jsx-${responsiveStyles.__hash}`,
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                     style: {
                         maxWidth: "800px",
                         margin: "0 auto"
                     },
                     className: `jsx-${responsiveStyles.__hash}`,
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h2", {
                             style: {
                                 fontSize: "2.5rem",
                                 marginBottom: "15px"
@@ -1636,7 +1158,7 @@ function Home() {
                             lineNumber: 654,
                             columnNumber: 11
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                             style: {
                                 margin: "0 auto 30px",
                                 color: "#ccc",
@@ -1650,7 +1172,7 @@ function Home() {
                             lineNumber: 658,
                             columnNumber: 11
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("form", {
                             action: "mailto:adoodshosur@gmail.com",
                             method: "POST",
                             encType: "text/plain",
@@ -1664,7 +1186,7 @@ function Home() {
                             },
                             className: `jsx-${responsiveStyles.__hash}`,
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
                                     type: "email",
                                     placeholder: "Enter your email",
                                     required: true,
@@ -1684,7 +1206,7 @@ function Home() {
                                     lineNumber: 679,
                                     columnNumber: 11
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
                                     type: "submit",
                                     style: {
                                         background: "#fff",
@@ -1736,37 +1258,13 @@ function Home() {
         columnNumber: 5
     }, this);
 }
-_c = Home;
-var _c;
-__turbopack_context__.k.register(_c, "Home");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
-}
 }),
-"[next]/entry/page-loader.ts { PAGE => \"[project]/websites/adoods/pages/index.js [client] (ecmascript)\" } [client] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"[externals]/next/dist/shared/lib/no-fallback-error.external.js [external] (next/dist/shared/lib/no-fallback-error.external.js, cjs)", ((__turbopack_context__, module, exports) => {
 
-const PAGE_PATH = "/";
-(window.__NEXT_P = window.__NEXT_P || []).push([
-    PAGE_PATH,
-    ()=>{
-        return __turbopack_context__.r("[project]/websites/adoods/pages/index.js [client] (ecmascript)");
-    }
-]);
-// @ts-expect-error module.hot exists
-if (module.hot) {
-    // @ts-expect-error module.hot exists
-    module.hot.dispose(function() {
-        window.__NEXT_P.push([
-            PAGE_PATH
-        ]);
-    });
-}
+const mod = __turbopack_context__.x("next/dist/shared/lib/no-fallback-error.external.js", () => require("next/dist/shared/lib/no-fallback-error.external.js"));
+
+module.exports = mod;
 }),
-"[hmr-entry]/hmr-entry.js { ENTRY => \"[project]/websites/adoods/pages/index\" }", ((__turbopack_context__) => {
-"use strict";
+];
 
-__turbopack_context__.r("[next]/entry/page-loader.ts { PAGE => \"[project]/websites/adoods/pages/index.js [client] (ecmascript)\" } [client] (ecmascript)");
-}),
-]);
-
-//# sourceMappingURL=%5Broot-of-the-server%5D__83126028._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__2a506e2f._.js.map
